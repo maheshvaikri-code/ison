@@ -1,0 +1,56 @@
+{
+  "name": "ison-parser",
+  "version": "1.0.0",
+  "description": "ISON (Interchange Simple Object Notation) - A token-efficient data format for AI/LLM workflows",
+  "main": "dist/ison-parser.js",
+  "module": "dist/ison-parser.esm.js",
+  "types": "dist/ison-parser.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/ison-parser.js",
+      "import": "./dist/ison-parser.esm.js",
+      "types": "./dist/ison-parser.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "node -e \"require('fs').copyFileSync('src/ison-parser.js', 'dist/ison-parser.js')\"",
+    "build:esm": "node scripts/build-esm.js",
+    "test": "node test/test_ison_parser.js",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maheshvaikri-code/ison.git"
+  },
+  "keywords": [
+    "ison",
+    "isonl",
+    "json",
+    "jsonl",
+    "parser",
+    "data-format",
+    "llm",
+    "ai",
+    "token-efficient",
+    "streaming",
+    "fine-tuning",
+    "serialization"
+  ],
+  "author": "Mahesh Vaikri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maheshvaikri-code/ison/issues"
+  },
+  "homepage": "https://www.ison.dev",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

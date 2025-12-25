@@ -1,0 +1,93 @@
+name: Publish Rust Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: 'Which packages to publish'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ison-rust
+          - isonantic-rust
+      dry_run:
+        description: 'Dry run (no actual publish)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  publish-ison-rust:
+    name: Publish ison-rust
+    runs-on: ubuntu-latest
+    if: ${{ inputs.packages == 'all' || inputs.packages == 'ison-rust' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run tests
+        working-directory: packages/ison-rust
+        run: cargo test --all-features
+
+      - name: Check package
+        working-directory: packages/ison-rust
+        run: cargo package --list
+
+      - name: Publish to crates.io
+        if: ${{ inputs.dry_run != true }}
+        working-directory: packages/ison-rust
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+        run: cargo publish
+
+      - name: Dry run
+        if: ${{ inputs.dry_run == true }}
+        working-directory: packages/ison-rust
+        run: cargo publish --dry-run
+
+  publish-isonantic-rust:
+    name: Publish isonantic-rust
+    runs-on: ubuntu-latest
+    needs: publish-ison-rust
+    if: ${{ always() && (inputs.packages == 'all' || inputs.packages == 'isonantic-rust') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Wait for crates.io propagation
+        if: ${{ inputs.packages == 'all' && inputs.dry_run != true }}
+        run: sleep 60
+
+      - name: Run tests
+        working-directory: packages/isonantic-rust
+        run: cargo test --all-features
+
+      - name: Check package
+        working-directory: packages/isonantic-rust
+        run: cargo package --list
+
+      - name: Publish to crates.io
+        if: ${{ inputs.dry_run != true }}
+        working-directory: packages/isonantic-rust
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+        run: cargo publish
+
+      - name: Dry run
+        if: ${{ inputs.dry_run == true }}
+        working-directory: packages/isonantic-rust
+        run: cargo publish --dry-run

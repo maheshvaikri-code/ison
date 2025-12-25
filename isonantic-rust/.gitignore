@@ -1,0 +1,19 @@
+# Build output
+target/
+
+# Cargo.lock is gitignored for libraries (not binaries)
+Cargo.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local

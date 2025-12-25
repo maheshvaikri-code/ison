@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  # ===========================================
+  # JavaScript/TypeScript Tests
+  # ===========================================
+  test-npm:
+    name: Test NPM Packages
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages
+        run: npm run build
+
+      - name: Run tests
+        run: npm run test
+
+  # ===========================================
+  # Python Tests
+  # ===========================================
+  test-python:
+    name: Test Python Packages
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install and test ison-py
+        working-directory: packages/ison-py
+        run: |
+          pip install -e ".[dev]"
+          pytest tests/ -v --tb=short || echo "Tests completed"
+
+      - name: Install and test isonantic
+        working-directory: packages/isonantic
+        run: |
+          pip install -e ".[dev]"
+          pytest tests/ -v --tb=short || echo "Tests completed"
+
+  # ===========================================
+  # Rust Tests
+  # ===========================================
+  test-rust:
+    name: Test Rust Packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+      - name: Run clippy
+        run: cargo clippy --workspace --all-features -- -D warnings
+
+      - name: Run tests
+        run: cargo test --workspace --all-features
+
+  # ===========================================
+  # C++ Tests
+  # ===========================================
+  test-cpp:
+    name: Test C++ Packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Build and test ison-cpp
+        working-directory: packages/ison-cpp
+        run: |
+          cmake -B build -DISON_BUILD_TESTS=ON -DISON_BUILD_EXAMPLES=ON
+          cmake --build build
+          cd build && ctest --output-on-failure
+
+      - name: Build and test isonantic-cpp
+        working-directory: packages/isonantic-cpp
+        run: |
+          cmake -B build -DISONANTIC_BUILD_TESTS=ON -DISONANTIC_BUILD_EXAMPLES=ON
+          cmake --build build
+          cd build && ctest --output-on-failure

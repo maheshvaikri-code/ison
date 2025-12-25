@@ -1,0 +1,30 @@
+[package]
+name = "isonantic-rs"
+version = "1.0.0"
+edition = "2021"
+authors = ["Mahesh Vaikri"]
+description = "Type-safe validation and derive macros for ISON format in Rust"
+license = "MIT"
+repository = "https://github.com/maheshvaikri-code/ison"
+homepage = "https://www.ison.dev"
+documentation = "https://docs.rs/isonantic-rs"
+readme = "README.md"
+keywords = ["ison", "validation", "schema", "derive", "serde"]
+categories = ["encoding", "parser-implementations", "data-structures"]
+
+[dependencies]
+ison-rs = { version = "1.0", path = "../ison-rust" }
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"], optional = true }
+serde_json = { version = "1.0", optional = true }
+
+[features]
+default = ["serde"]
+serde = ["dep:serde", "dep:serde_json"]
+
+[dev-dependencies]
+pretty_assertions = "1.4"
+
+[[example]]
+name = "basic"
+path = "examples/basic.rs"

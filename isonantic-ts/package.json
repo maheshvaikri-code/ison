@@ -1,0 +1,61 @@
+{
+  "name": "isonantic-ts",
+  "version": "1.0.0",
+  "description": "ISONantic - Zod-like validation and type-safe models for ISON format",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "isonantic",
+    "ison",
+    "validation",
+    "schema",
+    "zod",
+    "typescript",
+    "llm",
+    "ai",
+    "type-safe",
+    "parsing"
+  ],
+  "author": "Mahesh Vaikri",
+  "license": "MIT",
+  "peerDependencies": {
+    "ison-ts": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ison-ts": "^1.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maheshvaikri-code/ison.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maheshvaikri-code/ison/issues"
+  },
+  "homepage": "https://www.ison.dev"
+}

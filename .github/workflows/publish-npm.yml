@@ -1,0 +1,104 @@
+name: Publish NPM Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: 'Which packages to publish'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ison-js
+          - ison-ts
+          - isonantic-ts
+      dry_run:
+        description: 'Dry run (no actual publish)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  publish-base:
+    name: Publish Base Packages
+    runs-on: ubuntu-latest
+    if: ${{ inputs.packages == 'all' || inputs.packages == 'ison-js' || inputs.packages == 'ison-ts' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Test all packages
+        run: npm run test
+
+      - name: Publish ison-js
+        if: ${{ inputs.packages == 'all' || inputs.packages == 'ison-js' }}
+        working-directory: packages/ison-js
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm publish --dry-run
+          else
+            npm publish --access public
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish ison-ts
+        if: ${{ inputs.packages == 'all' || inputs.packages == 'ison-ts' }}
+        working-directory: packages/ison-ts
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm publish --dry-run
+          else
+            npm publish --access public
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-dependent:
+    name: Publish Dependent Packages
+    runs-on: ubuntu-latest
+    needs: publish-base
+    if: ${{ always() && (inputs.packages == 'all' || inputs.packages == 'isonantic-ts') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Wait for npm registry propagation
+        if: ${{ inputs.packages == 'all' && inputs.dry_run != true }}
+        run: sleep 30
+
+      - name: Publish isonantic-ts
+        working-directory: packages/isonantic-ts
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm publish --dry-run
+          else
+            npm publish --access public
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

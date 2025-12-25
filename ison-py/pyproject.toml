@@ -1,0 +1,111 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ison-py"
+version = "1.0.0"
+description = "ISON (Interchange Simple Object Notation) - A token-efficient data format for AI/LLM workflows"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Mahesh Vaikri"}
+]
+maintainers = [
+    {name = "Mahesh Vaikri"}
+]
+keywords = [
+    "ison",
+    "isonl",
+    "json",
+    "jsonl",
+    "data-format",
+    "llm",
+    "ai",
+    "token-efficient",
+    "streaming",
+    "fine-tuning",
+    "rag",
+    "serialization"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Markup",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+# SQL Database plugins
+postgresql = ["psycopg2-binary>=2.9"]
+mysql = ["pymysql>=1.0"]
+sqlalchemy = ["sqlalchemy>=2.0"]
+databases = ["psycopg2-binary>=2.9", "pymysql>=1.0", "sqlalchemy>=2.0"]
+
+# Vector Database plugins
+chroma = ["chromadb>=0.4"]
+pinecone = ["pinecone-client>=3.0"]
+qdrant = ["qdrant-client>=1.7"]
+vectordbs = ["chromadb>=0.4", "pinecone-client>=3.0", "qdrant-client>=1.7"]
+
+# All plugins
+all = [
+    "psycopg2-binary>=2.9",
+    "pymysql>=1.0",
+    "sqlalchemy>=2.0",
+    "chromadb>=0.4",
+    "pinecone-client>=3.0",
+    "qdrant-client>=1.7",
+]
+
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "isort>=5.0",
+    "mypy>=1.0",
+]
+
+[project.urls]
+Homepage = "https://www.ison.dev"
+Documentation = "https://www.ison.dev"
+Repository = "https://github.com/maheshvaikri-code/ison"
+Issues = "https://github.com/maheshvaikri-code/ison/issues"
+
+[project.scripts]
+ison = "ison_parser:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ison_parser = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311', 'py312']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"

@@ -1,0 +1,79 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+target/
+
+# IDE
+.idea/
+.vscode/
+.claude/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+nul
+
+# Build outputs
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+
+# Package locks (keep package-lock.json for reproducibility)
+# Uncomment if you don't want to track lock files
+# package-lock.json
+# Cargo.lock
+# poetry.lock
+
+# Environment
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+htmlcov/
+.coverage
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Rust
+target/
+Cargo.lock
+
+# C++ build
+**/build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.vcxproj*
+*.sln
+
+# TypeScript
+*.tsbuildinfo
+
+# Jupyter
+.ipynb_checkpoints/

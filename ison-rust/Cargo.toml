@@ -1,0 +1,42 @@
+[package]
+name = "ison-rs"
+version = "1.0.0"
+edition = "2021"
+authors = ["Mahesh Vaikri"]
+description = "ISON (Interchange Simple Object Notation) parser for Rust - A token-efficient data format for AI/LLM workflows"
+license = "MIT"
+repository = "https://github.com/maheshvaikri-code/ison"
+homepage = "https://www.ison.dev"
+documentation = "https://docs.rs/ison-rs"
+readme = "README.md"
+keywords = ["ison", "parser", "json", "llm", "serialization"]
+categories = ["parser-implementations", "encoding", "data-structures"]
+
+[dependencies]
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"], optional = true }
+serde_json = { version = "1.0", optional = true }
+nalgebra = { version = "0.32", optional = true }
+
+# RudraDB integration (optional)
+# TODO: Uncomment when rudradb is published to crates.io
+# rudradb = { version = "1.0", optional = true }
+
+[features]
+default = ["serde"]
+serde = ["dep:serde", "dep:serde_json"]
+# TODO: Uncomment when rudradb is published to crates.io
+# rudradb = ["dep:rudradb", "dep:nalgebra", "serde"]
+
+[dev-dependencies]
+pretty_assertions = "1.4"
+
+[[example]]
+name = "basic"
+path = "examples/basic.rs"
+
+# TODO: Uncomment when rudradb is published to crates.io
+# [[example]]
+# name = "rudradb_export"
+# path = "examples/rudradb_export.rs"
+# required-features = ["rudradb"]

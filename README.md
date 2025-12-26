@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="images/ison-logo.png" alt="ISON Logo" width="200">
+  <img width="755" height="386" alt="ISON_logo_crop" src="https://github.com/user-attachments/assets/3f6fb344-0c48-4259-9b3d-106be48708ca" />
+
 </p>
 
-<h1 align="center">ISON</h1>
 
 <p align="center">
-  <strong>Interchange Simple Object Notation</strong><br>
+  <strong>ISON - Interchange Simple Object Notation</strong><br>
   A minimal, token-efficient data format optimized for LLMs and Agentic AI workflows.
 </p>
 

@@ -5,8 +5,9 @@
 
 
 <p align="center">
-  <strong>ISON - Interchange Simple Object Notation</strong><br>
+  <h2>
   A minimal, token-efficient data format optimized for LLMs and Agentic AI workflows.
+  </h2>
 </p>
 
 <p align="center">
@@ -15,6 +16,7 @@
   <a href="https://pypi.org/project/ison-py"><img src="https://img.shields.io/pypi/v/ison-py.svg" alt="PyPI"></a>
   <a href="https://crates.io/crates/ison-rs"><img src="https://img.shields.io/crates/v/ison-rs.svg" alt="Crates.io"></a>
 </p>
+<p align="center"> Author: Mahesh Vaikri</p>
 
 ---
 

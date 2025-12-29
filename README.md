@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/ison_logo_git.png" alt="ISON Logo" width="200">
+  <img src="images/ison_logo_git.png" alt="ISON Logo">
 </p>
 
 

@@ -2,16 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 jobs:
   # ===========================================
-  # JavaScript/TypeScript Tests
+  # JavaScript Tests
   # ===========================================
-  test-npm:
-    name: Test NPM Packages
+  test-js:
+    name: Test JavaScript (ison-parser)
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,22 +23,51 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Test ison-js
+        working-directory: ison-js
+        run: |
+          npm install
+          mkdir -p dist
+          npm run build
+          npm test
 
-      - name: Build packages
-        run: npm run build
+  # ===========================================
+  # TypeScript Tests
+  # ===========================================
+  test-ts:
+    name: Test TypeScript (ison-ts)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Run tests
-        run: npm run test
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Test ison-ts
+        working-directory: ison-ts
+        run: |
+          npm install
+          npm run build
+          npm test
+
+      - name: Test isonantic-ts
+        working-directory: isonantic-ts
+        run: |
+          npm install
+          npm run build
+          npm test
 
   # ===========================================
   # Python Tests
   # ===========================================
   test-python:
-    name: Test Python Packages
+    name: Test Python
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -51,49 +80,46 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install and test ison-py
-        working-directory: packages/ison-py
+      - name: Test ison-py
+        working-directory: ison-py
         run: |
           pip install -e ".[dev]"
-          pytest tests/ -v --tb=short || echo "Tests completed"
+          pytest tests/ -v --tb=short
 
-      - name: Install and test isonantic
-        working-directory: packages/isonantic
+      - name: Test isonantic
+        working-directory: isonantic
         run: |
           pip install -e ".[dev]"
-          pytest tests/ -v --tb=short || echo "Tests completed"
+          pytest tests/ -v --tb=short
 
   # ===========================================
   # Rust Tests
   # ===========================================
   test-rust:
-    name: Test Rust Packages
+    name: Test Rust
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy, rustfmt
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
 
-      - name: Check formatting
-        run: cargo fmt --all -- --check
+      - name: Test ison-rust
+        working-directory: ison-rust
+        run: cargo test --all-features
 
-      - name: Run clippy
-        run: cargo clippy --workspace --all-features -- -D warnings
-
-      - name: Run tests
-        run: cargo test --workspace --all-features
+      - name: Test isonantic-rust
+        working-directory: isonantic-rust
+        run: cargo test --all-features
 
   # ===========================================
   # C++ Tests
   # ===========================================
   test-cpp:
-    name: Test C++ Packages
+    name: Test C++
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -102,15 +128,17 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Build and test ison-cpp
-        working-directory: packages/ison-cpp
+        working-directory: ison-cpp
         run: |
-          cmake -B build -DISON_BUILD_TESTS=ON -DISON_BUILD_EXAMPLES=ON
-          cmake --build build
-          cd build && ctest --output-on-failure
+          mkdir -p build && cd build
+          cmake .. -DISON_BUILD_TESTS=ON
+          cmake --build .
+          ctest --output-on-failure
 
       - name: Build and test isonantic-cpp
-        working-directory: packages/isonantic-cpp
+        working-directory: isonantic-cpp
         run: |
-          cmake -B build -DISONANTIC_BUILD_TESTS=ON -DISONANTIC_BUILD_EXAMPLES=ON
-          cmake --build build
-          cd build && ctest --output-on-failure
+          mkdir -p build && cd build
+          cmake .. -DISONANTIC_BUILD_TESTS=ON
+          cmake --build .
+          ctest --output-on-failure

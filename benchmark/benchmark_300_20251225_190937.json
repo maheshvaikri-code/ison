@@ -1,0 +1,148 @@
+{
+  "timestamp": "2025-12-25T20:01:45.314855",
+  "tokenizer": "o200k_base (GPT-4o/GPT-5)",
+  "datasets": 20,
+  "questions": 300,
+  "formats": {
+    "ISON": {
+      "tokens": 3550,
+      "correct": 265,
+      "total": 300,
+      "accuracy": 88.33333333333333,
+      "acc_per_1k": 24.88262910798122,
+      "wins_tokens": 20,
+      "wins_accuracy": 11,
+      "categories": {
+        "retrieval": {
+          "correct": 101,
+          "total": 107
+        },
+        "counting": {
+          "correct": 66,
+          "total": 76
+        },
+        "aggregation": {
+          "correct": 61,
+          "total": 72
+        },
+        "filtering": {
+          "correct": 6,
+          "total": 10
+        },
+        "relationship": {
+          "correct": 14,
+          "total": 18
+        },
+        "edge": {
+          "correct": 17,
+          "total": 17
+        }
+      }
+    },
+    "TOON": {
+      "tokens": 4847,
+      "correct": 266,
+      "total": 300,
+      "accuracy": 88.66666666666667,
+      "acc_per_1k": 18.293102262567913,
+      "wins_tokens": 0,
+      "wins_accuracy": 12,
+      "categories": {
+        "retrieval": {
+          "correct": 99,
+          "total": 107
+        },
+        "counting": {
+          "correct": 66,
+          "total": 76
+        },
+        "aggregation": {
+          "correct": 60,
+          "total": 72
+        },
+        "filtering": {
+          "correct": 8,
+          "total": 10
+        },
+        "relationship": {
+          "correct": 16,
+          "total": 18
+        },
+        "edge": {
+          "correct": 17,
+          "total": 17
+        }
+      }
+    },
+    "JSON Compact": {
+      "tokens": 7339,
+      "correct": 267,
+      "total": 300,
+      "accuracy": 89.0,
+      "acc_per_1k": 12.126992778307672,
+      "wins_tokens": 0,
+      "wins_accuracy": 15,
+      "categories": {
+        "retrieval": {
+          "correct": 100,
+          "total": 107
+        },
+        "counting": {
+          "correct": 68,
+          "total": 76
+        },
+        "aggregation": {
+          "correct": 60,
+          "total": 72
+        },
+        "filtering": {
+          "correct": 7,
+          "total": 10
+        },
+        "relationship": {
+          "correct": 15,
+          "total": 18
+        },
+        "edge": {
+          "correct": 17,
+          "total": 17
+        }
+      }
+    },
+    "JSON": {
+      "tokens": 12668,
+      "correct": 254,
+      "total": 300,
+      "accuracy": 84.66666666666667,
+      "acc_per_1k": 6.683506999263236,
+      "wins_tokens": 0,
+      "wins_accuracy": 12,
+      "categories": {
+        "retrieval": {
+          "correct": 100,
+          "total": 107
+        },
+        "counting": {
+          "correct": 66,
+          "total": 76
+        },
+        "aggregation": {
+          "correct": 48,
+          "total": 72
+        },
+        "filtering": {
+          "correct": 6,
+          "total": 10
+        },
+        "relationship": {
+          "correct": 17,
+          "total": 18
+        },
+        "edge": {
+          "correct": 17,
+          "total": 17
+        }
+      }
+    }
+  }
+}

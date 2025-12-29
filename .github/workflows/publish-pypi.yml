@@ -38,16 +38,16 @@ jobs:
           pip install build twine
 
       - name: Build package
-        working-directory: packages/ison-py
+        working-directory: ison-py
         run: python -m build
 
       - name: Check package
-        working-directory: packages/ison-py
+        working-directory: ison-py
         run: twine check dist/*
 
       - name: Publish to PyPI
         if: ${{ inputs.dry_run != true }}
-        working-directory: packages/ison-py
+        working-directory: ison-py
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
 
       - name: Dry run - show what would be published
         if: ${{ inputs.dry_run == true }}
-        working-directory: packages/ison-py
+        working-directory: ison-py
         run: |
           echo "Would publish:"
           ls -la dist/
@@ -84,16 +84,16 @@ jobs:
         run: sleep 60
 
       - name: Build package
-        working-directory: packages/isonantic
+        working-directory: isonantic
         run: python -m build
 
       - name: Check package
-        working-directory: packages/isonantic
+        working-directory: isonantic
         run: twine check dist/*
 
       - name: Publish to PyPI
         if: ${{ inputs.dry_run != true }}
-        working-directory: packages/isonantic
+        working-directory: isonantic
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
@@ -101,7 +101,7 @@ jobs:
 
       - name: Dry run - show what would be published
         if: ${{ inputs.dry_run == true }}
-        working-directory: packages/isonantic
+        working-directory: isonantic
         run: |
           echo "Would publish:"
           ls -la dist/

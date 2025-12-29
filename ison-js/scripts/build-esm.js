@@ -39,7 +39,7 @@ export {
     isonlStream,
 };
 
-export const version = '1.0.0';
+export const version = '1.0.1';
 
 export default {
     Reference,
@@ -61,13 +61,13 @@ export default {
     isonToISONL,
     isonlToISON,
     isonlStream,
-    version: '1.0.0'
+    version: '1.0.1'
 };
 `;
 
 // Remove the IIFE wrapper and existing exports
-content = content.replace(/^\(function\s*\(global\)\s*\{/, '');
-content = content.replace(/\}\)\(typeof window !== 'undefined' \? window : global\);$/, '');
+content = content.replace(/\(function\s*\(global\)\s*\{\s*'use strict';/m, '');
+content = content.replace(/\}\)\(typeof window !== 'undefined' \? window : global\);\s*$/m, '');
 
 // Remove the existing export section
 content = content.replace(/\/\/ =============================================================================\n\s*\/\/ Export\n[\s\S]*$/, '');

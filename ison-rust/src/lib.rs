@@ -35,7 +35,7 @@ pub mod plugins;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-pub const VERSION: &str = "1.0.0";
+pub const VERSION: &str = "1.0.1";
 
 // =============================================================================
 // Error Types
@@ -714,11 +714,16 @@ impl<'a> Parser<'a> {
 
 struct Serializer {
     align_columns: bool,
+    delimiter: String,
 }
 
 impl Serializer {
     fn new(align_columns: bool) -> Self {
-        Self { align_columns }
+        Self { align_columns, delimiter: " ".to_string() }
+    }
+
+    fn with_delimiter(align_columns: bool, delimiter: &str) -> Self {
+        Self { align_columns, delimiter: delimiter.to_string() }
     }
 
     fn serialize(&self, doc: &Document) -> String {
@@ -744,7 +749,7 @@ impl Serializer {
                 }
             })
             .collect();
-        lines.push(field_defs.join(" "));
+        lines.push(field_defs.join(&self.delimiter));
 
         // Calculate column widths for alignment
         let widths = if self.align_columns {
@@ -801,7 +806,7 @@ impl Serializer {
             values.push(str_val);
         }
 
-        values.join(" ")
+        values.join(&self.delimiter)
     }
 
     fn serialize_value(&self, value: &Value) -> String {
@@ -821,6 +826,7 @@ impl Serializer {
             || s.contains('\n')
             || s.contains('"')
             || s.contains('\\')
+            || s.contains('.')  // Avoid confusion with block headers (type.name)
             || s == "true"
             || s == "false"
             || s == "null"
@@ -972,8 +978,22 @@ pub fn loads(text: &str) -> Result<Document> {
 }
 
 /// Serialize a Document to an ISON string
+///
+/// # Arguments
+/// * `doc` - The document to serialize
+/// * `align_columns` - Whether to align columns with padding (default: false for token efficiency)
 pub fn dumps(doc: &Document, align_columns: bool) -> String {
     Serializer::new(align_columns).serialize(doc)
+}
+
+/// Serialize a Document to an ISON string with custom delimiter
+///
+/// # Arguments
+/// * `doc` - The document to serialize
+/// * `align_columns` - Whether to align columns with padding
+/// * `delimiter` - Column separator (default: " ", alternatives: ",")
+pub fn dumps_with_delimiter(doc: &Document, align_columns: bool, delimiter: &str) -> String {
+    Serializer::with_delimiter(align_columns, delimiter).serialize(doc)
 }
 
 /// Parse ISONL string (alias for parse_isonl)
@@ -990,7 +1010,101 @@ pub fn ison_to_isonl(ison_text: &str) -> Result<String> {
 /// Convert ISONL text to ISON text
 pub fn isonl_to_ison(isonl_text: &str) -> Result<String> {
     let doc = parse_isonl(isonl_text)?;
-    Ok(dumps(&doc, true))
+    Ok(dumps(&doc, false))
+}
+
+/// Convert JSON to ISON format (requires serde feature)
+///
+/// Converts a JSON object where keys are block names and values are arrays of objects
+/// into ISON format.
+#[cfg(feature = "serde")]
+pub fn json_to_ison(json_text: &str) -> Result<String> {
+    let json_value: serde_json::Value = serde_json::from_str(json_text)
+        .map_err(|e| ISONError { message: format!("JSON parse error: {}", e), line: None })?;
+
+    let obj = json_value.as_object()
+        .ok_or_else(|| ISONError { message: "JSON must be an object".to_string(), line: None })?;
+
+    let mut doc = Document::new();
+
+    for (block_name, block_value) in obj {
+        let arr = block_value.as_array()
+            .ok_or_else(|| ISONError { message: format!("Block '{}' must be an array", block_name), line: None })?;
+
+        if arr.is_empty() {
+            continue;
+        }
+
+        // Get fields from first object
+        let first_obj = arr[0].as_object()
+            .ok_or_else(|| ISONError { message: "Array items must be objects".to_string(), line: None })?;
+
+        let fields: Vec<String> = first_obj.keys().cloned().collect();
+        let field_info: Vec<FieldInfo> = fields.iter()
+            .map(|f| FieldInfo { name: f.clone(), field_type: None, is_computed: false })
+            .collect();
+
+        let mut rows = Vec::new();
+        for item in arr {
+            let item_obj = item.as_object()
+                .ok_or_else(|| ISONError { message: "Array items must be objects".to_string(), line: None })?;
+
+            let mut row = Row::new();
+            for field in &fields {
+                if let Some(val) = item_obj.get(field) {
+                    let value = match val {
+                        serde_json::Value::Null => Value::Null,
+                        serde_json::Value::Bool(b) => Value::Bool(*b),
+                        serde_json::Value::Number(n) => {
+                            if let Some(i) = n.as_i64() {
+                                Value::Int(i)
+                            } else if let Some(f) = n.as_f64() {
+                                Value::Float(f)
+                            } else {
+                                Value::String(n.to_string())
+                            }
+                        }
+                        serde_json::Value::String(s) => {
+                            // Check if it's a reference (starts with :)
+                            if s.starts_with(':') {
+                                // Parse reference: :id or :type:id
+                                let parts: Vec<&str> = s[1..].splitn(2, ':').collect();
+                                if parts.len() == 2 {
+                                    Value::Reference(Reference::with_type(parts[1], parts[0]))
+                                } else {
+                                    Value::Reference(Reference::new(parts[0]))
+                                }
+                            } else {
+                                Value::String(s.clone())
+                            }
+                        }
+                        _ => Value::String(val.to_string()),
+                    };
+                    row.insert(field.clone(), value);
+                }
+            }
+            rows.push(row);
+        }
+
+        let block = Block {
+            kind: "table".to_string(),
+            name: block_name.clone(),
+            fields,
+            field_info,
+            rows,
+            summary_rows: vec![],
+        };
+        doc.blocks.push(block);
+    }
+
+    Ok(dumps(&doc, false))
+}
+
+/// Convert ISON to JSON format (requires serde feature)
+#[cfg(feature = "serde")]
+pub fn ison_to_json(ison_text: &str, pretty: bool) -> Result<String> {
+    let doc = parse(ison_text)?;
+    Ok(doc.to_json(pretty))
 }
 
 #[cfg(test)]
@@ -1080,5 +1194,64 @@ id name email
 
         assert_eq!(users.len(), 2);
         assert_eq!(users[0].get("name").unwrap().as_str(), Some("Alice"));
+    }
+
+    #[test]
+    fn test_dumps_with_delimiter() {
+        let ison = r#"table.users
+id name email
+1 Alice "alice@example.com"
+2 Bob "bob@example.com""#;
+
+        let doc = parse(ison).unwrap();
+
+        // Test with comma delimiter (emails get quoted because they contain '.')
+        let comma_output = dumps_with_delimiter(&doc, false, ",");
+        assert!(comma_output.contains("id,name,email"));
+        assert!(comma_output.contains("1,Alice,\"alice@example.com\""));
+
+        // Test with default space delimiter
+        let space_output = dumps_with_delimiter(&doc, false, " ");
+        assert!(space_output.contains("id name email"));
+        assert!(space_output.contains("1 Alice \"alice@example.com\""));
+    }
+
+    #[test]
+    fn test_version() {
+        assert_eq!(VERSION, "1.0.1");
+    }
+
+    #[test]
+    fn test_json_to_ison() {
+        let json = r#"{
+            "users": [
+                {"id": 1, "name": "Alice", "email": "alice@example.com"},
+                {"id": 2, "name": "Bob", "email": "bob@example.com"}
+            ]
+        }"#;
+
+        let ison = json_to_ison(json).unwrap();
+        assert!(ison.contains("table.users"));
+
+        // Parse it back to verify
+        let doc = parse(&ison).unwrap();
+        let users = doc.get("users").unwrap();
+        assert_eq!(users.len(), 2);
+    }
+
+    #[test]
+    fn test_ison_to_json() {
+        let ison = r#"table.users
+id name email
+1 Alice alice@example.com
+2 Bob bob@example.com"#;
+
+        let json = ison_to_json(ison, false).unwrap();
+        assert!(json.contains("Alice"));
+        assert!(json.contains("Bob"));
+
+        // Verify it's valid JSON
+        let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
+        assert!(parsed.get("users").is_some());
     }
 }

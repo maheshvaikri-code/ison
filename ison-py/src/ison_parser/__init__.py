@@ -23,7 +23,7 @@ Usage:
     doc = loads_isonl(isonl_text)
 
 Author: Mahesh Vaikri
-Version: 1.0.0
+Version: 1.0.1
 """
 
 from __future__ import annotations
@@ -34,7 +34,7 @@ from dataclasses import dataclass, field
 from typing import Any, Optional, Generator
 from pathlib import Path
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Mahesh Vaikri"
 
 # =============================================================================
@@ -592,18 +592,18 @@ class Serializer:
     """Serialize Python objects to ISON format"""
 
     @classmethod
-    def dumps(cls, doc: Document, align_columns: bool = True) -> str:
+    def dumps(cls, doc: Document, align_columns: bool = False, delimiter: str = ' ') -> str:
         """Serialize a Document to ISON string"""
         blocks_output = []
 
         for block in doc.blocks:
-            block_str = cls._serialize_block(block, align_columns)
+            block_str = cls._serialize_block(block, align_columns, delimiter)
             blocks_output.append(block_str)
 
         return '\n\n'.join(blocks_output)
 
     @classmethod
-    def _serialize_block(cls, block: Block, align_columns: bool) -> str:
+    def _serialize_block(cls, block: Block, align_columns: bool, delimiter: str = ' ') -> str:
         """Serialize a single block"""
         lines = []
 
@@ -618,9 +618,9 @@ class Serializer:
                     field_strs.append(f"{fi.name}:{fi.type}")
                 else:
                     field_strs.append(fi.name)
-            lines.append(' '.join(field_strs))
+            lines.append(delimiter.join(field_strs))
         else:
-            lines.append(' '.join(block.fields))
+            lines.append(delimiter.join(block.fields))
 
         # Calculate column widths for alignment
         if align_columns and block.rows:
@@ -640,7 +640,7 @@ class Serializer:
 
                 values.append(str_value)
 
-            lines.append(' '.join(values).rstrip())
+            lines.append(delimiter.join(values).rstrip())
 
         # Summary row (if present)
         if block.summary:
@@ -781,58 +781,138 @@ def load(path: str | Path) -> Document:
     return loads(text)
 
 
-def dumps(doc: Document, align_columns: bool = True) -> str:
+def dumps(doc: Document, align_columns: bool = False, delimiter: str = ' ') -> str:
     """
     Serialize a Document to ISON string.
 
     Args:
         doc: Document to serialize
-        align_columns: Whether to align columns for readability
+        align_columns: Whether to align columns with padding (default: False)
+        delimiter: Column separator - ' ' (space, default) or ',' (comma for clarity)
 
     Returns:
         ISON formatted string
     """
-    return Serializer.dumps(doc, align_columns)
+    return Serializer.dumps(doc, align_columns, delimiter)
 
 
-def dump(doc: Document, path: str | Path, align_columns: bool = True):
+def dump(doc: Document, path: str | Path, align_columns: bool = False, delimiter: str = ' '):
     """
     Serialize a Document and write to file.
 
     Args:
         doc: Document to serialize
         path: Output file path
-        align_columns: Whether to align columns
+        align_columns: Whether to align columns with padding (default: False)
+        delimiter: Column separator - ' ' (space, default) or ',' (comma)
     """
     path = Path(path)
-    text = dumps(doc, align_columns)
+    text = dumps(doc, align_columns, delimiter)
     path.write_text(text, encoding='utf-8')
 
 
-def from_dict(data: dict, kind: str = "object") -> Document:
+def _smart_order_fields(fields: list[str]) -> list[str]:
+    """
+    Reorder fields for optimal LLM comprehension.
+
+    Order priority:
+    1. 'id' field first (primary anchor)
+    2. Human-readable fields: name, title, label, description
+    3. Regular data fields
+    4. Foreign key references (*_id) last
+
+    This ordering helps LLMs anchor on identity first, then
+    associate human-readable names, reducing column confusion.
+    """
+    # Categorize fields
+    id_fields = []
+    name_fields = []
+    ref_fields = []  # *_id fields
+    other_fields = []
+
+    # Priority names that should come early
+    priority_names = {'name', 'title', 'label', 'description', 'display_name', 'full_name'}
+
+    for field in fields:
+        field_lower = field.lower()
+        if field_lower == 'id':
+            id_fields.append(field)
+        elif field_lower in priority_names:
+            name_fields.append(field)
+        elif field_lower.endswith('_id') and field_lower != 'id':
+            ref_fields.append(field)
+        else:
+            other_fields.append(field)
+
+    # Return in optimal order: id -> names -> data -> references
+    return id_fields + name_fields + other_fields + ref_fields
+
+
+def from_dict(data: dict, kind: str = "object", auto_refs: bool = False, smart_order: bool = False) -> Document:
     """
     Create an ISON Document from a dictionary.
 
     Args:
         data: Dictionary with block names as keys
         kind: Default block kind
+        auto_refs: If True, auto-detect and convert foreign keys to References
+        smart_order: If True, reorder columns for optimal LLM comprehension
+                     (id first, then names, then data, then references)
 
     Returns:
         Document object
     """
     doc = Document()
+    table_names = set(data.keys())
+
+    # Detect reference fields if auto_refs is enabled
+    ref_fields = {}
+    if auto_refs:
+        for table_name, table_data in data.items():
+            if isinstance(table_data, list) and table_data and isinstance(table_data[0], dict):
+                for key in table_data[0].keys():
+                    # Detect _id suffix pattern (e.g., customer_id -> customers)
+                    if key.endswith('_id') and key != 'id':
+                        ref_type = key[:-3]
+                        if ref_type + 's' in table_names or ref_type in table_names:
+                            ref_fields[key] = ref_type
+
+        # Special case: nodes/edges graph pattern
+        if 'nodes' in table_names and 'edges' in table_names:
+            ref_fields['source'] = 'node'
+            ref_fields['target'] = 'node'
 
     for name, content in data.items():
         if isinstance(content, list):
             # Table with multiple rows
             if content and isinstance(content[0], dict):
-                # Collect all unique fields from all objects in array
-                field_set = set()
+                # Collect all unique fields from all objects in array (preserving order)
+                fields = []
+                seen_fields = set()
                 for item in content:
                     if isinstance(item, dict):
-                        field_set.update(item.keys())
-                fields = list(field_set)
-                rows = content
+                        for key in item.keys():
+                            if key not in seen_fields:
+                                fields.append(key)
+                                seen_fields.add(key)
+
+                # Apply smart ordering if enabled
+                if smart_order:
+                    fields = _smart_order_fields(fields)
+
+                # Convert rows with references if auto_refs
+                if auto_refs and ref_fields:
+                    rows = []
+                    for item in content:
+                        new_row = {}
+                        for key, val in item.items():
+                            if key in ref_fields and isinstance(val, (int, str)):
+                                new_row[key] = Reference(id=str(val), type=ref_fields[key])
+                            else:
+                                new_row[key] = val
+                        rows.append(new_row)
+                else:
+                    rows = content
             else:
                 continue
             block_kind = "table"

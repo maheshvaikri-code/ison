@@ -16,7 +16,7 @@
  *   const jsonObj = doc.toDict();
  *
  * Author: Mahesh Vaikri
- * Version: 1.0.0
+ * Version: 1.0.1
  */
 
 (function(global) {
@@ -1210,7 +1210,7 @@
         isonlStream,
 
         // Version
-        version: '1.0.0'
+        version: '1.0.1'
     };
 
     // Export for different environments

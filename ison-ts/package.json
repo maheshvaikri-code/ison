@@ -1,6 +1,6 @@
 {
   "name": "ison-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ISON (Interchange Simple Object Notation) parser for TypeScript/JavaScript",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

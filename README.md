@@ -1,6 +1,5 @@
 <p align="center">
-  <img width="755" height="386" alt="ISON_logo_crop" src="https://github.com/user-attachments/assets/3f6fb344-0c48-4259-9b3d-106be48708ca" />
-
+  <img src="images/ison_logo_git.png" alt="ISON Logo" width="200">
 </p>
 
 
@@ -11,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/maheshvaikri-code/ison/releases"><img src="https://img.shields.io/badge/version-1.0.1-blue.svg" alt="Version 1.0.1"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://www.npmjs.com/package/ison-parser"><img src="https://img.shields.io/npm/v/ison-parser.svg" alt="NPM"></a>
   <a href="https://pypi.org/project/ison-py"><img src="https://img.shields.io/pypi/v/ison-py.svg" alt="PyPI"></a>
@@ -219,13 +219,13 @@ table.users|id name email|2 Bob bob@example.com
 
 | Ecosystem | Parser | Validation | Status |
 |-----------|--------|------------|--------|
-| **NPM** | [ison-parser](https://www.npmjs.com/package/ison-parser) | [isonantic-ts](https://www.npmjs.com/package/isonantic-ts) | 9 + 46 tests |
-| **NPM** | [ison-ts](https://www.npmjs.com/package/ison-ts) | - | 9 tests |
+| **NPM** | [ison-parser](https://www.npmjs.com/package/ison-parser) | [isonantic-ts](https://www.npmjs.com/package/isonantic-ts) | 33 + 46 tests |
+| **NPM** | [ison-ts](https://www.npmjs.com/package/ison-ts) | - | 23 tests |
 | **PyPI** | [ison-py](https://pypi.org/project/ison-py) | [isonantic](https://pypi.org/project/isonantic) | 31 + 39 tests |
-| **Crates.io** | [ison-rs](https://crates.io/crates/ison-rs) | [isonantic-rs](https://crates.io/crates/isonantic-rs) | 6 + 1 tests |
+| **Crates.io** | [ison-rs](https://crates.io/crates/ison-rs) | [isonantic-rs](https://crates.io/crates/isonantic-rs) | 9 + 1 tests |
 | **C++** | ison-cpp | isonantic-cpp | 30 tests |
 
-**Total: 9 packages across 4 ecosystems, 171+ tests passing**
+**Total: 9 packages across 4 ecosystems, 208+ tests passing**
 
 ---
 
@@ -298,8 +298,8 @@ ison/
 ├── isonantic-rust/        # Rust validation (Crates.io: isonantic-rs)
 ├── ison-cpp/              # C++ header-only parser
 ├── isonantic-cpp/         # C++ header-only validation
+├── benchmark/             # Token efficiency benchmarks
 ├── images/                # Logo and assets
-├── .github/               # GitHub workflows
 ├── LICENSE                # MIT License
 └── README.md              # This file
 ```
@@ -335,9 +335,9 @@ cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
 ## Test Results
 
 <details>
-<summary><strong>Click to expand test results (171+ tests passing)</strong></summary>
+<summary><strong>Click to expand test results (208+ tests passing)</strong></summary>
 
-### JavaScript (ison-parser) - 9 tests
+### JavaScript (ison-parser) - 33 tests
 ```
 ✓ parses basic table correctly
 ✓ handles quoted strings
@@ -350,7 +350,7 @@ cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
 ✓ handles ISONL format
 ```
 
-### TypeScript (ison-ts) - 9 tests
+### TypeScript (ison-ts) - 23 tests
 ```
 ✓ should parse basic table
 ✓ should handle quoted strings
@@ -398,7 +398,7 @@ cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
 ... and 33 more tests
 ```
 
-### Rust (ison-rs) - 6 tests
+### Rust (ison-rs) - 5 tests
 ```
 ✓ test_isonl
 ✓ test_parse_references
@@ -422,6 +422,28 @@ cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
 ```
 
 </details>
+
+---
+
+## Benchmark Results 🏆
+
+**300-Question Benchmark** across 20 datasets using GPT-4o tokenizer (o200k_base):
+
+| Format | Total Tokens | vs JSON | Accuracy | Acc/1K Tokens |
+|--------|-------------|---------|----------|---------------|
+| **ISON** | **3,550** | **-72.0%** | 88.3% | **24.88** |
+| TOON | 4,847 | -61.7% | 88.7% | 18.29 |
+| JSON Compact | 7,339 | -42.1% | 89.0% | 12.13 |
+| JSON | 12,668 | baseline | 84.7% | 6.68 |
+
+### Key Results
+
+- ✅ **ISON won ALL 20 token benchmarks**
+- ✅ **272% more efficient than JSON** (Accuracy per 1K tokens)
+- ✅ **27% more token-efficient than TOON**
+- ✅ **3.6x more data in same context window**
+
+👉 **[Full Benchmark Details](benchmark/BENCHMARK_300.md)** | **[Run the Benchmark](benchmark/)**
 
 ---
 

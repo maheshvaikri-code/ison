@@ -5,7 +5,7 @@
  * ISON is a minimal, LLM-friendly data serialization format optimized for AI/ML workflows.
  */
 
-export const VERSION = "1.0.0";
+export const VERSION = "1.0.1";
 
 // =============================================================================
 // Types
@@ -494,7 +494,10 @@ class Parser {
 // =============================================================================
 
 class Serializer {
-  constructor(private readonly alignColumns: boolean = true) {}
+  constructor(
+    private readonly alignColumns: boolean = false,
+    private readonly delimiter: string = ' '
+  ) {}
 
   serialize(doc: Document): string {
     const parts: string[] = [];
@@ -519,7 +522,7 @@ class Serializer {
       }
       return fi.name;
     });
-    lines.push(fieldDefs.join(" "));
+    lines.push(fieldDefs.join(this.delimiter));
 
     // Calculate column widths for alignment
     const widths = this.alignColumns ? this.calculateWidths(block) : [];
@@ -565,7 +568,7 @@ class Serializer {
       values.push(str);
     }
 
-    return values.join(" ");
+    return values.join(this.delimiter);
   }
 
   private serializeValue(value: Value): string {
@@ -788,10 +791,25 @@ export function loads(text: string): Document {
 }
 
 /**
+ * Options for serialization
+ */
+export interface DumpsOptions {
+  /** Whether to align columns with padding (default: false) */
+  alignColumns?: boolean;
+  /** Column delimiter (default: ' ') */
+  delimiter?: string;
+}
+
+/**
  * Serialize a Document to an ISON string
  */
-export function dumps(doc: Document, alignColumns: boolean = true): string {
-  return new Serializer(alignColumns).serialize(doc);
+export function dumps(doc: Document, options: DumpsOptions | boolean = {}): string {
+  // Handle legacy boolean parameter for backwards compatibility
+  if (typeof options === 'boolean') {
+    return new Serializer(options, ' ').serialize(doc);
+  }
+  const { alignColumns = false, delimiter = ' ' } = options;
+  return new Serializer(alignColumns, delimiter).serialize(doc);
 }
 
 /**
@@ -825,28 +843,122 @@ export function isonlToIson(isonlText: string): string {
 }
 
 /**
+ * Reorder fields for optimal LLM comprehension
+ * Priority: id first, then name/title/label, then data fields, then *_id references
+ */
+function smartOrderFields(fields: string[]): string[] {
+  const idFields: string[] = [];
+  const nameFields: string[] = [];
+  const refFields: string[] = [];
+  const otherFields: string[] = [];
+
+  const priorityNames = new Set(['name', 'title', 'label', 'description', 'display_name', 'full_name']);
+
+  for (const field of fields) {
+    const lowerField = field.toLowerCase();
+    if (lowerField === 'id') {
+      idFields.push(field);
+    } else if (priorityNames.has(lowerField)) {
+      nameFields.push(field);
+    } else if (lowerField.endsWith('_id') && lowerField !== 'id') {
+      refFields.push(field);
+    } else {
+      otherFields.push(field);
+    }
+  }
+
+  return [...idFields, ...nameFields, ...otherFields, ...refFields];
+}
+
+/**
+ * Options for fromDict
+ */
+export interface FromDictOptions {
+  /** Block kind (default: 'table') */
+  kind?: string;
+  /** Auto-detect and convert foreign keys to References (default: false) */
+  autoRefs?: boolean;
+  /** Reorder columns for optimal LLM comprehension (default: false) */
+  smartOrder?: boolean;
+}
+
+/**
  * Create a Document from a plain JavaScript object
  */
-export function fromDict(data: Record<string, any[]>, kind: string = "table"): Document {
+export function fromDict(
+  data: Record<string, any[]>,
+  options: FromDictOptions | string = {}
+): Document {
+  // Handle legacy string parameter for backwards compatibility
+  const opts: FromDictOptions = typeof options === 'string'
+    ? { kind: options }
+    : options;
+
+  const { kind = 'table', autoRefs = false, smartOrder = false } = opts;
   const doc = new Document();
+  const tableNames = new Set(Object.keys(data));
+
+  // Detect reference fields if autoRefs is enabled
+  const refFields: Map<string, string> = new Map();
+  if (autoRefs) {
+    for (const [tableName, tableData] of Object.entries(data)) {
+      if (Array.isArray(tableData) && tableData.length > 0 && typeof tableData[0] === 'object') {
+        for (const key of Object.keys(tableData[0])) {
+          // Detect _id suffix pattern (e.g., customer_id -> customers)
+          if (key.endsWith('_id') && key !== 'id') {
+            const refType = key.slice(0, -3);
+            if (tableNames.has(refType + 's') || tableNames.has(refType)) {
+              refFields.set(key, refType);
+            }
+          }
+        }
+      }
+    }
+    // Special case: nodes/edges graph pattern
+    if (tableNames.has('nodes') && tableNames.has('edges')) {
+      refFields.set('source', 'node');
+      refFields.set('target', 'node');
+    }
+  }
 
   for (const [name, rows] of Object.entries(data)) {
     if (!Array.isArray(rows) || rows.length === 0) continue;
 
     const block = new Block(kind, name);
 
-    // Get fields from first row
-    const fields = Object.keys(rows[0]);
+    // Get fields from all rows (preserving insertion order)
+    let fields: string[] = [];
+    const seenFields = new Set<string>();
+    for (const rowData of rows) {
+      if (typeof rowData === 'object' && rowData !== null) {
+        for (const key of Object.keys(rowData)) {
+          if (!seenFields.has(key)) {
+            fields.push(key);
+            seenFields.add(key);
+          }
+        }
+      }
+    }
+
+    // Apply smart ordering if enabled
+    if (smartOrder) {
+      fields = smartOrderFields(fields);
+    }
+
     block.fields = fields;
     block.fieldInfo = fields.map(f => ({ name: f, type: undefined, isComputed: false }));
 
-    // Add rows
+    // Add rows with reference conversion if autoRefs
     for (const rowData of rows) {
       const row: Row = {};
       for (const field of fields) {
         const value = rowData[field];
         if (value !== undefined) {
-          row[field] = value;
+          if (autoRefs && refFields.has(field) && (typeof value === 'number' || typeof value === 'string')) {
+            row[field] = new Reference(String(value), refFields.get(field));
+          } else {
+            row[field] = value;
+          }
         }
       }
       block.rows.push(row);

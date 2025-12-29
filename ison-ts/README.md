@@ -35,7 +35,7 @@ pnpm add ison-ts
 ## Quick Start
 
 ```typescript
-import { parse, dumps, fromDict, Reference } from 'ison-parser';
+import { parse, dumps, fromDict, Reference } from 'ison-ts';
 
 // Parse ISON text
 const isonText = `
@@ -68,7 +68,7 @@ const isonOutput = dumps(doc);
 ### Parsing
 
 ```typescript
-import { parse, loads, loadsIsonl } from 'ison-parser';
+import { parse, loads, loadsIsonl } from 'ison-ts';
 
 // Parse from string
 const doc = parse(text);
@@ -81,7 +81,7 @@ const doc = loadsIsonl(isonlText);
 ### Serialization
 
 ```typescript
-import { dumps, dumpsIsonl } from 'ison-parser';
+import { dumps, dumpsIsonl } from 'ison-ts';
 
 // To ISON string
 const ison = dumps(doc);
@@ -98,7 +98,7 @@ const json = doc.toJson(4);  // Custom indent
 ### Creating Documents
 
 ```typescript
-import { fromDict, Document, Block } from 'ison-parser';
+import { fromDict, Document, Block } from 'ison-ts';
 
 // From plain object
 const data = {
@@ -152,7 +152,7 @@ if (doc.has('users')) {
 import {
     isNull, isBool, isInt, isFloat, isString, isReference,
     Value, Reference
-} from 'ison-parser';
+} from 'ison-ts';
 
 const value: Value = row.someField;
 
@@ -173,7 +173,7 @@ if (isReference(value)) {
 ### References
 
 ```typescript
-import { Reference } from 'ison-parser';
+import { Reference } from 'ison-ts';
 
 // Simple reference :42
 const ref = new Reference('42');
@@ -215,7 +215,7 @@ table.users|id name email|2 Bob bob@example.com
 ```
 
 ```typescript
-import { isonToIsonl, isonlToIson } from 'ison-parser';
+import { isonToIsonl, isonlToIson } from 'ison-ts';
 
 // Convert between formats
 const isonl = isonToIsonl(isonText);
@@ -228,7 +228,7 @@ const ison = isonlToIson(isonlText);
 
 ```typescript
 import OpenAI from 'openai';
-import { fromDict, dumps } from 'ison-parser';
+import { fromDict, dumps } from 'ison-ts';
 
 const openai = new OpenAI();
 
@@ -251,7 +251,7 @@ async function queryWithContext(question: string, contextData: object) {
 
 ```typescript
 import Anthropic from '@anthropic-ai/sdk';
-import { fromDict, dumps } from 'ison-parser';
+import { fromDict, dumps } from 'ison-ts';
 
 const anthropic = new Anthropic();
 

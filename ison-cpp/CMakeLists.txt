@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(ison_cpp
-    VERSION 1.0.0
+    VERSION 1.0.1
     DESCRIPTION "ISON v1.0 Parser - Interchange Simple Object Notation for C++"
     HOMEPAGE_URL "https://www.ison.dev"
     LANGUAGES CXX

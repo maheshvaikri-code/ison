@@ -3,7 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/ison-rs.svg)](https://crates.io/crates/ison-rs)
 [![Documentation](https://docs.rs/ison-rs/badge.svg)](https://docs.rs/ison-rs)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests](https://img.shields.io/badge/tests-6%20passed-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-9%20passed-brightgreen.svg)]()
 
 A Rust implementation of the ISON (Interchange Simple Object Notation) parser.
 
@@ -282,14 +282,18 @@ Total 100                      # Summary row
 All tests passing:
 
 ```
-running 5 tests
+running 9 tests
+test tests::test_dumps_with_delimiter ... ok
 test tests::test_isonl ... ok
+test tests::test_ison_to_json ... ok
+test tests::test_json_to_ison ... ok
 test tests::test_parse_references ... ok
 test tests::test_parse_simple_table ... ok
 test tests::test_roundtrip ... ok
 test tests::test_type_inference ... ok
+test tests::test_version ... ok
 
-test result: ok. 5 passed; 0 failed; 0 ignored
+test result: ok. 9 passed; 0 failed; 0 ignored
 
 Doc-tests ison_rs
 test result: ok. 1 passed; 0 failed; 1 ignored

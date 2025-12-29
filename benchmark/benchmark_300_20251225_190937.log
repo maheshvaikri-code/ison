@@ -1,0 +1,2959 @@
+====================================================================================================
+ISON BENCHMARK V2 - COMPREHENSIVE 300-QUESTION BENCHMARK
+====================================================================================================
+
+Timestamp:       2025-12-25T19:09:37.206484
+Tokenizer:       o200k_base (GPT-4o/GPT-5)
+LLM:             DeepSeek (deepseek-chat)
+Datasets:        20
+Questions:       300
+Formats:         ISON, TOON, JSON Compact, JSON
+Accuracy Tests:  Enabled
+Dry Run:         No
+
+
+----------------------------------------------------------------------------------------------------
+DATASET: USERS_5
+Description: 5 users with basic info | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (66 tokens, 0.0ms) ---
+  [OK] What is Alice's email?... => alice@tech.io
+         Got: alice@tech.io... | Email matched
+  [OK] What is Bob's role?... => user
+         Got: user... | String contained in response
+  [OK] What is Carol's age?... => 29
+         Got: 29... | Number matched exactly: 29.0
+  [OK] Is David active?... => True
+         Got: true... | Boolean true matched
+  [OK] What role does Eve have?... => guest
+         Got: guest... | String contained in response
+  [OK] How many users are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many admins are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many users are active?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are NOT active?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the average age?... => 32.8
+         Got: 32.8... | Number matched exactly: 32.8
+  [OK] Who is the oldest user?... => David
+         Got: David... | String contained in response
+  [OK] Who is the youngest user?... => Alice
+         Got: Alice... | String contained in response
+  [OK] What is the total age of all users?... => 164
+         Got: 164... | Number matched exactly: 164.0
+  [OK] Which users are inactive?... => Carol, Eve
+         Got: Carol, Eve... | All list items found: ['carol', 'eve']
+  [OK] Which users are admins?... => Alice, David
+         Got: Alice, David... | All list items found: ['alice', 'david']
+  Accuracy: 15/15 (100.0%)
+
+--- TOON (94 tokens, 1.3ms) ---
+  [OK] What is Alice's email?... => alice@tech.io
+         Got: alice@tech.io... | Email matched
+  [OK] What is Bob's role?... => user
+         Got: user... | String contained in response
+  [OK] What is Carol's age?... => 29
+         Got: 29... | Number matched exactly: 29.0
+  [OK] Is David active?... => True
+         Got: true... | Boolean true matched
+  [OK] What role does Eve have?... => guest
+         Got: guest... | String contained in response
+  [OK] How many users are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many admins are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many users are active?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are NOT active?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the average age?... => 32.8
+         Got: 32.8... | Number matched exactly: 32.8
+  [OK] Who is the oldest user?... => David
+         Got: David... | String contained in response
+  [OK] Who is the youngest user?... => Alice
+         Got: Alice... | String contained in response
+  [OK] What is the total age of all users?... => 164
+         Got: 164... | Number matched exactly: 164.0
+  [OK] Which users are inactive?... => Carol, Eve
+         Got: Carol,Eve... | All list items found: ['carol', 'eve']
+  [OK] Which users are admins?... => Alice, David
+         Got: Alice,David... | All list items found: ['alice', 'david']
+  Accuracy: 15/15 (100.0%)
+
+--- JSON Compact (144 tokens, 0.0ms) ---
+  [OK] What is Alice's email?... => alice@tech.io
+         Got: alice@tech.io... | Email matched
+  [OK] What is Bob's role?... => user
+         Got: user... | String contained in response
+  [OK] What is Carol's age?... => 29
+         Got: 29... | Number matched exactly: 29.0
+  [OK] Is David active?... => True
+         Got: true... | Boolean true matched
+  [OK] What role does Eve have?... => guest
+         Got: guest... | String contained in response
+  [OK] How many users are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many admins are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many users are active?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are NOT active?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the average age?... => 32.8
+         Got: 32.8... | Number matched exactly: 32.8
+  [OK] Who is the oldest user?... => David
+         Got: David... | String contained in response
+  [OK] Who is the youngest user?... => Alice
+         Got: Alice... | String contained in response
+  [OK] What is the total age of all users?... => 164
+         Got: 164... | Number matched exactly: 164.0
+  [OK] Which users are inactive?... => Carol, Eve
+         Got: ["Carol","Eve"]... | All list items found: ['carol', 'eve']
+  [OK] Which users are admins?... => Alice, David
+         Got: ["Alice","David"]... | All list items found: ['alice', 'david']
+  Accuracy: 15/15 (100.0%)
+
+--- JSON (253 tokens, 0.9ms) ---
+  [OK] What is Alice's email?... => alice@tech.io
+         Got: alice@tech.io... | Email matched
+  [OK] What is Bob's role?... => user
+         Got: user... | String contained in response
+  [OK] What is Carol's age?... => 29
+         Got: 29... | Number matched exactly: 29.0
+  [OK] Is David active?... => True
+         Got: true... | Boolean true matched
+  [OK] What role does Eve have?... => guest
+         Got: guest... | String contained in response
+  [OK] How many users are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many admins are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many users are active?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are NOT active?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the average age?... => 32.8
+         Got: 32.8... | Number matched exactly: 32.8
+  [OK] Who is the oldest user?... => David
+         Got: David... | String contained in response
+  [OK] Who is the youngest user?... => Alice
+         Got: "Alice"... | String contained in response
+  [OK] What is the total age of all users?... => 164
+         Got: 164... | Number matched exactly: 164.0
+  [OK] Which users are inactive?... => Carol, Eve
+         Got: ["Carol", "Eve"]... | All list items found: ['carol', 'eve']
+  [OK] Which users are admins?... => Alice, David
+         Got: ["Alice", "David"]... | All list items found: ['alice', 'david']
+  Accuracy: 15/15 (100.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 66       +73.9% 15/15 (100.0%)    1515.15        0.0
+    TOON                 94       +62.8% 15/15 (100.0%)    1063.83        1.3
+    JSON Compact        144       +43.1% 15/15 (100.0%)     694.44        0.0
+    JSON                253     baseline 15/15 (100.0%)     395.26        0.9
+
+----------------------------------------------------------------------------------------------------
+DATASET: USERS_25
+Description: 25 users with roles and departments | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (385 tokens, 0.0ms) ---
+  [OK] What is User10's email?... => user10@company.com
+         Got: user10@company.com... | Email matched
+  [OK] What department is User15 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [OK] What is User20's salary?... => 90000
+         Got: 90000... | Number matched exactly: 90000.0
+  [OK] What role does User8 have?... => admin
+         Got: admin... | String contained in response
+  [OK] Is User9 active?... => False
+         Got: false... | Boolean false matched
+  [OK] How many users are there?... => 25
+         Got: 25... | Number matched exactly: 25.0
+  [WRONG] How many users are active?... => 17
+         Got: 15... | Number not found: expected 17.0, got: 15
+  [WRONG] How many users are admins?... => 6
+         Got: 4... | Number not found: expected 6.0, got: 4
+  [OK] How many users are in Engineering?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] How many users are inactive?... => 8
+         Got: 6... | Number not found: expected 8.0, got: 6
+  [OK] What is the highest salary?... => 100000
+         Got: 100000... | Number matched exactly: 100000.0
+  [OK] What is the lowest salary?... => 52000
+         Got: 52000... | Number matched exactly: 52000.0
+  [OK] Who has the highest salary?... => User25
+         Got: User25... | String contained in response
+  [OK] What is User1's department?... => Sales
+         Got: Sales... | String contained in response
+  [WRONG] What is User25's role?... => user
+         Got: admin... | String mismatch: expected 'user', got: 'admin'
+  Accuracy: 11/15 (73.3%)
+
+--- TOON (515 tokens, 1.0ms) ---
+  [OK] What is User10's email?... => user10@company.com
+         Got: user10@company.com... | Email matched
+  [OK] What department is User15 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [OK] What is User20's salary?... => 90000
+         Got: 90000... | Number matched exactly: 90000.0
+  [OK] What role does User8 have?... => admin
+         Got: admin... | String contained in response
+  [OK] Is User9 active?... => False
+         Got: false... | Boolean false matched
+  [OK] How many users are there?... => 25
+         Got: 25... | Number matched exactly: 25.0
+  [WRONG] How many users are active?... => 17
+         Got: 15... | Number not found: expected 17.0, got: 15
+  [WRONG] How many users are admins?... => 6
+         Got: 4... | Number not found: expected 6.0, got: 4
+  [OK] How many users are in Engineering?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] How many users are inactive?... => 8
+         Got: 3... | Number not found: expected 8.0, got: 3
+  [OK] What is the highest salary?... => 100000
+         Got: 100000... | Number matched exactly: 100000.0
+  [OK] What is the lowest salary?... => 52000
+         Got: 52000... | Number matched exactly: 52000.0
+  [OK] Who has the highest salary?... => User25
+         Got: User25... | String contained in response
+  [OK] What is User1's department?... => Sales
+         Got: Sales... | String contained in response
+  [OK] What is User25's role?... => user
+         Got: user... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+--- JSON Compact (861 tokens, 0.0ms) ---
+  [OK] What is User10's email?... => user10@company.com
+         Got: user10@company.com... | Email matched
+  [OK] What department is User15 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [OK] What is User20's salary?... => 90000
+         Got: 90000... | Number matched exactly: 90000.0
+  [OK] What role does User8 have?... => admin
+         Got: admin... | String contained in response
+  [OK] Is User9 active?... => False
+         Got: false... | Boolean false matched
+  [OK] How many users are there?... => 25
+         Got: 25... | Number matched exactly: 25.0
+  [WRONG] How many users are active?... => 17
+         Got: 15... | Number not found: expected 17.0, got: 15
+  [WRONG] How many users are admins?... => 6
+         Got: 4... | Number not found: expected 6.0, got: 4
+  [OK] How many users are in Engineering?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] How many users are inactive?... => 8
+         Got: 6... | Number not found: expected 8.0, got: 6
+  [OK] What is the highest salary?... => 100000
+         Got: 100000... | Number matched exactly: 100000.0
+  [OK] What is the lowest salary?... => 52000
+         Got: 52000... | Number matched exactly: 52000.0
+  [OK] Who has the highest salary?... => User25
+         Got: {"id":25,"name":"User25","email":"user25@company.com","role"... | String contained in response
+  [OK] What is User1's department?... => Sales
+         Got: Sales... | String contained in response
+  [OK] What is User25's role?... => user
+         Got: user... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+--- JSON (1,465 tokens, 0.0ms) ---
+  [OK] What is User10's email?... => user10@company.com
+         Got: user10@company.com... | Email matched
+  [OK] What department is User15 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [OK] What is User20's salary?... => 90000
+         Got: 90000... | Number matched exactly: 90000.0
+  [OK] What role does User8 have?... => admin
+         Got: admin... | String contained in response
+  [OK] Is User9 active?... => False
+         Got: false... | Boolean false matched
+  [OK] How many users are there?... => 25
+         Got: 25... | Number matched exactly: 25.0
+  [WRONG] How many users are active?... => 17
+         Got: 15... | Number not found: expected 17.0, got: 15
+  [WRONG] How many users are admins?... => 6
+         Got: 4... | Number not found: expected 6.0, got: 4
+  [OK] How many users are in Engineering?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] How many users are inactive?... => 8
+         Got: 3... | Number not found: expected 8.0, got: 3
+  [OK] What is the highest salary?... => 100000
+         Got: 100000... | Number matched exactly: 100000.0
+  [OK] What is the lowest salary?... => 52000
+         Got: 52000... | Number matched exactly: 52000.0
+  [OK] Who has the highest salary?... => User25
+         Got: "User25"... | String contained in response
+  [OK] What is User1's department?... => Sales
+         Got: Sales... | String contained in response
+  [OK] What is User25's role?... => user
+         Got: "user"... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                385       +73.7% 11/15 (73.3%)     190.48        0.0
+    TOON                515       +64.8% 12/15 (80.0%)     155.34        1.0
+    JSON Compact        861       +41.2% 12/15 (80.0%)      92.92        0.0
+    JSON              1,465     baseline 12/15 (80.0%)      54.61        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: USERS_100
+Description: 100 employees with levels and departments | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (1,310 tokens, 0.0ms) ---
+  [OK] What is Emp50's email?... => emp50@corp.com
+         Got: emp50@corp.com... | Email matched
+  [WRONG] What level is Emp25?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] Is Emp75 active?... => False
+         Got: false... | Boolean false matched
+  [OK] What department is Emp40 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [WRONG] What is Emp100's level?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] How many employees are there?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] How many employees are active?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] How many employees are inactive?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [WRONG] How many directors are there?... => 20
+         Got: 30... | Number not found: expected 20.0, got: 30
+  [WRONG] How many employees are in Engineering?... => 12
+         Got: 10... | Number not found: expected 12.0, got: 10
+  [OK] What is Emp1's role?... => user
+         Got: user... | String contained in response
+  [WRONG] What department is Emp99 in?... => Legal
+         Got: Support... | String mismatch: expected 'Legal', got: 'Support'
+  [OK] Is Emp50 active?... => True
+         Got: true... | Boolean true matched
+  [WRONG] What level is Emp100?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] What is Emp33's role?... => admin
+         Got: admin... | String contained in response
+  Accuracy: 9/15 (60.0%)
+
+--- TOON (2,042 tokens, 4.1ms) ---
+  [OK] What is Emp50's email?... => emp50@corp.com
+         Got: emp50@corp.com... | Email matched
+  [WRONG] What level is Emp25?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] Is Emp75 active?... => False
+         Got: false... | Boolean false matched
+  [OK] What department is Emp40 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [WRONG] What is Emp100's level?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] How many employees are there?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] How many employees are active?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] How many employees are inactive?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [WRONG] How many directors are there?... => 20
+         Got: 10... | Number not found: expected 20.0, got: 10
+  [WRONG] How many employees are in Engineering?... => 12
+         Got: 8... | Number not found: expected 12.0, got: 8
+  [OK] What is Emp1's role?... => user
+         Got: user... | String contained in response
+  [WRONG] What department is Emp99 in?... => Legal
+         Got: Support... | String mismatch: expected 'Legal', got: 'Support'
+  [OK] Is Emp50 active?... => True
+         Got: true... | Boolean true matched
+  [WRONG] What level is Emp100?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] What is Emp33's role?... => admin
+         Got: admin... | String contained in response
+  Accuracy: 9/15 (60.0%)
+
+--- JSON Compact (3,345 tokens, 0.0ms) ---
+  [OK] What is Emp50's email?... => emp50@corp.com
+         Got: emp50@corp.com... | Email matched
+  [WRONG] What level is Emp25?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] Is Emp75 active?... => False
+         Got: false... | Boolean false matched
+  [OK] What department is Emp40 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [WRONG] What is Emp100's level?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] How many employees are there?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] How many employees are active?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] How many employees are inactive?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [WRONG] How many directors are there?... => 20
+         Got: 10... | Number not found: expected 20.0, got: 10
+  [WRONG] How many employees are in Engineering?... => 12
+         Got: 8... | Number not found: expected 12.0, got: 8
+  [OK] What is Emp1's role?... => user
+         Got: "user"... | String contained in response
+  [WRONG] What department is Emp99 in?... => Legal
+         Got: Support... | String mismatch: expected 'Legal', got: 'Support'
+  [OK] Is Emp50 active?... => True
+         Got: true... | Boolean true matched
+  [WRONG] What level is Emp100?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] What is Emp33's role?... => admin
+         Got: "admin"... | String contained in response
+  Accuracy: 9/15 (60.0%)
+
+--- JSON (5,749 tokens, 0.0ms) ---
+  [OK] What is Emp50's email?... => emp50@corp.com
+         Got: emp50@corp.com... | Email matched
+  [WRONG] What level is Emp25?... => director
+         Got: "junior"... | String mismatch: expected 'director', got: '"junior"'
+  [OK] Is Emp75 active?... => False
+         Got: false... | Boolean false matched
+  [OK] What department is Emp40 in?... => Engineering
+         Got: Engineering... | String contained in response
+  [WRONG] What is Emp100's level?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] How many employees are there?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] How many employees are active?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] How many employees are inactive?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [WRONG] How many directors are there?... => 20
+         Got: 10... | Number not found: expected 20.0, got: 10
+  [WRONG] How many employees are in Engineering?... => 12
+         Got: 8... | Number not found: expected 12.0, got: 8
+  [OK] What is Emp1's role?... => user
+         Got: user... | String contained in response
+  [WRONG] What department is Emp99 in?... => Legal
+         Got: Support... | String mismatch: expected 'Legal', got: 'Support'
+  [OK] Is Emp50 active?... => True
+         Got: true... | Boolean true matched
+  [WRONG] What level is Emp100?... => director
+         Got: junior... | String mismatch: expected 'director', got: 'junior'
+  [OK] What is Emp33's role?... => admin
+         Got: admin... | String contained in response
+  Accuracy: 9/15 (60.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON              1,310       +77.2% 9/15 (60.0%)      45.80        0.0
+    TOON              2,042       +64.5% 9/15 (60.0%)      29.38        4.1
+    JSON Compact      3,345       +41.8% 9/15 (60.0%)      17.94        0.0
+    JSON              5,749     baseline 9/15 (60.0%)      10.44        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: ORDERS_SIMPLE
+Description: 5 simple orders | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (64 tokens, 0.0ms) ---
+  [OK] What did Alice order in order 1?... => Laptop
+         Got: Laptop... | String contained in response
+  [OK] What is the price of order 3?... => 79.99
+         Got: 79.99... | Number matched exactly: 79.99
+  [OK] What is the status of order 2?... => delivered
+         Got: delivered... | String contained in response
+  [OK] How many items did Bob order?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who ordered the Webcam?... => David
+         Got: David... | String contained in response
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many orders are shipped?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are delivered?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are pending?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] What is the total value of all orders?... => 1459.95
+         Got: 1459.94... | Number matched exactly: 1459.94
+  [OK] What is the average order price?... => 291.99
+         Got: 291.99... | Number matched exactly: 291.99
+  [OK] What is the most expensive order?... => 999.99
+         Got: 999.99... | Number matched exactly: 999.99
+  [OK] Which order has the highest price?... => 1
+         Got: 1... | String contained in response
+  [OK] How many orders did Alice place?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the total value of Alice's orders?... => 1299.98
+         Got: 1299.98... | Number matched exactly: 1299.98
+  Accuracy: 15/15 (100.0%)
+
+--- TOON (100 tokens, 0.0ms) ---
+  [OK] What did Alice order in order 1?... => Laptop
+         Got: Laptop... | String contained in response
+  [OK] What is the price of order 3?... => 79.99
+         Got: 79.99... | Number matched exactly: 79.99
+  [OK] What is the status of order 2?... => delivered
+         Got: delivered... | String contained in response
+  [OK] How many items did Bob order?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who ordered the Webcam?... => David
+         Got: David... | String contained in response
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many orders are shipped?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are delivered?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are pending?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] What is the total value of all orders?... => 1459.95
+         Got: 1459.94... | Number matched exactly: 1459.94
+  [OK] What is the average order price?... => 291.99
+         Got: 291.99... | Number matched exactly: 291.99
+  [OK] What is the most expensive order?... => 999.99
+         Got: 999.99... | Number matched exactly: 999.99
+  [OK] Which order has the highest price?... => 1
+         Got: 1... | String contained in response
+  [OK] How many orders did Alice place?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the total value of Alice's orders?... => 1299.98
+         Got: 1299.98... | Number matched exactly: 1299.98
+  Accuracy: 15/15 (100.0%)
+
+--- JSON Compact (140 tokens, 0.0ms) ---
+  [OK] What did Alice order in order 1?... => Laptop
+         Got: Laptop... | String contained in response
+  [OK] What is the price of order 3?... => 79.99
+         Got: 79.99... | Number matched exactly: 79.99
+  [OK] What is the status of order 2?... => delivered
+         Got: delivered... | String contained in response
+  [OK] How many items did Bob order?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who ordered the Webcam?... => David
+         Got: David... | String contained in response
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many orders are shipped?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are delivered?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are pending?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] What is the total value of all orders?... => 1459.95
+         Got: 1449.95... | Number matched within tolerance: 1449.95 ≈ 1459.95
+  [OK] What is the average order price?... => 291.99
+         Got: 292.99... | Number matched within tolerance: 292.99 ≈ 291.99
+  [OK] What is the most expensive order?... => 999.99
+         Got: {"id":1,"customer":"Alice","product":"Laptop","quantity":1,"... | Number matched exactly: 999.99
+  [OK] Which order has the highest price?... => 1
+         Got: {"id":1,"customer":"Alice","product":"Laptop","quantity":1,"... | String contained in response
+  [OK] How many orders did Alice place?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the total value of Alice's orders?... => 1299.98
+         Got: 1299.98... | Number matched exactly: 1299.98
+  Accuracy: 15/15 (100.0%)
+
+--- JSON (254 tokens, 0.0ms) ---
+  [OK] What did Alice order in order 1?... => Laptop
+         Got: Laptop... | String contained in response
+  [OK] What is the price of order 3?... => 79.99
+         Got: 79.99... | Number matched exactly: 79.99
+  [OK] What is the status of order 2?... => delivered
+         Got: delivered... | String contained in response
+  [OK] How many items did Bob order?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who ordered the Webcam?... => David
+         Got: David... | String contained in response
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many orders are shipped?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are delivered?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many orders are pending?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] What is the total value of all orders?... => 1459.95
+         Got: 1460.94... | Number matched within tolerance: 1460.94 ≈ 1459.95
+  [OK] What is the average order price?... => 291.99
+         Got: (999.99 + (29.99 * 2) + 79.99 + 299.99 + 49.99) / 5 = 1459.9... | Number matched exactly: 291.988
+  [OK] What is the most expensive order?... => 999.99
+         Got: {"id": 1, "customer": "Alice", "product": "Laptop", "quantit... | Number matched exactly: 999.99
+  [OK] Which order has the highest price?... => 1
+         Got: {"id": 1, "customer": "Alice", "product": "Laptop", "quantit... | String contained in response
+  [OK] How many orders did Alice place?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the total value of Alice's orders?... => 1299.98
+         Got: 1299.98... | Number matched exactly: 1299.98
+  Accuracy: 15/15 (100.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 64       +74.8% 15/15 (100.0%)    1562.50        0.0
+    TOON                100       +60.6% 15/15 (100.0%)    1000.00        0.0
+    JSON Compact        140       +44.9% 15/15 (100.0%)     714.29        0.0
+    JSON                254     baseline 15/15 (100.0%)     393.70        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: ECOMMERCE
+Description: E-commerce with customers, products, orders | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (210 tokens, 1.7ms) ---
+  [OK] What is Alice Johnson's email?... => alice@shop.com
+         Got: alice@shop.com... | Email matched
+  [OK] What is the price of the Laptop Pro?... => 1299.99
+         Got: 1299.99... | Number matched exactly: 1299.99
+  [OK] How much stock does the USB-C Hub have?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Is Bob Smith a premium customer?... => False
+         Got: false... | Boolean false matched
+  [OK] What category is the Keyboard in?... => Electronics
+         Got: Electronics... | String contained in response
+  [OK] How many customers are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many products are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many customers are premium?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many products are in Electronics?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the total value of all orders?... => 2789.94
+         Got: 2799.94... | Number matched within tolerance: 2799.94 ≈ 2789.94
+  [OK] Which customer placed order 1001?... => Alice
+         Got: Alice Johnson... | String contained in response
+  [OK] What product is in order 1003?... => USB-C Hub
+         Got: USB-C Hub... | String contained in response
+  [WRONG] How many orders did customer 1 place?... => 2
+         Got: 3... | Number not found: expected 2.0, got: 3
+  [OK] What is the status of order 1005?... => delivered
+         Got: delivered... | String contained in response
+  Accuracy: 14/15 (93.3%)
+
+--- TOON (244 tokens, 0.0ms) ---
+  [OK] What is Alice Johnson's email?... => alice@shop.com
+         Got: alice@shop.com... | Email matched
+  [OK] What is the price of the Laptop Pro?... => 1299.99
+         Got: 1299.99... | Number matched exactly: 1299.99
+  [OK] How much stock does the USB-C Hub have?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Is Bob Smith a premium customer?... => False
+         Got: false... | Boolean false matched
+  [WRONG] What category is the Keyboard in?... => Electronics
+         Got: Accessories... | String mismatch: expected 'Electronics', got: 'Accessories'
+  [OK] How many customers are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many products are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many customers are premium?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many products are in Electronics?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the total value of all orders?... => 2789.94
+         Got: 2799.94... | Number matched within tolerance: 2799.94 ≈ 2789.94
+  [OK] Which customer placed order 1001?... => Alice
+         Got: Alice Johnson... | String contained in response
+  [OK] What product is in order 1003?... => USB-C Hub
+         Got: USB-C Hub... | String contained in response
+  [OK] How many orders did customer 1 place?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the status of order 1005?... => delivered
+         Got: delivered... | String contained in response
+  Accuracy: 14/15 (93.3%)
+
+--- JSON Compact (333 tokens, 0.0ms) ---
+  [OK] What is Alice Johnson's email?... => alice@shop.com
+         Got: alice@shop.com... | Email matched
+  [OK] What is the price of the Laptop Pro?... => 1299.99
+         Got: 1299.99... | Number matched exactly: 1299.99
+  [OK] How much stock does the USB-C Hub have?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Is Bob Smith a premium customer?... => False
+         Got: false... | Boolean false matched
+  [WRONG] What category is the Keyboard in?... => Electronics
+         Got: Accessories... | String mismatch: expected 'Electronics', got: 'Accessories'
+  [OK] How many customers are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many products are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many customers are premium?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many products are in Electronics?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the total value of all orders?... => 2789.94
+         Got: 2789.94... | Number matched exactly: 2789.94
+  [OK] Which customer placed order 1001?... => Alice
+         Got: Alice Johnson... | String contained in response
+  [OK] What product is in order 1003?... => USB-C Hub
+         Got: USB-C Hub... | String contained in response
+  [OK] How many orders did customer 1 place?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the status of order 1005?... => delivered
+         Got: delivered... | String contained in response
+  Accuracy: 14/15 (93.3%)
+
+--- JSON (583 tokens, 1.1ms) ---
+  [OK] What is Alice Johnson's email?... => alice@shop.com
+         Got: alice@shop.com... | Email matched
+  [OK] What is the price of the Laptop Pro?... => 1299.99
+         Got: 1299.99... | Number matched exactly: 1299.99
+  [OK] How much stock does the USB-C Hub have?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Is Bob Smith a premium customer?... => False
+         Got: false... | Boolean false matched
+  [WRONG] What category is the Keyboard in?... => Electronics
+         Got: Accessories... | String mismatch: expected 'Electronics', got: 'Accessories'
+  [OK] How many customers are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many products are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many orders are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many customers are premium?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many products are in Electronics?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the total value of all orders?... => 2789.94
+         Got: 2799.94... | Number matched within tolerance: 2799.94 ≈ 2789.94
+  [OK] Which customer placed order 1001?... => Alice
+         Got: Alice Johnson... | String contained in response
+  [OK] What product is in order 1003?... => USB-C Hub
+         Got: "USB-C Hub"... | String contained in response
+  [OK] How many orders did customer 1 place?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the status of order 1005?... => delivered
+         Got: delivered... | String contained in response
+  Accuracy: 14/15 (93.3%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                210       +64.0% 14/15 (93.3%)     444.44        1.7
+    TOON                244       +58.1% 14/15 (93.3%)     382.51        0.0
+    JSON Compact        333       +42.9% 14/15 (93.3%)     280.28        0.0
+    JSON                583     baseline 14/15 (93.3%)     160.09        1.1
+
+----------------------------------------------------------------------------------------------------
+DATASET: ORG_HIERARCHY
+Description: Organization with manager relationships | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (129 tokens, 0.0ms) ---
+  [OK] What is CEO Smith's salary?... => 250000
+         Got: 250000... | Number matched exactly: 250000.0
+  [OK] Who is VP Tech's manager?... => CEO Smith
+         Got: CEO Smith... | String contained in response
+  [OK] What is Dir Eng's title?... => Director
+         Got: Director... | String contained in response
+  [WRONG] How many employees report to VP Tech?... => 2
+         Got: 4... | Number not found: expected 2.0, got: 4
+  [OK] Who has no manager?... => CEO Smith
+         Got: CEO Smith... | String contained in response
+  [OK] How many employees are there?... => 10
+         Got: 10... | Number matched exactly: 10.0
+  [OK] How many VPs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] What is the total salary?... => 1395000
+         Got: 1415000... | Number not found: expected 1395000.0, got: 1415000
+  [OK] Who has the lowest salary?... => Sales Rep
+         Got: "Sales Rep"... | String contained in response
+  [WRONG] What is the average salary?... => 139500
+         Got: 135000... | Number not found: expected 139500.0, got: 135000
+  [WRONG] Who manages Engineer C?... => Dir Product
+         Got: 5... | String mismatch: expected 'Dir Product', got: '5'
+  [OK] How many Directors are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who reports to Dir Eng?... => Engineer A, Engineer B
+         Got: Engineer A, Engineer B... | All list items found: ['engineer a', 'engineer b']
+  [OK] What is Engineer A's salary?... => 130000
+         Got: 130000... | Number matched exactly: 130000.0
+  [OK] Who manages Sales Rep?... => Sales Lead
+         Got: Sales Lead... | String contained in response
+  Accuracy: 11/15 (73.3%)
+
+--- TOON (152 tokens, 0.0ms) ---
+  [OK] What is CEO Smith's salary?... => 250000
+         Got: 250000... | Number matched exactly: 250000.0
+  [OK] Who is VP Tech's manager?... => CEO Smith
+         Got: CEO Smith... | String contained in response
+  [OK] What is Dir Eng's title?... => Director
+         Got: Director... | String contained in response
+  [WRONG] How many employees report to VP Tech?... => 2
+         Got: 3... | Number not found: expected 2.0, got: 3
+  [OK] Who has no manager?... => CEO Smith
+         Got: CEO Smith... | String contained in response
+  [OK] How many employees are there?... => 10
+         Got: 10... | Number matched exactly: 10.0
+  [OK] How many VPs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] What is the total salary?... => 1395000
+         Got: 1575000... | Number not found: expected 1395000.0, got: 1575000
+  [WRONG] Who has the lowest salary?... => Sales Rep
+         Got: 10... | String mismatch: expected 'Sales Rep', got: '10'
+  [WRONG] What is the average salary?... => 139500
+         Got: 134500... | Number not found: expected 139500.0, got: 134500
+  [OK] Who manages Engineer C?... => Dir Product
+         Got: Dir Product... | String contained in response
+  [OK] How many Directors are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who reports to Dir Eng?... => Engineer A, Engineer B
+         Got: Engineer A, Engineer B... | All list items found: ['engineer a', 'engineer b']
+  [OK] What is Engineer A's salary?... => 130000
+         Got: 130000... | Number matched exactly: 130000.0
+  [OK] Who manages Sales Rep?... => Sales Lead
+         Got: Sales Lead... | String contained in response
+  Accuracy: 11/15 (73.3%)
+
+--- JSON Compact (235 tokens, 0.0ms) ---
+  [OK] What is CEO Smith's salary?... => 250000
+         Got: 250000... | Number matched exactly: 250000.0
+  [OK] Who is VP Tech's manager?... => CEO Smith
+         Got: CEO Smith... | String contained in response
+  [OK] What is Dir Eng's title?... => Director
+         Got: Director... | String contained in response
+  [WRONG] How many employees report to VP Tech?... => 2
+         Got: 3... | Number not found: expected 2.0, got: 3
+  [OK] Who has no manager?... => CEO Smith
+         Got: CEO Smith... | String contained in response
+  [OK] How many employees are there?... => 10
+         Got: 10... | Number matched exactly: 10.0
+  [OK] How many VPs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] What is the total salary?... => 1395000
+         Got: 1455000... | Number not found: expected 1395000.0, got: 1455000
+  [OK] Who has the lowest salary?... => Sales Rep
+         Got: "Sales Rep"... | String contained in response
+  [WRONG] What is the average salary?... => 139500
+         Got: 132000... | Number not found: expected 139500.0, got: 132000
+  [OK] Who manages Engineer C?... => Dir Product
+         Got: Dir Product... | String contained in response
+  [OK] How many Directors are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who reports to Dir Eng?... => Engineer A, Engineer B
+         Got: ["Engineer A","Engineer B"]... | All list items found: ['engineer a', 'engineer b']
+  [OK] What is Engineer A's salary?... => 130000
+         Got: 130000... | Number matched exactly: 130000.0
+  [OK] Who manages Sales Rep?... => Sales Lead
+         Got: Sales Lead... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+--- JSON (428 tokens, 0.0ms) ---
+  [OK] What is CEO Smith's salary?... => 250000
+         Got: 250000... | Number matched exactly: 250000.0
+  [OK] Who is VP Tech's manager?... => CEO Smith
+         Got: CEO Smith... | String contained in response
+  [OK] What is Dir Eng's title?... => Director
+         Got: Director... | String contained in response
+  [WRONG] How many employees report to VP Tech?... => 2
+         Got: 3... | Number not found: expected 2.0, got: 3
+  [OK] Who has no manager?... => CEO Smith
+         Got: ["CEO Smith"]... | String contained in response
+  [OK] How many employees are there?... => 10
+         Got: 10... | Number matched exactly: 10.0
+  [OK] How many VPs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] What is the total salary?... => 1395000
+         Got: 1445000... | Number not found: expected 1395000.0, got: 1445000
+  [OK] Who has the lowest salary?... => Sales Rep
+         Got: "Sales Rep"... | String contained in response
+  [WRONG] What is the average salary?... => 139500
+         Got: 110000... | Number not found: expected 139500.0, got: 110000
+  [OK] Who manages Engineer C?... => Dir Product
+         Got: Dir Product... | String contained in response
+  [OK] How many Directors are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Who reports to Dir Eng?... => Engineer A, Engineer B
+         Got: ["Engineer A", "Engineer B"]... | All list items found: ['engineer a', 'engineer b']
+  [OK] What is Engineer A's salary?... => 130000
+         Got: 130000... | Number matched exactly: 130000.0
+  [OK] Who manages Sales Rep?... => Sales Lead
+         Got: Sales Lead... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                129       +69.9% 11/15 (73.3%)     568.48        0.0
+    TOON                152       +64.5% 11/15 (73.3%)     482.46        0.0
+    JSON Compact        235       +45.1% 12/15 (80.0%)     340.43        0.0
+    JSON                428     baseline 12/15 (80.0%)     186.92        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: ANALYTICS
+Description: Analytics events | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (181 tokens, 0.0ms) ---
+  [OK] What page was viewed at 10:00?... => /home
+         Got: /home... | String contained in response
+  [OK] What event happened at 10:04?... => purchase
+         Got: purchase... | String contained in response
+  [OK] How long was the search event?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] Which user made the purchase?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [WRONG] What page did user 4 view first?... => /dashboard
+         Got: /register... | String mismatch: expected '/dashboard', got: '/register'
+  [OK] How many events are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many page_view events are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many events did user 1 trigger?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many unique users are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the total duration of all events?... => 532
+         Got: 533... | Number matched within tolerance: 533.0 ≈ 532.0
+  [WRONG] What is the average event duration?... => 66.5
+         Got: 64.25... | Number not found: expected 66.5, got: 64.25
+  [OK] Which event had the longest duration?... => purchase
+         Got: purchase... | String contained in response
+  [OK] Which event had the shortest duration?... => click
+         Got: click... | String contained in response
+  [OK] What event types are there?... => page_view, click, search, purchase, signup
+         Got: page_view, click, search, purchase, signup... | All list items found: ['page_view', 'click', 'search', 'purchase', 'signup']
+  [OK] How many events did user 2 trigger?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 13/15 (86.7%)
+
+--- TOON (208 tokens, 0.0ms) ---
+  [OK] What page was viewed at 10:00?... => /home
+         Got: /home... | String contained in response
+  [OK] What event happened at 10:04?... => purchase
+         Got: purchase... | String contained in response
+  [OK] How long was the search event?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] Which user made the purchase?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [WRONG] What page did user 4 view first?... => /dashboard
+         Got: /register... | String mismatch: expected '/dashboard', got: '/register'
+  [OK] How many events are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many page_view events are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many events did user 1 trigger?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many unique users are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the total duration of all events?... => 532
+         Got: 532... | Number matched exactly: 532.0
+  [WRONG] What is the average event duration?... => 66.5
+         Got: 64.25... | Number not found: expected 66.5, got: 64.25
+  [OK] Which event had the longest duration?... => purchase
+         Got: purchase... | String contained in response
+  [WRONG] Which event had the shortest duration?... => click
+         Got: search... | String mismatch: expected 'click', got: 'search'
+  [OK] What event types are there?... => page_view, click, search, purchase, signup
+         Got: page_view,click,search,purchase,signup... | All list items found: ['page_view', 'click', 'search', 'purchase', 'signup']
+  [WRONG] How many events did user 2 trigger?... => 2
+         Got: 3... | Number not found: expected 2.0, got: 3
+  Accuracy: 11/15 (73.3%)
+
+--- JSON Compact (281 tokens, 1.0ms) ---
+  [OK] What page was viewed at 10:00?... => /home
+         Got: /home... | String contained in response
+  [OK] What event happened at 10:04?... => purchase
+         Got: purchase... | String contained in response
+  [OK] How long was the search event?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] Which user made the purchase?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [WRONG] What page did user 4 view first?... => /dashboard
+         Got: /register... | String mismatch: expected '/dashboard', got: '/register'
+  [OK] How many events are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many page_view events are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many events did user 1 trigger?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many unique users are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the total duration of all events?... => 532
+         Got: 532... | Number matched exactly: 532.0
+  [WRONG] What is the average event duration?... => 66.5
+         Got: 62... | Number not found: expected 66.5, got: 62
+  [OK] Which event had the longest duration?... => purchase
+         Got: purchase... | String contained in response
+  [OK] Which event had the shortest duration?... => click
+         Got: click... | String contained in response
+  [OK] What event types are there?... => page_view, click, search, purchase, signup
+         Got: ["page_view","click","search","purchase","signup"]... | All list items found: ['page_view', 'click', 'search', 'purchase', 'signup']
+  [OK] How many events did user 2 trigger?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (429 tokens, 0.0ms) ---
+  [OK] What page was viewed at 10:00?... => /home
+         Got: /home... | String contained in response
+  [OK] What event happened at 10:04?... => purchase
+         Got: "purchase"... | String contained in response
+  [OK] How long was the search event?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] Which user made the purchase?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [WRONG] What page did user 4 view first?... => /dashboard
+         Got: "/register"... | String mismatch: expected '/dashboard', got: '"/register"'
+  [OK] How many events are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many page_view events are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many events did user 1 trigger?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many unique users are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the total duration of all events?... => 532
+         Got: 532... | Number matched exactly: 532.0
+  [WRONG] What is the average event duration?... => 66.5
+         Got: 50.25... | Number not found: expected 66.5, got: 50.25
+  [OK] Which event had the longest duration?... => purchase
+         Got: {
+  "timestamp": "2024-01-15T10:04:00Z",
+  "event": "purchas... | String contained in response
+  [OK] Which event had the shortest duration?... => click
+         Got: "click"... | String contained in response
+  [OK] What event types are there?... => page_view, click, search, purchase, signup
+         Got: ["page_view", "click", "search", "purchase", "signup"]... | All list items found: ['page_view', 'click', 'search', 'purchase', 'signup']
+  [OK] How many events did user 2 trigger?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 13/15 (86.7%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                181       +57.8% 13/15 (86.7%)     478.82        0.0
+    TOON                208       +51.5% 11/15 (73.3%)     352.56        0.0
+    JSON Compact        281       +34.5% 13/15 (86.7%)     308.42        1.0
+    JSON                429     baseline 13/15 (86.7%)     202.02        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: METRICS
+Description: Daily metrics | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (98 tokens, 0.0ms) ---
+  [OK] How many visitors on 2024-01-12?... => 1420
+         Got: 1420... | Number matched exactly: 1420.0
+  [OK] What was the revenue on 2024-01-10?... => 12500
+         Got: 12500... | Number matched exactly: 12500.0
+  [OK] How many signups on 2024-01-14?... => 22
+         Got: 22... | Number matched exactly: 22.0
+  [OK] How many pageviews on 2024-01-11?... => 4200
+         Got: 4200... | Number matched exactly: 4200.0
+  [OK] What date had 980 visitors?... => 2024-01-13
+         Got: 2024-01-13... | Date matched
+  [OK] What is the total revenue?... => 55200
+         Got: 55200... | Number matched exactly: 55200.0
+  [OK] What is the total number of signups?... => 182
+         Got: 182... | Number matched exactly: 182.0
+  [OK] What is the total number of visitors?... => 5720
+         Got: 5720... | Number matched exactly: 5720.0
+  [OK] Which day had the most visitors?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] Which day had the least visitors?... => 2024-01-14
+         Got: 2024-01-14... | Date matched
+  [OK] What is the average daily revenue?... => 11040
+         Got: 11040... | Number matched exactly: 11040.0
+  [OK] Which day had the most signups?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] What is the total number of pageviews?... => 19900
+         Got: 19900... | Number matched exactly: 19900.0
+  [OK] Which day had the highest revenue?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] What was the lowest daily revenue?... => 7200
+         Got: 7200... | Number matched exactly: 7200.0
+  Accuracy: 15/15 (100.0%)
+
+--- TOON (114 tokens, 0.0ms) ---
+  [OK] How many visitors on 2024-01-12?... => 1420
+         Got: 1420... | Number matched exactly: 1420.0
+  [OK] What was the revenue on 2024-01-10?... => 12500
+         Got: 12500... | Number matched exactly: 12500.0
+  [OK] How many signups on 2024-01-14?... => 22
+         Got: 22... | Number matched exactly: 22.0
+  [OK] How many pageviews on 2024-01-11?... => 4200
+         Got: 4200... | Number matched exactly: 4200.0
+  [OK] What date had 980 visitors?... => 2024-01-13
+         Got: 2024-01-13... | Date matched
+  [OK] What is the total revenue?... => 55200
+         Got: 55200... | Number matched exactly: 55200.0
+  [OK] What is the total number of signups?... => 182
+         Got: 182... | Number matched exactly: 182.0
+  [OK] What is the total number of visitors?... => 5720
+         Got: 5720... | Number matched exactly: 5720.0
+  [OK] Which day had the most visitors?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] Which day had the least visitors?... => 2024-01-14
+         Got: 2024-01-14... | Date matched
+  [OK] What is the average daily revenue?... => 11040
+         Got: 11040... | Number matched exactly: 11040.0
+  [OK] Which day had the most signups?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] What is the total number of pageviews?... => 19900
+         Got: 19900... | Number matched exactly: 19900.0
+  [OK] Which day had the highest revenue?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] What was the lowest daily revenue?... => 7200
+         Got: 7200... | Number matched exactly: 7200.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON Compact (163 tokens, 0.0ms) ---
+  [OK] How many visitors on 2024-01-12?... => 1420
+         Got: 1420... | Number matched exactly: 1420.0
+  [OK] What was the revenue on 2024-01-10?... => 12500
+         Got: 12500... | Number matched exactly: 12500.0
+  [OK] How many signups on 2024-01-14?... => 22
+         Got: 22... | Number matched exactly: 22.0
+  [OK] How many pageviews on 2024-01-11?... => 4200
+         Got: 4200... | Number matched exactly: 4200.0
+  [OK] What date had 980 visitors?... => 2024-01-13
+         Got: 2024-01-13... | Date matched
+  [OK] What is the total revenue?... => 55200
+         Got: 55000... | Number matched within tolerance: 55000.0 ≈ 55200.0
+  [OK] What is the total number of signups?... => 182
+         Got: 182... | Number matched exactly: 182.0
+  [WRONG] What is the total number of visitors?... => 5720
+         Got: 5650... | Number not found: expected 5720.0, got: 5650
+  [OK] Which day had the most visitors?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] Which day had the least visitors?... => 2024-01-14
+         Got: 2024-01-14... | Date matched
+  [WRONG] What is the average daily revenue?... => 11040
+         Got: 11840... | Number not found: expected 11040.0, got: 11840
+  [OK] Which day had the most signups?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] What is the total number of pageviews?... => 19900
+         Got: 19900... | Number matched exactly: 19900.0
+  [OK] Which day had the highest revenue?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] What was the lowest daily revenue?... => 7200
+         Got: 7200... | Number matched exactly: 7200.0
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (262 tokens, 0.0ms) ---
+  [OK] How many visitors on 2024-01-12?... => 1420
+         Got: 1420... | Number matched exactly: 1420.0
+  [OK] What was the revenue on 2024-01-10?... => 12500
+         Got: 12500... | Number matched exactly: 12500.0
+  [OK] How many signups on 2024-01-14?... => 22
+         Got: 22... | Number matched exactly: 22.0
+  [OK] How many pageviews on 2024-01-11?... => 4200
+         Got: 4200... | Number matched exactly: 4200.0
+  [OK] What date had 980 visitors?... => 2024-01-13
+         Got: 2024-01-13... | Date matched
+  [WRONG] What is the total revenue?... => 55200
+         Got: 50000... | Number not found: expected 55200.0, got: 50000
+  [WRONG] What is the total number of signups?... => 182
+         Got: 95... | Number not found: expected 182.0, got: 95
+  [OK] What is the total number of visitors?... => 5720
+         Got: 1250+1180+1420+980+890 = 5720... | Number matched exactly: 5720.0
+  [OK] Which day had the most visitors?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] Which day had the least visitors?... => 2024-01-14
+         Got: 2024-01-14... | Date matched
+  [WRONG] What is the average daily revenue?... => 11040
+         Got: 10120... | Number not found: expected 11040.0, got: 10120
+  [OK] Which day had the most signups?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [WRONG] What is the total number of pageviews?... => 19900
+         Got: 5100... | Number not found: expected 19900.0, got: 5100
+  [OK] Which day had the highest revenue?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] What was the lowest daily revenue?... => 7200
+         Got: 7200... | Number matched exactly: 7200.0
+  Accuracy: 11/15 (73.3%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 98       +62.6% 15/15 (100.0%)    1020.41        0.0
+    TOON                114       +56.5% 15/15 (100.0%)     877.19        0.0
+    JSON Compact        163       +37.8% 13/15 (86.7%)     531.70        0.0
+    JSON                262     baseline 11/15 (73.3%)     279.90        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: SOCIAL_GRAPH
+Description: Social network with follows | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (108 tokens, 0.0ms) ---
+  [OK] What is Eve's follower_count?... => 3100
+         Got: 3100... | Number matched exactly: 3100.0
+  [OK] Is Carol verified?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Bob's follower_count?... => 800
+         Got: 800... | Number matched exactly: 800.0
+  [OK] Is David verified?... => False
+         Got: false... | Boolean false matched
+  [OK] What is Alice's follower_count?... => 1500
+         Got: 1500... | Number matched exactly: 1500.0
+  [OK] How many nodes are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many edges are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many verified users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] Who has the highest follower_count?... => Eve
+         Got: Eve... | String contained in response
+  [OK] Who has the lowest follower_count?... => David
+         Got: David... | String contained in response
+  [OK] What is the total follower_count?... => 8050
+         Got: 8100... | Number matched within tolerance: 8100.0 ≈ 8050.0
+  [OK] Who does Alice follow?... => Bob, Carol
+         Got: Bob, Carol... | All list items found: ['bob', 'carol']
+  [OK] Who follows Alice?... => David, Eve
+         Got: David, Eve... | All list items found: ['david', 'eve']
+  [OK] Does Carol follow Eve?... => True
+         Got: true... | Boolean true matched
+  [OK] How many users does Alice follow?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+--- TOON (118 tokens, 0.0ms) ---
+  [OK] What is Eve's follower_count?... => 3100
+         Got: 3100... | Number matched exactly: 3100.0
+  [OK] Is Carol verified?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Bob's follower_count?... => 800
+         Got: 800... | Number matched exactly: 800.0
+  [OK] Is David verified?... => False
+         Got: false... | Boolean false matched
+  [OK] What is Alice's follower_count?... => 1500
+         Got: 1500... | Number matched exactly: 1500.0
+  [OK] How many nodes are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many edges are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many verified users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] Who has the highest follower_count?... => Eve
+         Got: Eve... | String contained in response
+  [OK] Who has the lowest follower_count?... => David
+         Got: David... | String contained in response
+  [OK] What is the total follower_count?... => 8050
+         Got: 8050... | Number matched exactly: 8050.0
+  [OK] Who does Alice follow?... => Bob, Carol
+         Got: Bob,Carol... | All list items found: ['bob', 'carol']
+  [WRONG] Who follows Alice?... => David, Eve
+         Got: 4,5... | Missing list items: expected ['david', 'eve'], got: 4,5
+  [OK] Does Carol follow Eve?... => True
+         Got: true... | Boolean true matched
+  [OK] How many users does Alice follow?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 14/15 (93.3%)
+
+--- JSON Compact (181 tokens, 0.0ms) ---
+  [OK] What is Eve's follower_count?... => 3100
+         Got: 3100... | Number matched exactly: 3100.0
+  [OK] Is Carol verified?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Bob's follower_count?... => 800
+         Got: 800... | Number matched exactly: 800.0
+  [OK] Is David verified?... => False
+         Got: false... | Boolean false matched
+  [OK] What is Alice's follower_count?... => 1500
+         Got: 1500... | Number matched exactly: 1500.0
+  [OK] How many nodes are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many edges are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many verified users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] Who has the highest follower_count?... => Eve
+         Got: Eve... | String contained in response
+  [OK] Who has the lowest follower_count?... => David
+         Got: David... | String contained in response
+  [OK] What is the total follower_count?... => 8050
+         Got: 8050... | Number matched exactly: 8050.0
+  [OK] Who does Alice follow?... => Bob, Carol
+         Got: ["Bob","Carol"]... | All list items found: ['bob', 'carol']
+  [WRONG] Who follows Alice?... => David, Eve
+         Got: [{"source":4,"target":1,"relation":"follows"},{"source":5,"t... | Missing list items: expected ['david', 'eve'], got: [{"source":4,"target":1,"relation":"follows"},{"source":5,"target":1,"relation":"follows"}]
+  [WRONG] Does Carol follow Eve?... => True
+         Got: false... | Boolean mismatch: expected True, got: false
+  [OK] How many users does Alice follow?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (341 tokens, 0.0ms) ---
+  [OK] What is Eve's follower_count?... => 3100
+         Got: 3100... | Number matched exactly: 3100.0
+  [OK] Is Carol verified?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Bob's follower_count?... => 800
+         Got: 800... | Number matched exactly: 800.0
+  [OK] Is David verified?... => False
+         Got: false... | Boolean false matched
+  [OK] What is Alice's follower_count?... => 1500
+         Got: 1500... | Number matched exactly: 1500.0
+  [OK] How many nodes are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many edges are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many verified users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] Who has the highest follower_count?... => Eve
+         Got: Eve... | String contained in response
+  [OK] Who has the lowest follower_count?... => David
+         Got: David... | String contained in response
+  [OK] What is the total follower_count?... => 8050
+         Got: 8050... | Number matched exactly: 8050.0
+  [OK] Who does Alice follow?... => Bob, Carol
+         Got: ["Bob", "Carol"]... | All list items found: ['bob', 'carol']
+  [OK] Who follows Alice?... => David, Eve
+         Got: ["David", "Eve"]... | All list items found: ['david', 'eve']
+  [OK] Does Carol follow Eve?... => True
+         Got: true... | Boolean true matched
+  [OK] How many users does Alice follow?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                108       +68.3% 15/15 (100.0%)     925.93        0.0
+    TOON                118       +65.4% 14/15 (93.3%)     790.96        0.0
+    JSON Compact        181       +46.9% 13/15 (86.7%)     478.82        0.0
+    JSON                341     baseline 15/15 (100.0%)     293.26        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: COMPANY_GRAPH
+Description: Company relationships | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (128 tokens, 0.0ms) ---
+  [OK] How many employees does TechCorp have?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What industry is DataInc in?... => Data
+         Got: Data... | String contained in response
+  [OK] What is John CEO's role?... => CEO
+         Got: CEO... | String contained in response
+  [OK] What company is Jane CTO at?... => DataInc
+         Got: DataInc... | String contained in response
+  [OK] How many employees does CloudSys have?... => 3500
+         Got: 3500... | Number matched exactly: 3500.0
+  [OK] How many company nodes are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many person nodes are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many edges are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the partnership value between TechCorp and DataInc?... => 5000000
+         Got: 5000000... | Number matched exactly: 5000000.0
+  [OK] What is TechCorp's relation to CloudSys?... => customer
+         Got: customer... | String contained in response
+  [OK] What is the total value of all business relationships?... => 8500000
+         Got: 8500000... | Number matched exactly: 8500000.0
+  [OK] Which company has the most employees?... => TechCorp
+         Got: TechCorp... | String contained in response
+  [OK] What is DataInc's relation to CloudSys?... => vendor
+         Got: vendor... | String contained in response
+  [OK] What is the relation between John CEO and Jane CTO?... => knows
+         Got: knows... | String contained in response
+  [OK] How many edges have a value?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  Accuracy: 15/15 (100.0%)
+
+--- TOON (208 tokens, 0.0ms) ---
+  [OK] How many employees does TechCorp have?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What industry is DataInc in?... => Data
+         Got: Data... | String contained in response
+  [OK] What is John CEO's role?... => CEO
+         Got: CEO... | String contained in response
+  [OK] What company is Jane CTO at?... => DataInc
+         Got: DataInc... | String contained in response
+  [OK] How many employees does CloudSys have?... => 3500
+         Got: 3500... | Number matched exactly: 3500.0
+  [OK] How many company nodes are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many person nodes are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many edges are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the partnership value between TechCorp and DataInc?... => 5000000
+         Got: 5000000... | Number matched exactly: 5000000.0
+  [OK] What is TechCorp's relation to CloudSys?... => customer
+         Got: customer... | String contained in response
+  [OK] What is the total value of all business relationships?... => 8500000
+         Got: 8500000... | Number matched exactly: 8500000.0
+  [OK] Which company has the most employees?... => TechCorp
+         Got: TechCorp... | String contained in response
+  [OK] What is DataInc's relation to CloudSys?... => vendor
+         Got: vendor... | String contained in response
+  [OK] What is the relation between John CEO and Jane CTO?... => knows
+         Got: knows... | String contained in response
+  [OK] How many edges have a value?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON Compact (191 tokens, 0.0ms) ---
+  [OK] How many employees does TechCorp have?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What industry is DataInc in?... => Data
+         Got: Data... | String contained in response
+  [OK] What is John CEO's role?... => CEO
+         Got: CEO... | String contained in response
+  [OK] What company is Jane CTO at?... => DataInc
+         Got: DataInc... | String contained in response
+  [OK] How many employees does CloudSys have?... => 3500
+         Got: 3500... | Number matched exactly: 3500.0
+  [OK] How many company nodes are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many person nodes are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many edges are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the partnership value between TechCorp and DataInc?... => 5000000
+         Got: 5000000... | Number matched exactly: 5000000.0
+  [OK] What is TechCorp's relation to CloudSys?... => customer
+         Got: customer... | String contained in response
+  [OK] What is the total value of all business relationships?... => 8500000
+         Got: 8500000... | Number matched exactly: 8500000.0
+  [OK] Which company has the most employees?... => TechCorp
+         Got: TechCorp... | String contained in response
+  [OK] What is DataInc's relation to CloudSys?... => vendor
+         Got: vendor... | String contained in response
+  [OK] What is the relation between John CEO and Jane CTO?... => knows
+         Got: knows... | String contained in response
+  [OK] How many edges have a value?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON (356 tokens, 0.0ms) ---
+  [OK] How many employees does TechCorp have?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What industry is DataInc in?... => Data
+         Got: Data... | String contained in response
+  [OK] What is John CEO's role?... => CEO
+         Got: CEO... | String contained in response
+  [OK] What company is Jane CTO at?... => DataInc
+         Got: DataInc... | String contained in response
+  [OK] How many employees does CloudSys have?... => 3500
+         Got: 3500... | Number matched exactly: 3500.0
+  [OK] How many company nodes are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many person nodes are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many edges are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the partnership value between TechCorp and DataInc?... => 5000000
+         Got: 5000000... | Number matched exactly: 5000000.0
+  [OK] What is TechCorp's relation to CloudSys?... => customer
+         Got: customer... | String contained in response
+  [OK] What is the total value of all business relationships?... => 8500000
+         Got: 8500000... | Number matched exactly: 8500000.0
+  [OK] Which company has the most employees?... => TechCorp
+         Got: TechCorp... | String contained in response
+  [OK] What is DataInc's relation to CloudSys?... => vendor
+         Got: vendor... | String contained in response
+  [OK] What is the relation between John CEO and Jane CTO?... => knows
+         Got: knows... | String contained in response
+  [OK] How many edges have a value?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  Accuracy: 15/15 (100.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                128       +64.0% 15/15 (100.0%)     781.25        0.0
+    JSON Compact        191       +46.3% 15/15 (100.0%)     523.56        0.0
+    TOON                208       +41.6% 15/15 (100.0%)     480.77        0.0
+    JSON                356     baseline 15/15 (100.0%)     280.90        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: CONFIG
+Description: Configuration settings | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (55 tokens, 0.0ms) ---
+  [OK] What is the value of debug?... => true
+         Got: "true"... | String contained in response
+  [OK] What is the max_connections value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What type is api_url?... => string
+         Got: string... | String contained in response
+  [OK] What is the timeout value?... => 30
+         Got: 30... | Number matched exactly: 30.0
+  [OK] What environment is cache_ttl for?... => production
+         Got: production... | String contained in response
+  [OK] How many settings are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many settings are for production?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many settings are for all environments?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many integer type settings are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the api_url value?... => https://api.example.com
+         Got: https://api.example.com... | String contained in response
+  [OK] What is the log_level value?... => info
+         Got: info... | String contained in response
+  [OK] What type is max_connections?... => integer
+         Got: integer... | String contained in response
+  [OK] What environment is debug for?... => development
+         Got: development... | String contained in response
+  [OK] How many boolean type settings are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many string type settings are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+--- TOON (73 tokens, 0.0ms) ---
+  [OK] What is the value of debug?... => true
+         Got: true... | String contained in response
+  [OK] What is the max_connections value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What type is api_url?... => string
+         Got: string... | String contained in response
+  [OK] What is the timeout value?... => 30
+         Got: 30... | Number matched exactly: 30.0
+  [OK] What environment is cache_ttl for?... => production
+         Got: production... | String contained in response
+  [OK] How many settings are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many settings are for production?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many settings are for all environments?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many integer type settings are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the api_url value?... => https://api.example.com
+         Got: https://api.example.com... | String contained in response
+  [OK] What is the log_level value?... => info
+         Got: info... | String contained in response
+  [OK] What type is max_connections?... => integer
+         Got: integer... | String contained in response
+  [OK] What environment is debug for?... => development
+         Got: development... | String contained in response
+  [OK] How many boolean type settings are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many string type settings are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON Compact (111 tokens, 0.0ms) ---
+  [OK] What is the value of debug?... => true
+         Got: true... | String contained in response
+  [OK] What is the max_connections value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What type is api_url?... => string
+         Got: string... | String contained in response
+  [OK] What is the timeout value?... => 30
+         Got: 30... | Number matched exactly: 30.0
+  [OK] What environment is cache_ttl for?... => production
+         Got: production... | String contained in response
+  [OK] How many settings are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many settings are for production?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many settings are for all environments?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many integer type settings are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the api_url value?... => https://api.example.com
+         Got: https://api.example.com... | String contained in response
+  [OK] What is the log_level value?... => info
+         Got: info... | String contained in response
+  [OK] What type is max_connections?... => integer
+         Got: integer... | String contained in response
+  [OK] What environment is debug for?... => development
+         Got: development... | String contained in response
+  [OK] How many boolean type settings are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many string type settings are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON (211 tokens, 0.0ms) ---
+  [OK] What is the value of debug?... => true
+         Got: true... | String contained in response
+  [OK] What is the max_connections value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What type is api_url?... => string
+         Got: string... | String contained in response
+  [OK] What is the timeout value?... => 30
+         Got: 30... | Number matched exactly: 30.0
+  [OK] What environment is cache_ttl for?... => production
+         Got: production... | String contained in response
+  [OK] How many settings are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many settings are for production?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many settings are for all environments?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many integer type settings are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the api_url value?... => https://api.example.com
+         Got: https://api.example.com... | String contained in response
+  [OK] What is the log_level value?... => info
+         Got: info... | String contained in response
+  [OK] What type is max_connections?... => integer
+         Got: integer... | String contained in response
+  [OK] What environment is debug for?... => development
+         Got: development... | String contained in response
+  [OK] How many boolean type settings are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many string type settings are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 55       +73.9% 15/15 (100.0%)    1818.18        0.0
+    TOON                 73       +65.4% 15/15 (100.0%)    1369.86        0.0
+    JSON Compact        111       +47.4% 15/15 (100.0%)     900.90        0.0
+    JSON                211     baseline 15/15 (100.0%)     473.93        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: LOGS
+Description: System log entries | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (158 tokens, 0.0ms) ---
+  [OK] What service logged 'Server started'?... => api
+         Got: api... | String contained in response
+  [OK] What level is the cache log?... => WARN
+         Got: WARN... | String contained in response
+  [OK] What service had the ERROR 'Login failed'?... => auth
+         Got: auth... | String contained in response
+  [OK] What message did db log at ERROR level?... => Query timeout
+         Got: "Query timeout"... | String contained in response
+  [OK] What level is the DEBUG log?... => DEBUG
+         Got: DEBUG... | String contained in response
+  [OK] How many logs are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many INFO logs are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many ERROR logs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many logs from the api service?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [WRONG] How many unique services are logged?... => 4
+         Got: 3... | Number not found: expected 4.0, got: 3
+  [OK] Which service has the most logs?... => api
+         Got: api... | String contained in response
+  [OK] What was the first log message?... => Server started
+         Got: "Server started"... | String contained in response
+  [OK] What was the last log message?... => Health OK
+         Got: "Health OK"... | String contained in response
+  [OK] How many WARN logs are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many logs from db service?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 14/15 (93.3%)
+
+--- TOON (194 tokens, 0.0ms) ---
+  [OK] What service logged 'Server started'?... => api
+         Got: api... | String contained in response
+  [OK] What level is the cache log?... => WARN
+         Got: WARN... | String contained in response
+  [OK] What service had the ERROR 'Login failed'?... => auth
+         Got: auth... | String contained in response
+  [OK] What message did db log at ERROR level?... => Query timeout
+         Got: Query timeout... | String contained in response
+  [OK] What level is the DEBUG log?... => DEBUG
+         Got: DEBUG... | String contained in response
+  [OK] How many logs are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many INFO logs are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many ERROR logs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many logs from the api service?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [WRONG] How many unique services are logged?... => 4
+         Got: 3... | Number not found: expected 4.0, got: 3
+  [OK] Which service has the most logs?... => api
+         Got: api... | String contained in response
+  [OK] What was the first log message?... => Server started
+         Got: Server started... | String contained in response
+  [OK] What was the last log message?... => Health OK
+         Got: Health OK... | String contained in response
+  [OK] How many WARN logs are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many logs from db service?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 14/15 (93.3%)
+
+--- JSON Compact (236 tokens, 1.8ms) ---
+  [OK] What service logged 'Server started'?... => api
+         Got: api... | String contained in response
+  [OK] What level is the cache log?... => WARN
+         Got: WARN... | String contained in response
+  [OK] What service had the ERROR 'Login failed'?... => auth
+         Got: auth... | String contained in response
+  [OK] What message did db log at ERROR level?... => Query timeout
+         Got: "Query timeout"... | String contained in response
+  [OK] What level is the DEBUG log?... => DEBUG
+         Got: DEBUG... | String contained in response
+  [OK] How many logs are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many INFO logs are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many ERROR logs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many logs from the api service?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many unique services are logged?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] Which service has the most logs?... => api
+         Got: api... | String contained in response
+  [OK] What was the first log message?... => Server started
+         Got: "Server started"... | String contained in response
+  [OK] What was the last log message?... => Health OK
+         Got: "Health OK"... | String contained in response
+  [OK] How many WARN logs are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many logs from db service?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON (368 tokens, 0.0ms) ---
+  [OK] What service logged 'Server started'?... => api
+         Got: api... | String contained in response
+  [OK] What level is the cache log?... => WARN
+         Got: WARN... | String contained in response
+  [OK] What service had the ERROR 'Login failed'?... => auth
+         Got: auth... | String contained in response
+  [OK] What message did db log at ERROR level?... => Query timeout
+         Got: "Query timeout"... | String contained in response
+  [OK] What level is the DEBUG log?... => DEBUG
+         Got: DEBUG... | String contained in response
+  [OK] How many logs are there?... => 8
+         Got: 8... | Number matched exactly: 8.0
+  [OK] How many INFO logs are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many ERROR logs are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many logs from the api service?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [WRONG] How many unique services are logged?... => 4
+         Got: 5... | Number not found: expected 4.0, got: 5
+  [OK] Which service has the most logs?... => api
+         Got: api... | String contained in response
+  [OK] What was the first log message?... => Server started
+         Got: "Server started"... | String contained in response
+  [OK] What was the last log message?... => Health OK
+         Got: "Health OK"... | String contained in response
+  [OK] How many WARN logs are there?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] How many logs from db service?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 14/15 (93.3%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                158       +57.1% 14/15 (93.3%)     590.72        0.0
+    TOON                194       +47.3% 14/15 (93.3%)     481.10        0.0
+    JSON Compact        236       +35.9% 15/15 (100.0%)     423.73        1.8
+    JSON                368     baseline 14/15 (93.3%)     253.62        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: TRANSACTIONS
+Description: Financial transactions | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (86 tokens, 0.0ms) ---
+  [OK] What is the amount of transaction 1?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What category is transaction 4?... => rent
+         Got: rent... | String contained in response
+  [OK] What type is transaction 5?... => credit
+         Got: credit... | String contained in response
+  [OK] What is the amount of the food transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [OK] What date is transaction 3?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] How many transactions are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many credit transactions are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many debit transactions are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the total credit amount?... => 5250
+         Got: 5250... | Number matched exactly: 5250.0
+  [OK] What is the total debit amount?... => 1395
+         Got: 1395... | Number matched exactly: 1395.0
+  [WRONG] What is the largest transaction?... => 5000
+         Got: 1200... | Number not found: expected 5000.0, got: 1200
+  [OK] What is the smallest transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [WRONG] What is the net balance change?... => 3855
+         Got: 3295... | Number not found: expected 3855.0, got: 3295
+  [WRONG] Which transaction is the largest?... => 1
+         Got: 5... | String mismatch: expected '1', got: '5'
+  [OK] What is the average transaction amount?... => 1329
+         Got: 1323... | Number matched within tolerance: 1323.0 ≈ 1329.0
+  Accuracy: 12/15 (80.0%)
+
+--- TOON (116 tokens, 0.0ms) ---
+  [OK] What is the amount of transaction 1?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What category is transaction 4?... => rent
+         Got: rent... | String contained in response
+  [OK] What type is transaction 5?... => credit
+         Got: credit... | String contained in response
+  [OK] What is the amount of the food transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [OK] What date is transaction 3?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] How many transactions are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many credit transactions are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many debit transactions are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the total credit amount?... => 5250
+         Got: 5250... | Number matched exactly: 5250.0
+  [OK] What is the total debit amount?... => 1395
+         Got: 1395... | Number matched exactly: 1395.0
+  [WRONG] What is the largest transaction?... => 5000
+         Got: 1200... | Number not found: expected 5000.0, got: 1200
+  [OK] What is the smallest transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [WRONG] What is the net balance change?... => 3855
+         Got: 3655... | Number not found: expected 3855.0, got: 3655
+  [WRONG] Which transaction is the largest?... => 1
+         Got: 5... | String mismatch: expected '1', got: '5'
+  [OK] What is the average transaction amount?... => 1329
+         Got: 1330... | Number matched within tolerance: 1330.0 ≈ 1329.0
+  Accuracy: 12/15 (80.0%)
+
+--- JSON Compact (160 tokens, 0.0ms) ---
+  [OK] What is the amount of transaction 1?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What category is transaction 4?... => rent
+         Got: rent... | String contained in response
+  [OK] What type is transaction 5?... => credit
+         Got: credit... | String contained in response
+  [OK] What is the amount of the food transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [OK] What date is transaction 3?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] How many transactions are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many credit transactions are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many debit transactions are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is the total credit amount?... => 5250
+         Got: 5250... | Number matched exactly: 5250.0
+  [OK] What is the total debit amount?... => 1395
+         Got: 1395... | Number matched exactly: 1395.0
+  [WRONG] What is the largest transaction?... => 5000
+         Got: {"id":4,"date":"2024-01-13","type":"debit","amount":1200,"ca... | Number not found: expected 5000.0, got: {"id":4,"date":"2024-01-13","type":"debit","amount
+  [OK] What is the smallest transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [WRONG] What is the net balance change?... => 3855
+         Got: 3555... | Number not found: expected 3855.0, got: 3555
+  [OK] Which transaction is the largest?... => 1
+         Got: {"id":4,"date":"2024-01-13","type":"debit","amount":1200,"ca... | String contained in response
+  [OK] What is the average transaction amount?... => 1329
+         Got: 1329... | Number matched exactly: 1329.0
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (274 tokens, 0.0ms) ---
+  [OK] What is the amount of transaction 1?... => 5000
+         Got: 5000... | Number matched exactly: 5000.0
+  [OK] What category is transaction 4?... => rent
+         Got: rent... | String contained in response
+  [OK] What type is transaction 5?... => credit
+         Got: credit... | String contained in response
+  [OK] What is the amount of the food transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [OK] What date is transaction 3?... => 2024-01-12
+         Got: 2024-01-12... | Date matched
+  [OK] How many transactions are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] How many credit transactions are there?... => 2
+         Got: 1... | Number not found: expected 2.0, got: 1
+  [OK] How many debit transactions are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [WRONG] What is the total credit amount?... => 5250
+         Got: 250... | Number not found: expected 5250.0, got: 250
+  [WRONG] What is the total debit amount?... => 1395
+         Got: 1575... | Number not found: expected 1395.0, got: 1575
+  [WRONG] What is the largest transaction?... => 5000
+         Got: 1200... | Number not found: expected 5000.0, got: 1200
+  [OK] What is the smallest transaction?... => 45
+         Got: 45... | Number matched exactly: 45.0
+  [WRONG] What is the net balance change?... => 3855
+         Got: -3320... | Number not found: expected 3855.0, got: -3320
+  [WRONG] Which transaction is the largest?... => 1
+         Got: 5... | String mismatch: expected '1', got: '5'
+  [WRONG] What is the average transaction amount?... => 1329
+         Got: 330... | Number not found: expected 1329.0, got: 330
+  Accuracy: 8/15 (53.3%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 86       +68.6% 12/15 (80.0%)     930.23        0.0
+    TOON                116       +57.7% 12/15 (80.0%)     689.66        0.0
+    JSON Compact        160       +41.6% 13/15 (86.7%)     541.67        0.0
+    JSON                274     baseline 8/15 (53.3%)     194.65        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: STOCKS
+Description: Stock price history | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (129 tokens, 2.0ms) ---
+  [OK] What was TECH's close on 2024-01-09?... => 155
+         Got: 155... | Number matched exactly: 155.0
+  [OK] What was DATA's volume on 2024-01-08?... => 890000
+         Got: 890000... | Number matched exactly: 890000.0
+  [OK] What was TECH's high on 2024-01-10?... => 157
+         Got: 157... | Number matched exactly: 157.0
+  [OK] What was DATA's open on 2024-01-09?... => 82
+         Got: 82... | Number matched exactly: 82.0
+  [OK] What was TECH's low on 2024-01-08?... => 149
+         Got: 149... | Number matched exactly: 149.0
+  [OK] How many price records are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many TECH records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many DATA records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is TECH's average close?... => 153.33
+         Got: 153.33... | Number matched exactly: 153.33
+  [OK] What is DATA's average close?... => 83
+         Got: 83... | Number matched exactly: 83.0
+  [OK] What is the total TECH volume?... => 4050000
+         Got: 4050000... | Number matched exactly: 4050000.0
+  [OK] What is the total DATA volume?... => 2940000
+         Got: 2940000... | Number matched exactly: 2940000.0
+  [WRONG] Which stock had the highest close?... => TECH
+         Got: DATA... | String mismatch: expected 'TECH', got: 'DATA'
+  [OK] What was TECH's highest high?... => 157
+         Got: 157... | Number matched exactly: 157.0
+  [OK] What was DATA's lowest low?... => 79
+         Got: 79... | Number matched exactly: 79.0
+  Accuracy: 14/15 (93.3%)
+
+--- TOON (154 tokens, 0.0ms) ---
+  [OK] What was TECH's close on 2024-01-09?... => 155
+         Got: 155... | Number matched exactly: 155.0
+  [OK] What was DATA's volume on 2024-01-08?... => 890000
+         Got: 890000... | Number matched exactly: 890000.0
+  [OK] What was TECH's high on 2024-01-10?... => 157
+         Got: 157... | Number matched exactly: 157.0
+  [OK] What was DATA's open on 2024-01-09?... => 82
+         Got: 82... | Number matched exactly: 82.0
+  [OK] What was TECH's low on 2024-01-08?... => 149
+         Got: 149... | Number matched exactly: 149.0
+  [OK] How many price records are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many TECH records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many DATA records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is TECH's average close?... => 153.33
+         Got: 153.33... | Number matched exactly: 153.33
+  [OK] What is DATA's average close?... => 83
+         Got: 83... | Number matched exactly: 83.0
+  [OK] What is the total TECH volume?... => 4050000
+         Got: 4050000... | Number matched exactly: 4050000.0
+  [OK] What is the total DATA volume?... => 2940000
+         Got: 2940000... | Number matched exactly: 2940000.0
+  [OK] Which stock had the highest close?... => TECH
+         Got: TECH... | String contained in response
+  [OK] What was TECH's highest high?... => 157
+         Got: 157... | Number matched exactly: 157.0
+  [OK] What was DATA's lowest low?... => 79
+         Got: 79... | Number matched exactly: 79.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON Compact (213 tokens, 1.2ms) ---
+  [OK] What was TECH's close on 2024-01-09?... => 155
+         Got: 155... | Number matched exactly: 155.0
+  [OK] What was DATA's volume on 2024-01-08?... => 890000
+         Got: 890000... | Number matched exactly: 890000.0
+  [OK] What was TECH's high on 2024-01-10?... => 157
+         Got: 157... | Number matched exactly: 157.0
+  [WRONG] What was DATA's open on 2024-01-09?... => 82
+         Got: 84... | Number not found: expected 82.0, got: 84
+  [OK] What was TECH's low on 2024-01-08?... => 149
+         Got: 149... | Number matched exactly: 149.0
+  [OK] How many price records are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many TECH records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many DATA records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is TECH's average close?... => 153.33
+         Got: 153.33... | Number matched exactly: 153.33
+  [OK] What is DATA's average close?... => 83
+         Got: 83... | Number matched exactly: 83.0
+  [OK] What is the total TECH volume?... => 4050000
+         Got: 4050000... | Number matched exactly: 4050000.0
+  [OK] What is the total DATA volume?... => 2940000
+         Got: 2940000... | Number matched exactly: 2940000.0
+  [WRONG] Which stock had the highest close?... => TECH
+         Got: DATA... | String mismatch: expected 'TECH', got: 'DATA'
+  [OK] What was TECH's highest high?... => 157
+         Got: 156... | Number matched within tolerance: 156.0 ≈ 157.0
+  [OK] What was DATA's lowest low?... => 79
+         Got: 79... | Number matched exactly: 79.0
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (367 tokens, 0.0ms) ---
+  [OK] What was TECH's close on 2024-01-09?... => 155
+         Got: 155... | Number matched exactly: 155.0
+  [OK] What was DATA's volume on 2024-01-08?... => 890000
+         Got: 890000... | Number matched exactly: 890000.0
+  [OK] What was TECH's high on 2024-01-10?... => 157
+         Got: 157... | Number matched exactly: 157.0
+  [WRONG] What was DATA's open on 2024-01-09?... => 82
+         Got: 84... | Number not found: expected 82.0, got: 84
+  [OK] What was TECH's low on 2024-01-08?... => 149
+         Got: 149... | Number matched exactly: 149.0
+  [OK] How many price records are there?... => 6
+         Got: 6... | Number matched exactly: 6.0
+  [OK] How many TECH records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many DATA records are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [WRONG] What is TECH's average close?... => 153.33
+         Got: 150... | Number not found: expected 153.33, got: 150
+  [OK] What is DATA's average close?... => 83
+         Got: 83... | Number matched exactly: 83.0
+  [OK] What is the total TECH volume?... => 4050000
+         Got: 4050000... | Number matched exactly: 4050000.0
+  [OK] What is the total DATA volume?... => 2940000
+         Got: 2940000... | Number matched exactly: 2940000.0
+  [WRONG] Which stock had the highest close?... => TECH
+         Got: DATA... | String mismatch: expected 'TECH', got: 'DATA'
+  [OK] What was TECH's highest high?... => 157
+         Got: 156... | Number matched within tolerance: 156.0 ≈ 157.0
+  [WRONG] What was DATA's lowest low?... => 79
+         Got: 81... | Number not found: expected 79.0, got: 81
+  Accuracy: 11/15 (73.3%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                129       +64.9% 14/15 (93.3%)     723.51        2.0
+    TOON                154       +58.0% 15/15 (100.0%)     649.35        0.0
+    JSON Compact        213       +42.0% 13/15 (86.7%)     406.89        1.2
+    JSON                367     baseline 11/15 (73.3%)     199.82        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: INVENTORY
+Description: Warehouse inventory | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (73 tokens, 0.0ms) ---
+  [OK] What is Widget A's quantity?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Where is Gadget Y located?... => B2
+         Got: B2... | String contained in response
+  [OK] What is the price of Part Z?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] What is the SKU for Gadget X?... => SKU003
+         Got: SKU003... | String contained in response
+  [OK] What is Widget B's location?... => A2
+         Got: A2... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many products are in location A?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many products are in location B?... => 2
+         Got: 250... | Number not found: expected 2.0, got: 250
+  [OK] What is the total quantity?... => 975
+         Got: 975... | Number matched exactly: 975.0
+  [WRONG] What is the total inventory value?... => 11625
+         Got: 13750... | Number not found: expected 11625.0, got: 13750
+  [OK] What is the name of the product with the most stock?... => Part Z
+         Got: "Part Z"... | String contained in response
+  [WRONG] What is the name of the product with the least stock?... => Gadget Y
+         Got: "Widget B"... | String mismatch: expected 'Gadget Y', got: '"Widget B"'
+  [OK] What is the average price?... => 18
+         Got: 18... | Number matched exactly: 18.0
+  [OK] What is the most expensive item?... => Gadget Y
+         Got: "Gadget Y"... | String contained in response
+  [OK] What is the name of the cheapest product?... => Part Z
+         Got: Part Z... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+--- TOON (78 tokens, 1.0ms) ---
+  [OK] What is Widget A's quantity?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Where is Gadget Y located?... => B2
+         Got: B2... | String contained in response
+  [OK] What is the price of Part Z?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] What is the SKU for Gadget X?... => SKU003
+         Got: SKU003... | String contained in response
+  [OK] What is Widget B's location?... => A2
+         Got: A2... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many products are in location A?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many products are in location B?... => 2
+         Got: 250... | Number not found: expected 2.0, got: 250
+  [OK] What is the total quantity?... => 975
+         Got: 975... | Number matched exactly: 975.0
+  [WRONG] What is the total inventory value?... => 11625
+         Got: 13750... | Number not found: expected 11625.0, got: 13750
+  [OK] What is the name of the product with the most stock?... => Part Z
+         Got: Part Z... | String contained in response
+  [OK] What is the name of the product with the least stock?... => Gadget Y
+         Got: Gadget Y... | String contained in response
+  [OK] What is the average price?... => 18
+         Got: 18... | Number matched exactly: 18.0
+  [OK] What is the most expensive item?... => Gadget Y
+         Got: Gadget Y... | String contained in response
+  [OK] What is the name of the cheapest product?... => Part Z
+         Got: Part Z... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- JSON Compact (122 tokens, 0.0ms) ---
+  [OK] What is Widget A's quantity?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Where is Gadget Y located?... => B2
+         Got: B2... | String contained in response
+  [OK] What is the price of Part Z?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] What is the SKU for Gadget X?... => SKU003
+         Got: SKU003... | String contained in response
+  [OK] What is Widget B's location?... => A2
+         Got: A2... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many products are in location A?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many products are in location B?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the total quantity?... => 975
+         Got: 975... | Number matched exactly: 975.0
+  [WRONG] What is the total inventory value?... => 11625
+         Got: 16250... | Number not found: expected 11625.0, got: 16250
+  [OK] What is the name of the product with the most stock?... => Part Z
+         Got: Part Z... | String contained in response
+  [WRONG] What is the name of the product with the least stock?... => Gadget Y
+         Got: Widget B... | String mismatch: expected 'Gadget Y', got: 'Widget B'
+  [OK] What is the average price?... => 18
+         Got: 18... | Number matched exactly: 18.0
+  [OK] What is the most expensive item?... => Gadget Y
+         Got: Gadget Y... | String contained in response
+  [OK] What is the name of the cheapest product?... => Part Z
+         Got: Part Z... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (221 tokens, 0.0ms) ---
+  [OK] What is Widget A's quantity?... => 150
+         Got: 150... | Number matched exactly: 150.0
+  [OK] Where is Gadget Y located?... => B2
+         Got: B2... | String contained in response
+  [OK] What is the price of Part Z?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] What is the SKU for Gadget X?... => SKU003
+         Got: SKU003... | String contained in response
+  [OK] What is Widget B's location?... => A2
+         Got: A2... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many products are in location A?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many products are in location B?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the total quantity?... => 975
+         Got: 975... | Number matched exactly: 975.0
+  [WRONG] What is the total inventory value?... => 11625
+         Got: 13750... | Number not found: expected 11625.0, got: 13750
+  [WRONG] What is the name of the product with the most stock?... => Part Z
+         Got: Gadget X... | String mismatch: expected 'Part Z', got: 'Gadget X'
+  [OK] What is the name of the product with the least stock?... => Gadget Y
+         Got: Gadget Y... | String contained in response
+  [WRONG] What is the average price?... => 18
+         Got: 20... | Number not found: expected 18.0, got: 20
+  [OK] What is the most expensive item?... => Gadget Y
+         Got: "Gadget Y"... | String contained in response
+  [OK] What is the name of the cheapest product?... => Part Z
+         Got: Part Z... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 73       +67.0% 12/15 (80.0%)    1095.89        0.0
+    TOON                 78       +64.7% 13/15 (86.7%)    1111.11        1.0
+    JSON Compact        122       +44.8% 13/15 (86.7%)     710.38        0.0
+    JSON                221     baseline 12/15 (80.0%)     361.99        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: PRODUCTS
+Description: Product catalog | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (92 tokens, 0.0ms) ---
+  [OK] What is the Laptop Pro's price?... => 1299
+         Got: 1299... | Number matched exactly: 1299.0
+  [OK] What brand is the Monitor 27?... => ViewPro
+         Got: ViewPro... | String contained in response
+  [OK] What is the Keyboard's rating?... => 4.2
+         Got: 4.2... | Number matched exactly: 4.2
+  [OK] How many reviews does Mouse have?... => 892
+         Got: 892... | Number matched exactly: 892.0
+  [OK] Is USB Hub in stock?... => True
+         Got: true... | Boolean true matched
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many products are in stock?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many products are out of stock?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] Which product has the highest rating?... => Monitor 27
+         Got: "Monitor 27"... | String contained in response
+  [OK] Which product has the most reviews?... => Mouse
+         Got: Mouse ClickMax... | String contained in response
+  [OK] What is the average rating?... => 4.42
+         Got: 4.42... | Number matched exactly: 4.42
+  [OK] What is the total number of reviews?... => 2127
+         Got: 2127... | Number matched exactly: 2127.0
+  [OK] Which product is the most expensive?... => Laptop Pro
+         Got: "Laptop Pro"... | String contained in response
+  [OK] Which product is the cheapest?... => USB Hub
+         Got: "USB Hub"... | String contained in response
+  [OK] What is the average price?... => 420.2
+         Got: 420.2... | Number matched exactly: 420.2
+  Accuracy: 15/15 (100.0%)
+
+--- TOON (110 tokens, 0.0ms) ---
+  [OK] What is the Laptop Pro's price?... => 1299
+         Got: 1299... | Number matched exactly: 1299.0
+  [OK] What brand is the Monitor 27?... => ViewPro
+         Got: ViewPro... | String contained in response
+  [OK] What is the Keyboard's rating?... => 4.2
+         Got: 4.2... | Number matched exactly: 4.2
+  [OK] How many reviews does Mouse have?... => 892
+         Got: 892... | Number matched exactly: 892.0
+  [OK] Is USB Hub in stock?... => True
+         Got: true... | Boolean true matched
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] How many products are in stock?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many products are out of stock?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] Which product has the highest rating?... => Monitor 27
+         Got: Monitor 27... | String contained in response
+  [WRONG] Which product has the most reviews?... => Mouse
+         Got: Keyboard... | String mismatch: expected 'Mouse', got: 'Keyboard'
+  [OK] What is the average rating?... => 4.42
+         Got: 4.42... | Number matched exactly: 4.42
+  [OK] What is the total number of reviews?... => 2127
+         Got: 2127... | Number matched exactly: 2127.0
+  [OK] Which product is the most expensive?... => Laptop Pro
+         Got: Laptop Pro... | String contained in response
+  [OK] Which product is the cheapest?... => USB Hub
+         Got: USB Hub... | String contained in response
+  [OK] What is the average price?... => 420.2
+         Got: 420.2... | Number matched exactly: 420.2
+  Accuracy: 14/15 (93.3%)
+
+--- JSON Compact (170 tokens, 0.0ms) ---
+  [OK] What is the Laptop Pro's price?... => 1299
+         Got: 1299... | Number matched exactly: 1299.0
+  [OK] What brand is the Monitor 27?... => ViewPro
+         Got: ViewPro... | String contained in response
+  [OK] What is the Keyboard's rating?... => 4.2
+         Got: 4.2... | Number matched exactly: 4.2
+  [OK] How many reviews does Mouse have?... => 892
+         Got: 892... | Number matched exactly: 892.0
+  [OK] Is USB Hub in stock?... => True
+         Got: true... | Boolean true matched
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] How many products are in stock?... => 4
+         Got: 3... | Number not found: expected 4.0, got: 3
+  [OK] How many products are out of stock?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] Which product has the highest rating?... => Monitor 27
+         Got: "Monitor 27"... | String contained in response
+  [OK] Which product has the most reviews?... => Mouse
+         Got: Mouse... | String contained in response
+  [OK] What is the average rating?... => 4.42
+         Got: 4.42... | Number matched exactly: 4.42
+  [OK] What is the total number of reviews?... => 2127
+         Got: 2127... | Number matched exactly: 2127.0
+  [OK] Which product is the most expensive?... => Laptop Pro
+         Got: "Laptop Pro"... | String contained in response
+  [OK] Which product is the cheapest?... => USB Hub
+         Got: "USB Hub"... | String contained in response
+  [OK] What is the average price?... => 420.2
+         Got: 420.2... | Number matched exactly: 420.2
+  Accuracy: 14/15 (93.3%)
+
+--- JSON (294 tokens, 0.0ms) ---
+  [OK] What is the Laptop Pro's price?... => 1299
+         Got: 1299... | Number matched exactly: 1299.0
+  [OK] What brand is the Monitor 27?... => ViewPro
+         Got: ViewPro... | String contained in response
+  [OK] What is the Keyboard's rating?... => 4.2
+         Got: 4.2... | Number matched exactly: 4.2
+  [OK] How many reviews does Mouse have?... => 892
+         Got: 892... | Number matched exactly: 892.0
+  [OK] Is USB Hub in stock?... => True
+         Got: true... | Boolean true matched
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] How many products are in stock?... => 4
+         Got: 5... | Number not found: expected 4.0, got: 5
+  [OK] How many products are out of stock?... => 1
+         Got: 1... | Number matched exactly: 1.0
+  [OK] Which product has the highest rating?... => Monitor 27
+         Got: "Monitor 27"... | String contained in response
+  [OK] Which product has the most reviews?... => Mouse
+         Got: Mouse... | String contained in response
+  [OK] What is the average rating?... => 4.42
+         Got: 4.42... | Number matched exactly: 4.42
+  [WRONG] What is the total number of reviews?... => 2127
+         Got: 1567... | Number not found: expected 2127.0, got: 1567
+  [OK] Which product is the most expensive?... => Laptop Pro
+         Got: "Laptop Pro"... | String contained in response
+  [OK] Which product is the cheapest?... => USB Hub
+         Got: "USB Hub"... | String contained in response
+  [WRONG] What is the average price?... => 420.2
+         Got: 642... | Number not found: expected 420.2, got: 642
+  Accuracy: 12/15 (80.0%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 92       +68.7% 15/15 (100.0%)    1086.96        0.0
+    TOON                110       +62.6% 14/15 (93.3%)     848.48        0.0
+    JSON Compact        170       +42.2% 14/15 (93.3%)     549.02        0.0
+    JSON                294     baseline 12/15 (80.0%)     272.11        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: EDGE_NULLS
+Description: Dataset with null values | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (47 tokens, 0.0ms) ---
+  [OK] What is record 1's value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What is record 2's value?... => None
+         Got: null... | Null correctly identified
+  [OK] What is record 3's optional?... => None
+         Got: null... | Null correctly identified
+  [OK] Is record 4's value null?... => True
+         Got: null... | Boolean true matched (null confirmation)
+  [OK] Is record 4's optional null?... => True
+         Got: null... | Boolean true matched (null confirmation)
+  [OK] How many records have a null value?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many records have a null optional?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many records have both fields present?... => 3
+         Got: 2... | Number not found: expected 3.0, got: 2
+  [OK] What is record 5's value?... => 75
+         Got: 75... | Number matched exactly: 75.0
+  [OK] What is record 5's optional?... => here
+         Got: here... | String contained in response
+  [OK] Which record has 'present' in optional?... => 1, 2
+         Got: 1,2... | All list items found: ['1', '2']
+  [OK] What is the sum of non-null values?... => 225
+         Got: 225... | Number matched exactly: 225.0
+  [WRONG] How many records have no nulls?... => 3
+         Got: 2... | Number not found: expected 3.0, got: 2
+  [OK] What is record 3's value?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] What is record 1's name?... => Complete
+         Got: Complete... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- TOON (60 tokens, 0.0ms) ---
+  [OK] What is record 1's value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What is record 2's value?... => None
+         Got: null... | Null correctly identified
+  [OK] What is record 3's optional?... => None
+         Got: null... | Null correctly identified
+  [OK] Is record 4's value null?... => True
+         Got: null... | Boolean true matched (null confirmation)
+  [OK] Is record 4's optional null?... => True
+         Got: null... | Boolean true matched (null confirmation)
+  [OK] How many records have a null value?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many records have a null optional?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many records have both fields present?... => 3
+         Got: 2... | Number not found: expected 3.0, got: 2
+  [OK] What is record 5's value?... => 75
+         Got: 75... | Number matched exactly: 75.0
+  [OK] What is record 5's optional?... => here
+         Got: here... | String contained in response
+  [OK] Which record has 'present' in optional?... => 1, 2
+         Got: 1,2,5... | All list items found: ['1', '2']
+  [OK] What is the sum of non-null values?... => 225
+         Got: 225... | Number matched exactly: 225.0
+  [WRONG] How many records have no nulls?... => 3
+         Got: 2... | Number not found: expected 3.0, got: 2
+  [OK] What is record 3's value?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] What is record 1's name?... => Complete
+         Got: Complete... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- JSON Compact (89 tokens, 0.0ms) ---
+  [OK] What is record 1's value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What is record 2's value?... => None
+         Got: null... | Null correctly identified
+  [OK] What is record 3's optional?... => None
+         Got: null... | Null correctly identified
+  [OK] Is record 4's value null?... => True
+         Got: true... | Boolean true matched
+  [OK] Is record 4's optional null?... => True
+         Got: null... | Boolean true matched (null confirmation)
+  [OK] How many records have a null value?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many records have a null optional?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many records have both fields present?... => 3
+         Got: 2... | Number not found: expected 3.0, got: 2
+  [OK] What is record 5's value?... => 75
+         Got: 75... | Number matched exactly: 75.0
+  [OK] What is record 5's optional?... => here
+         Got: here... | String contained in response
+  [OK] Which record has 'present' in optional?... => 1, 2
+         Got: [1,2]... | All list items found: ['1', '2']
+  [OK] What is the sum of non-null values?... => 225
+         Got: 225... | Number matched exactly: 225.0
+  [WRONG] How many records have no nulls?... => 3
+         Got: 2... | Number not found: expected 3.0, got: 2
+  [OK] What is record 3's value?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] What is record 1's name?... => Complete
+         Got: Complete... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (169 tokens, 0.0ms) ---
+  [OK] What is record 1's value?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [OK] What is record 2's value?... => None
+         Got: null... | Null correctly identified
+  [OK] What is record 3's optional?... => None
+         Got: null... | Null correctly identified
+  [OK] Is record 4's value null?... => True
+         Got: true... | Boolean true matched
+  [OK] Is record 4's optional null?... => True
+         Got: null... | Boolean true matched (null confirmation)
+  [OK] How many records have a null value?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many records have a null optional?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many records have both fields present?... => 3
+         Got: 2... | Number not found: expected 3.0, got: 2
+  [OK] What is record 5's value?... => 75
+         Got: 75... | Number matched exactly: 75.0
+  [OK] What is record 5's optional?... => here
+         Got: "here"... | String contained in response
+  [OK] Which record has 'present' in optional?... => 1, 2
+         Got: [1,2]... | All list items found: ['1', '2']
+  [OK] What is the sum of non-null values?... => 225
+         Got: 225... | Number matched exactly: 225.0
+  [OK] How many records have no nulls?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] What is record 3's value?... => 50
+         Got: 50... | Number matched exactly: 50.0
+  [OK] What is record 1's name?... => Complete
+         Got: Complete... | String contained in response
+  Accuracy: 14/15 (93.3%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 47       +72.2% 13/15 (86.7%)    1843.97        0.0
+    TOON                 60       +64.5% 13/15 (86.7%)    1444.44        0.0
+    JSON Compact         89       +47.3% 13/15 (86.7%)     973.78        0.0
+    JSON                169     baseline 14/15 (93.3%)     552.27        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: EDGE_NUMBERS
+Description: Numeric edge cases | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (71 tokens, 0.0ms) ---
+  [OK] What is record 1's integer?... => 0
+         Got: 0... | Number matched exactly: 0.0
+  [OK] What is record 2's decimal?... => 0.001
+         Got: 0.001... | Number matched exactly: 0.001
+  [OK] What is record 3's negative?... => -999
+         Got: -999... | Number matched exactly: -999.0
+  [OK] What is record 4's large value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's integer?... => -50
+         Got: -50... | Number matched exactly: -50.0
+  [OK] How many records are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the sum of integers?... => 51
+         Got: 51... | Number matched exactly: 51.0
+  [WRONG] What is the smallest negative?... => -999
+         Got: -100... | Number not found: expected -999.0, got: -100
+  [OK] What is the largest 'large' value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's decimal?... => 3.14159
+         Got: 3.14159... | Number matched exactly: 3.14159
+  [OK] What is record 1's negative?... => -100
+         Got: -100... | Number matched exactly: -100.0
+  [OK] What is record 2's large?... => 999999999
+         Got: 999999999... | Number matched exactly: 999999999.0
+  [OK] What is record 3's integer?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [WRONG] What is the sum of all large values?... => 3270940435
+         Got: 4381964133... | Number not found: expected 3270940435.0, got: 4381964133
+  [OK] Which record has integer=0?... => 1
+         Got: 1... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- TOON (82 tokens, 1.0ms) ---
+  [OK] What is record 1's integer?... => 0
+         Got: 0... | Number matched exactly: 0.0
+  [OK] What is record 2's decimal?... => 0.001
+         Got: 0.001... | Number matched exactly: 0.001
+  [OK] What is record 3's negative?... => -999
+         Got: -999... | Number matched exactly: -999.0
+  [OK] What is record 4's large value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's integer?... => -50
+         Got: -50... | Number matched exactly: -50.0
+  [OK] How many records are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the sum of integers?... => 51
+         Got: 51... | Number matched exactly: 51.0
+  [WRONG] What is the smallest negative?... => -999
+         Got: -100... | Number not found: expected -999.0, got: -100
+  [OK] What is the largest 'large' value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's decimal?... => 3.14159
+         Got: 3.14159... | Number matched exactly: 3.14159
+  [OK] What is record 1's negative?... => -100
+         Got: -100... | Number matched exactly: -100.0
+  [OK] What is record 2's large?... => 999999999
+         Got: 999999999... | Number matched exactly: 999999999.0
+  [OK] What is record 3's integer?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [WRONG] What is the sum of all large values?... => 3270940435
+         Got: 4167483646... | Number not found: expected 3270940435.0, got: 4167483646
+  [OK] Which record has integer=0?... => 1
+         Got: 1... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- JSON Compact (112 tokens, 0.0ms) ---
+  [OK] What is record 1's integer?... => 0
+         Got: 0... | Number matched exactly: 0.0
+  [OK] What is record 2's decimal?... => 0.001
+         Got: 0.001... | Number matched exactly: 0.001
+  [OK] What is record 3's negative?... => -999
+         Got: -999... | Number matched exactly: -999.0
+  [OK] What is record 4's large value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's integer?... => -50
+         Got: -50... | Number matched exactly: -50.0
+  [OK] How many records are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the sum of integers?... => 51
+         Got: 51... | Number matched exactly: 51.0
+  [WRONG] What is the smallest negative?... => -999
+         Got: -100... | Number not found: expected -999.0, got: -100
+  [OK] What is the largest 'large' value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's decimal?... => 3.14159
+         Got: 3.14159... | Number matched exactly: 3.14159
+  [OK] What is record 1's negative?... => -100
+         Got: -100... | Number matched exactly: -100.0
+  [OK] What is record 2's large?... => 999999999
+         Got: 999999999... | Number matched exactly: 999999999.0
+  [OK] What is record 3's integer?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [WRONG] What is the sum of all large values?... => 3270940435
+         Got: 4265948272... | Number not found: expected 3270940435.0, got: 4265948272
+  [OK] Which record has integer=0?... => 1
+         Got: {"id":1,"integer":0,"decimal":0.0,"negative":-100,"large":10... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+--- JSON (187 tokens, 1.0ms) ---
+  [OK] What is record 1's integer?... => 0
+         Got: 0... | Number matched exactly: 0.0
+  [OK] What is record 2's decimal?... => 0.001
+         Got: 0.001... | Number matched exactly: 0.001
+  [OK] What is record 3's negative?... => -999
+         Got: -999... | Number matched exactly: -999.0
+  [OK] What is record 4's large value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's integer?... => -50
+         Got: -50... | Number matched exactly: -50.0
+  [OK] How many records are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] What is the sum of integers?... => 51
+         Got: 51... | Number matched exactly: 51.0
+  [WRONG] What is the smallest negative?... => -999
+         Got: -100... | Number not found: expected -999.0, got: -100
+  [OK] What is the largest 'large' value?... => 2147483647
+         Got: 2147483647... | Number matched exactly: 2147483647.0
+  [OK] What is record 4's decimal?... => 3.14159
+         Got: 3.14159... | Number matched exactly: 3.14159
+  [OK] What is record 1's negative?... => -100
+         Got: -100... | Number matched exactly: -100.0
+  [OK] What is record 2's large?... => 999999999
+         Got: 999999999... | Number matched exactly: 999999999.0
+  [OK] What is record 3's integer?... => 100
+         Got: 100... | Number matched exactly: 100.0
+  [WRONG] What is the sum of all large values?... => 3270940435
+         Got: 4365486435... | Number not found: expected 3270940435.0, got: 4365486435
+  [OK] Which record has integer=0?... => 1
+         Got: 1... | String contained in response
+  Accuracy: 13/15 (86.7%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 71       +62.0% 13/15 (86.7%)    1220.66        0.0
+    TOON                 82       +56.1% 13/15 (86.7%)    1056.91        1.0
+    JSON Compact        112       +40.1% 13/15 (86.7%)     773.81        0.0
+    JSON                187     baseline 13/15 (86.7%)     463.46        1.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: EDGE_STRINGS
+Description: Special character handling | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (55 tokens, 0.0ms) ---
+  [OK] What is item 1's value?... => Regular text
+         Got: Regular text... | String contained in response
+  [OK] What is item 2's name?... => With Comma
+         Got: "With Comma"... | String contained in response
+  [OK] What is item 3's value?... => Has "quotes"
+         Got: Has "quotes"... | String contained in response
+  [OK] What is item 4's value?... => Key: Value
+         Got: Key: Value... | String contained in response
+  [OK] What is item 5's value?... => Chars @#$%
+         Got: Chars @#$%... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] Which item has 'Normal' name?... => 1
+         Got: Regular text... | String mismatch: expected '1', got: 'Regular text'
+  [WRONG] Which item has special chars?... => 5
+         Got: "Chars @#$%"... | String mismatch: expected '5', got: '"Chars @#$%"'
+  [OK] What is item 1's name?... => Normal
+         Got: Normal... | String contained in response
+  [OK] What is item 3's name?... => With Quote
+         Got: "With Quote"... | String contained in response
+  [WRONG] Which items have quotes in value?... => 3
+         Got: "Has \"quotes\""... | String mismatch: expected '3', got: '"Has \"quotes\""'
+  [OK] What is item 4's name?... => With Colon
+         Got: With Colon... | String contained in response
+  [OK] What is item 2's value?... => Has, comma
+         Got: Has, comma... | String contained in response
+  [WRONG] Which item has 'Key' in value?... => 4
+         Got: Key: Value... | String mismatch: expected '4', got: 'Key: Value'
+  [OK] What is item 5's name?... => With Special
+         Got: With Special... | String contained in response
+  Accuracy: 11/15 (73.3%)
+
+--- TOON (64 tokens, 0.0ms) ---
+  [OK] What is item 1's value?... => Regular text
+         Got: Regular text... | String contained in response
+  [OK] What is item 2's name?... => With Comma
+         Got: With Comma... | String contained in response
+  [OK] What is item 3's value?... => Has "quotes"
+         Got: Has "quotes"... | String contained in response
+  [OK] What is item 4's value?... => Key: Value
+         Got: Key: Value... | String contained in response
+  [OK] What is item 5's value?... => Chars @#$%
+         Got: Chars @#$%... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [OK] Which item has 'Normal' name?... => 1
+         Got: 1... | String contained in response
+  [WRONG] Which item has special chars?... => 5
+         Got: Chars @#$%... | String mismatch: expected '5', got: 'Chars @#$%'
+  [OK] What is item 1's name?... => Normal
+         Got: Normal... | String contained in response
+  [WRONG] What is item 3's name?... => With Quote
+         Got: Has "quotes"... | String mismatch: expected 'With Quote', got: 'Has "quotes"'
+  [WRONG] Which items have quotes in value?... => 3
+         Got: "Has \"quotes\""... | String mismatch: expected '3', got: '"Has \"quotes\""'
+  [WRONG] What is item 4's name?... => With Colon
+         Got: Key: Value... | String mismatch: expected 'With Colon', got: 'Key: Value'
+  [OK] What is item 2's value?... => Has, comma
+         Got: Has, comma... | String contained in response
+  [OK] Which item has 'Key' in value?... => 4
+         Got: 4... | String contained in response
+  [OK] What is item 5's name?... => With Special
+         Got: With Special... | String contained in response
+  Accuracy: 11/15 (73.3%)
+
+--- JSON Compact (81 tokens, 0.0ms) ---
+  [OK] What is item 1's value?... => Regular text
+         Got: Regular text... | String contained in response
+  [OK] What is item 2's name?... => With Comma
+         Got: With Comma... | String contained in response
+  [OK] What is item 3's value?... => Has "quotes"
+         Got: Has "quotes"... | String contained in response
+  [OK] What is item 4's value?... => Key: Value
+         Got: Key: Value... | String contained in response
+  [OK] What is item 5's value?... => Chars @#$%
+         Got: Chars @#$%... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] Which item has 'Normal' name?... => 1
+         Got: Regular text... | String mismatch: expected '1', got: 'Regular text'
+  [WRONG] Which item has special chars?... => 5
+         Got: "Chars @#$%"... | String mismatch: expected '5', got: '"Chars @#$%"'
+  [OK] What is item 1's name?... => Normal
+         Got: Normal... | String contained in response
+  [OK] What is item 3's name?... => With Quote
+         Got: With Quote... | String contained in response
+  [WRONG] Which items have quotes in value?... => 3
+         Got: ["Has \"quotes\""]... | String mismatch: expected '3', got: '["Has \"quotes\""]'
+  [OK] What is item 4's name?... => With Colon
+         Got: With Colon... | String contained in response
+  [OK] What is item 2's value?... => Has, comma
+         Got: Has, comma... | String contained in response
+  [OK] Which item has 'Key' in value?... => 4
+         Got: {"id":4,"name":"With Colon","value":"Key: Value"}... | String contained in response
+  [OK] What is item 5's name?... => With Special
+         Got: With Special... | String contained in response
+  Accuracy: 12/15 (80.0%)
+
+--- JSON (149 tokens, 0.0ms) ---
+  [OK] What is item 1's value?... => Regular text
+         Got: Regular text... | String contained in response
+  [OK] What is item 2's name?... => With Comma
+         Got: With Comma... | String contained in response
+  [OK] What is item 3's value?... => Has "quotes"
+         Got: Has "quotes"... | String contained in response
+  [OK] What is item 4's value?... => Key: Value
+         Got: Key: Value... | String contained in response
+  [OK] What is item 5's value?... => Chars @#$%
+         Got: Chars @#$%... | String contained in response
+  [OK] How many products are there?... => 5
+         Got: 5... | Number matched exactly: 5.0
+  [WRONG] Which item has 'Normal' name?... => 1
+         Got: Regular text... | String mismatch: expected '1', got: 'Regular text'
+  [WRONG] Which item has special chars?... => 5
+         Got: "Chars @#$%"... | String mismatch: expected '5', got: '"Chars @#$%"'
+  [OK] What is item 1's name?... => Normal
+         Got: Normal... | String contained in response
+  [OK] What is item 3's name?... => With Quote
+         Got: With Quote... | String contained in response
+  [WRONG] Which items have quotes in value?... => 3
+         Got: "Has \"quotes\""... | String mismatch: expected '3', got: '"Has \"quotes\""'
+  [OK] What is item 4's name?... => With Colon
+         Got: With Colon... | String contained in response
+  [OK] What is item 2's value?... => Has, comma
+         Got: Has, comma... | String contained in response
+  [WRONG] Which item has 'Key' in value?... => 4
+         Got: Key: Value... | String mismatch: expected '4', got: 'Key: Value'
+  [OK] What is item 5's name?... => With Special
+         Got: With Special... | String contained in response
+  Accuracy: 11/15 (73.3%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                 55       +63.1% 11/15 (73.3%)    1333.33        0.0
+    TOON                 64       +57.0% 11/15 (73.3%)    1145.83        0.0
+    JSON Compact         81       +45.6% 12/15 (80.0%)     987.65        0.0
+    JSON                149     baseline 11/15 (73.3%)     492.17        0.0
+
+----------------------------------------------------------------------------------------------------
+DATASET: COMPREHENSIVE
+Description: Comprehensive mixed dataset | Questions: 15
+----------------------------------------------------------------------------------------------------
+
+--- ISON (105 tokens, 0.0ms) ---
+  [OK] What is Alice's email?... => alice@test.com
+         Got: alice@test.com... | Email matched
+  [OK] What is Bob's score?... => 82.0
+         Got: 82.0... | Number matched exactly: 82.0
+  [OK] Is Carol active?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Task B's status?... => pending
+         Got: pending... | String contained in response
+  [OK] What is Task D's priority?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many tasks are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many tasks are done?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many active users are there?... => 2
+         Got: 3... | Number not found: expected 2.0, got: 3
+  [OK] What is the average score?... => 88.67
+         Got: 88.6666666667... | Number matched exactly: 88.6666666667
+  [OK] Who has the highest score?... => Alice
+         Got: Alice... | String contained in response
+  [OK] How many tasks does user 1 have?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] Which user has Task C?... => Bob
+         Got: Carol... | String mismatch: expected 'Bob', got: 'Carol'
+  [OK] What is the total score of all users?... => 266
+         Got: 266.0... | Number matched exactly: 266.0
+  [OK] How many priority 1 tasks are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 13/15 (86.7%)
+
+--- TOON (121 tokens, 0.0ms) ---
+  [OK] What is Alice's email?... => alice@test.com
+         Got: alice@test.com... | Email matched
+  [OK] What is Bob's score?... => 82.0
+         Got: 82... | Number matched exactly: 82.0
+  [OK] Is Carol active?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Task B's status?... => pending
+         Got: pending... | String contained in response
+  [OK] What is Task D's priority?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many tasks are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many tasks are done?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many active users are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the average score?... => 88.67
+         Got: 88.6666666667... | Number matched exactly: 88.6666666667
+  [OK] Who has the highest score?... => Alice
+         Got: Alice... | String contained in response
+  [OK] How many tasks does user 1 have?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Which user has Task C?... => Bob
+         Got: Bob... | String contained in response
+  [OK] What is the total score of all users?... => 266
+         Got: 266... | Number matched exactly: 266.0
+  [OK] How many priority 1 tasks are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON Compact (171 tokens, 0.0ms) ---
+  [OK] What is Alice's email?... => alice@test.com
+         Got: alice@test.com... | Email matched
+  [OK] What is Bob's score?... => 82.0
+         Got: 82.0... | Number matched exactly: 82.0
+  [OK] Is Carol active?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Task B's status?... => pending
+         Got: pending... | String contained in response
+  [OK] What is Task D's priority?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many tasks are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many tasks are done?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] How many active users are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] What is the average score?... => 88.67
+         Got: 88.66666666666667... | Number matched exactly: 88.66666666666667
+  [OK] Who has the highest score?... => Alice
+         Got: Alice... | String contained in response
+  [OK] How many tasks does user 1 have?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Which user has Task C?... => Bob
+         Got: Bob... | String contained in response
+  [OK] What is the total score of all users?... => 266
+         Got: 266.0... | Number matched exactly: 266.0
+  [OK] How many priority 1 tasks are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 15/15 (100.0%)
+
+--- JSON (308 tokens, 0.0ms) ---
+  [OK] What is Alice's email?... => alice@test.com
+         Got: alice@test.com... | Email matched
+  [OK] What is Bob's score?... => 82.0
+         Got: 82.0... | Number matched exactly: 82.0
+  [OK] Is Carol active?... => True
+         Got: true... | Boolean true matched
+  [OK] What is Task B's status?... => pending
+         Got: pending... | String contained in response
+  [OK] What is Task D's priority?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many users are there?... => 3
+         Got: 3... | Number matched exactly: 3.0
+  [OK] How many tasks are there?... => 4
+         Got: 4... | Number matched exactly: 4.0
+  [OK] How many tasks are done?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [WRONG] How many active users are there?... => 2
+         Got: 3... | Number not found: expected 2.0, got: 3
+  [OK] What is the average score?... => 88.67
+         Got: 88.0... | Number matched within tolerance: 88.0 ≈ 88.67
+  [OK] Who has the highest score?... => Alice
+         Got: Alice... | String contained in response
+  [OK] How many tasks does user 1 have?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  [OK] Which user has Task C?... => Bob
+         Got: Bob... | String contained in response
+  [WRONG] What is the total score of all users?... => 266
+         Got: 276.0... | Number not found: expected 266.0, got: 276.0
+  [OK] How many priority 1 tasks are there?... => 2
+         Got: 2... | Number matched exactly: 2.0
+  Accuracy: 13/15 (86.7%)
+
+Format              Tokens      vs JSON     Accuracy     Acc/1K  Parse(ms)
+---------------------------------------------------------------------------
+>>> ISON                105       +65.9% 13/15 (86.7%)     825.40        0.0
+    TOON                121       +60.7% 15/15 (100.0%)     826.45        0.0
+    JSON Compact        171       +44.5% 15/15 (100.0%)     584.80        0.0
+    JSON                308     baseline 13/15 (86.7%)     281.39        0.0
+
+
+====================================================================================================
+OVERALL RESULTS - 20 DATASETS, 300 QUESTIONS
+====================================================================================================
+
+Format                Tokens      vs JSON        Accuracy     Acc/1K    TokWins    AccWins
+-----------------------------------------------------------------------------------------------
+>>> ISON                3,550       +72.0%    265/300   ( 88.3%)      24.88         20         11
+    TOON                4,847       +61.7%    266/300   ( 88.7%)      18.29          0         12
+    JSON Compact        7,339       +42.1%    267/300   ( 89.0%)      12.13          0         15
+    JSON               12,668     baseline    254/300   ( 84.7%)       6.68          0         12
+
+
+====================================================================================================
+ACCURACY BY QUESTION CATEGORY
+====================================================================================================
+
+Category                      ISON               TOON       JSON Compact               JSON
+-------------------------------------------------------------------------------------------
+aggregation      61/72  ( 84.7%)  60/72  ( 83.3%)  60/72  ( 83.3%)  48/72  ( 66.7%)
+counting         66/76  ( 86.8%)  66/76  ( 86.8%)  68/76  ( 89.5%)  66/76  ( 86.8%)
+edge             17/17  (100.0%)  17/17  (100.0%)  17/17  (100.0%)  17/17  (100.0%)
+filtering         6/10  ( 60.0%)   8/10  ( 80.0%)   7/10  ( 70.0%)   6/10  ( 60.0%)
+relationship     14/18  ( 77.8%)  16/18  ( 88.9%)  15/18  ( 83.3%)  17/18  ( 94.4%)
+retrieval       101/107 ( 94.4%)  99/107 ( 92.5%) 100/107 ( 93.5%) 100/107 ( 93.5%)
+
+
+====================================================================================================
+CONCLUSION
+====================================================================================================
+
+TOKEN EFFICIENCY:
+  ISON:                 3,550 tokens
+  TOON:                 4,847 tokens
+  JSON Compact:         7,339 tokens
+  JSON:                12,668 tokens
+
+  ISON vs JSON:              72.0% reduction
+  ISON vs TOON:              26.8% reduction
+
+LLM ACCURACY:
+  ISON:   265/300  ( 88.3%)
+  TOON:   266/300  ( 88.7%)
+  JSON:   254/300  ( 84.7%)
+
+EFFICIENCY (Acc/1K):
+  ISON:       24.88
+  JSON:        6.68
+  ISON is 272.3% MORE EFFICIENT than JSON!
+
+WIN SUMMARY:
+  Token Wins:    ISON: 20, TOON: 0, JSON: 0
+  Accuracy Wins: ISON: 11, TOON: 12, JSON: 12
+
+
+>>> ISON WON ALL TOKEN BENCHMARKS! <<<
+
+ISON IS SOTA FOR TOKEN-EFFICIENT DATA FORMATS!
+
+====================================================================================================
+Results saved to: D:\Goldmine\ISON\ison_dev\ison\benchmark\benchmark_v2_20251225_190937.log
+====================================================================================================
+JSON results: D:\Goldmine\ISON\ison_dev\ison\benchmark\benchmark_v2_20251225_190937.json

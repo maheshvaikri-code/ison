@@ -12,6 +12,7 @@ target/
 .idea/
 .vscode/
 .claude/
+CLAUDE.md
 *.swp
 *.swo
 *~
@@ -42,6 +43,7 @@ nul
 
 # Logs
 *.log
+!benchmark/*.log
 npm-debug.log*
 
 # Test coverage

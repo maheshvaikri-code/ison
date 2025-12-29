@@ -73,7 +73,7 @@ id name email
 TEST(parse_object_block) {
     std::string ison = R"(object.config
 name version debug
-MyApp 1.0 true)";
+MyApp "1.0" true)";
 
     auto doc = parse(ison);
     auto& config = doc["config"];

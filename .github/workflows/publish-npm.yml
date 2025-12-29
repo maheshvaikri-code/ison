@@ -45,7 +45,7 @@ jobs:
 
       - name: Publish ison-js
         if: ${{ inputs.packages == 'all' || inputs.packages == 'ison-js' }}
-        working-directory: packages/ison-js
+        working-directory: ison-js
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             npm publish --dry-run
@@ -57,7 +57,7 @@ jobs:
 
       - name: Publish ison-ts
         if: ${{ inputs.packages == 'all' || inputs.packages == 'ison-ts' }}
-        working-directory: packages/ison-ts
+        working-directory: ison-ts
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             npm publish --dry-run
@@ -93,7 +93,7 @@ jobs:
         run: sleep 30
 
       - name: Publish isonantic-ts
-        working-directory: packages/isonantic-ts
+        working-directory: isonantic-ts
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             npm publish --dry-run

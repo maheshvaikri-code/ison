@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/maheshvaikri-code/ison/main/ison-logo.png" alt="ISON Logo" width="120" height="120">
+  <img src="https://raw.githubusercontent.com/maheshvaikri-code/ison/main/images/ison_logo_git.png" alt="ISON Logo" width="120" height="120">
 </p>
 
 # ison-py

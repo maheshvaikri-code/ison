@@ -34,23 +34,23 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Run tests
-        working-directory: packages/ison-rust
+        working-directory: ison-rust
         run: cargo test --all-features
 
       - name: Check package
-        working-directory: packages/ison-rust
+        working-directory: ison-rust
         run: cargo package --list
 
       - name: Publish to crates.io
         if: ${{ inputs.dry_run != true }}
-        working-directory: packages/ison-rust
+        working-directory: ison-rust
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
         run: cargo publish
 
       - name: Dry run
         if: ${{ inputs.dry_run == true }}
-        working-directory: packages/ison-rust
+        working-directory: ison-rust
         run: cargo publish --dry-run
 
   publish-isonantic-rust:
@@ -73,21 +73,21 @@ jobs:
         run: sleep 60
 
       - name: Run tests
-        working-directory: packages/isonantic-rust
+        working-directory: isonantic-rust
         run: cargo test --all-features
 
       - name: Check package
-        working-directory: packages/isonantic-rust
+        working-directory: isonantic-rust
         run: cargo package --list
 
       - name: Publish to crates.io
         if: ${{ inputs.dry_run != true }}
-        working-directory: packages/isonantic-rust
+        working-directory: isonantic-rust
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
         run: cargo publish
 
       - name: Dry run
         if: ${{ inputs.dry_run == true }}
-        working-directory: packages/isonantic-rust
+        working-directory: isonantic-rust
         run: cargo publish --dry-run

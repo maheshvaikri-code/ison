@@ -9,7 +9,7 @@
  * Compatibility: C++11 and later (auto-detects C++17 for std::optional)
  *
  * @author Mahesh Vaikri
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 #ifndef ISON_PARSER_HPP
@@ -38,7 +38,7 @@
 namespace ison {
 
 // Version info
-static const char* VERSION = "1.0.0";
+static const char* VERSION = "1.0.1";
 
 // =============================================================================
 // Optional implementation for C++11/14
@@ -1206,7 +1206,7 @@ inline Document load(const std::string& path) {
     return parse(buffer.str());
 }
 
-inline std::string dumps(const Document& doc, bool align_columns = true) {
+inline std::string dumps(const Document& doc, bool align_columns = false, const std::string& delimiter = " ") {
     return Serializer::dumps(doc, align_columns);
 }
 

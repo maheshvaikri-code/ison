@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/maheshvaikri-code/ison/main/images/ison_logo_git.png" alt="ISON Logo">
+</p>
+
+
 # isonantic-rs
 
 Type-safe validation and schema definitions for ISON format in Rust.

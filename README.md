@@ -398,13 +398,17 @@ cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
 ... and 33 more tests
 ```
 
-### Rust (ison-rs) - 5 tests
+### Rust (ison-rs) - 9 tests
 ```
+✓ test_dumps_with_delimiter
 ✓ test_isonl
+✓ test_ison_to_json
+✓ test_json_to_ison
 ✓ test_parse_references
 ✓ test_parse_simple_table
 ✓ test_roundtrip
 ✓ test_type_inference
+✓ test_version
 ✓ doc-tests
 ```
 

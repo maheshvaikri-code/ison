@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ISONL",
+  "scopeName": "source.isonl",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#isonl-line" }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.isonl",
+      "match": "^#.*$"
+    },
+    "isonl-line": {
+      "name": "meta.isonl-record.isonl",
+      "match": "^(table|object|list)(\\.)(\\w+)(\\|)([^|]+)(\\|)(.*)$",
+      "captures": {
+        "1": { "name": "keyword.control.block-type.isonl" },
+        "2": { "name": "punctuation.separator.isonl" },
+        "3": { "name": "entity.name.type.block-name.isonl" },
+        "4": { "name": "punctuation.separator.pipe.isonl" },
+        "5": {
+          "name": "meta.fields.isonl",
+          "patterns": [
+            { "include": "#field-typed" },
+            { "include": "#field-simple" }
+          ]
+        },
+        "6": { "name": "punctuation.separator.pipe.isonl" },
+        "7": {
+          "name": "meta.values.isonl",
+          "patterns": [
+            { "include": "#data-values" }
+          ]
+        }
+      }
+    },
+    "field-typed": {
+      "name": "meta.field-typed.isonl",
+      "match": "(\\w+)(:)(int|float|string|bool|ref)",
+      "captures": {
+        "1": { "name": "variable.other.field.isonl" },
+        "2": { "name": "punctuation.separator.type.isonl" },
+        "3": { "name": "storage.type.isonl" }
+      }
+    },
+    "field-simple": {
+      "name": "variable.other.field.isonl",
+      "match": "\\w+"
+    },
+    "data-values": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.isonl",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.isonl", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "constant.language.null.isonl",
+          "match": "(?<=^|\\s)(null|~)(?=\\s|$)"
+        },
+        {
+          "name": "constant.language.boolean.isonl",
+          "match": "(?<=^|\\s)(true|false)(?=\\s|$)"
+        },
+        {
+          "name": "constant.numeric.isonl",
+          "match": "(?<=^|\\s)-?\\d+(\\.\\d+)?(?=\\s|$)"
+        },
+        {
+          "name": "variable.other.reference.isonl",
+          "match": ":[\\w:]+"
+        }
+      ]
+    }
+  }
+}

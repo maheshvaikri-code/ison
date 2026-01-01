@@ -1437,11 +1437,11 @@ __all__ = [
     # CLI
     'main',
 
-    # Plugins (import from ison_parser.plugins)
-    'plugins',
-
-    # Integrations (import from ison_parser.integrations)
-    'integrations',
+    # Note: 'plugins' and 'integrations' are NOT in __all__ to avoid
+    # infinite recursion with star imports (from ison_parser import *).
+    # They are lazily loaded via __getattr__ and should be imported directly:
+    #   from ison_parser import plugins
+    #   from ison_parser.plugins import rudradb
 ]
 
 # Lazy load plugins and integrations to avoid import errors if dependencies aren't installed

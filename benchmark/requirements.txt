@@ -11,7 +11,7 @@ pyyaml>=6.0
 requests>=2.28.0
 
 # Official ISON parser (PyPI: ison-py)
-ison-py>=1.0.0
+ison-py>=1.0.2
 
 # Official TOON parser (PyPI: toon-llm)
 toon-llm>=1.0.0b6

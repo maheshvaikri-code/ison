@@ -4,6 +4,7 @@ ISON Framework Integrations
 LLM Framework Integrations:
 - langchain: LangChain OutputParser for ISON and ISONL responses
 - llamaindex: LlamaIndex Reader for ISON and ISONL documents
+- autogen: Microsoft AutoGen memory and context management
 
 LLM Provider Integrations:
 - openai: OpenAI Function Calling with ISON
@@ -81,6 +82,27 @@ def __getattr__(name):
     elif name == 'ISONMCPClientSync':
         from .mcp_client import ISONMCPClientSync
         return ISONMCPClientSync
+    elif name == 'ISONMemory':
+        from .autogen_integration import ISONMemory
+        return ISONMemory
+    elif name == 'ISONContextManager':
+        from .autogen_integration import ISONContextManager
+        return ISONContextManager
+    elif name == 'ISONAgentMixin':
+        from .autogen_integration import ISONAgentMixin
+        return ISONAgentMixin
+    elif name == 'ison_context_manager':
+        from .autogen_integration import ison_context_manager
+        return ison_context_manager
+    elif name == 'messages_to_ison':
+        from .autogen_integration import messages_to_ison
+        return messages_to_ison
+    elif name == 'ison_to_messages':
+        from .autogen_integration import ison_to_messages
+        return ison_to_messages
+    elif name == 'create_ison_agent':
+        from .autogen_integration import create_ison_agent
+        return create_ison_agent
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 __all__ = [
@@ -107,4 +129,12 @@ __all__ = [
     'ISONMCPServer',
     'ISONMCPClient',
     'ISONMCPClientSync',
+    # AutoGen Integrations
+    'ISONMemory',
+    'ISONContextManager',
+    'ISONAgentMixin',
+    'ison_context_manager',
+    'messages_to_ison',
+    'ison_to_messages',
+    'create_ison_agent',
 ]

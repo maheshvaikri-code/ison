@@ -1,0 +1,126 @@
+{
+  "name": "ison-lang",
+  "displayName": "ISON Language Support",
+  "description": "Syntax highlighting and language support for ISON (Interchange Simple Object Notation) - a token-efficient data format for LLMs",
+  "version": "1.0.0",
+  "publisher": "ison-dev",
+  "author": {
+    "name": "Mahesh Vaikri"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maheshvaikri-code/ison"
+  },
+  "homepage": "https://www.ison.dev",
+  "bugs": {
+    "url": "https://github.com/maheshvaikri-code/ison/issues"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters",
+    "Snippets"
+  ],
+  "keywords": [
+    "ison",
+    "isonl",
+    "data format",
+    "llm",
+    "token efficient",
+    "serialization",
+    "ai",
+    "machine learning"
+  ],
+  "icon": "images/ison-icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onLanguage:ison",
+    "onLanguage:isonl"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "ison",
+        "aliases": ["ISON", "ison"],
+        "extensions": [".ison"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "isonl",
+        "aliases": ["ISONL", "isonl"],
+        "extensions": [".isonl"],
+        "configuration": "./language-configuration-isonl.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ison",
+        "scopeName": "source.ison",
+        "path": "./syntaxes/ison.tmLanguage.json"
+      },
+      {
+        "language": "isonl",
+        "scopeName": "source.isonl",
+        "path": "./syntaxes/isonl.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "ison",
+        "path": "./snippets/ison.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "ison.convertToJson",
+        "title": "ISON: Convert to JSON"
+      },
+      {
+        "command": "ison.convertFromJson",
+        "title": "ISON: Convert from JSON"
+      },
+      {
+        "command": "ison.countTokens",
+        "title": "ISON: Count Tokens"
+      },
+      {
+        "command": "ison.formatDocument",
+        "title": "ISON: Format Document"
+      }
+    ],
+    "configuration": {
+      "title": "ISON",
+      "properties": {
+        "ison.alignColumns": {
+          "type": "boolean",
+          "default": true,
+          "description": "Align columns when formatting ISON documents"
+        },
+        "ison.showTokenCount": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show token count in status bar"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.75.0",
+    "typescript": "^5.0.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}

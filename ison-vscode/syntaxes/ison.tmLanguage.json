@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ISON",
+  "scopeName": "source.ison",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#block-header" },
+    { "include": "#summary-separator" },
+    { "include": "#field-definitions" },
+    { "include": "#data-values" }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.ison",
+      "match": "#.*$"
+    },
+    "block-header": {
+      "name": "meta.block-header.ison",
+      "match": "^\\s*(table|object|list)(\\.)(\\w+)",
+      "captures": {
+        "1": { "name": "keyword.control.block-type.ison" },
+        "2": { "name": "punctuation.separator.ison" },
+        "3": { "name": "entity.name.type.block-name.ison" }
+      }
+    },
+    "summary-separator": {
+      "name": "keyword.operator.separator.ison",
+      "match": "^---$"
+    },
+    "field-definitions": {
+      "patterns": [
+        {
+          "name": "meta.field-typed.ison",
+          "match": "(\\w+)(:)(int|float|string|bool|ref|date|datetime|uuid|json)",
+          "captures": {
+            "1": { "name": "variable.other.field.ison" },
+            "2": { "name": "punctuation.separator.type.ison" },
+            "3": { "name": "storage.type.ison" }
+          }
+        },
+        {
+          "name": "variable.other.field.ison",
+          "match": "(?<=^|\\s)(\\w+)(?=\\s|$)"
+        }
+      ]
+    },
+    "data-values": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.ison",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.ison",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.ison",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.ison",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "constant.language.null.ison",
+          "match": "(?<=^|\\s)(null|~)(?=\\s|$)"
+        },
+        {
+          "name": "constant.language.boolean.true.ison",
+          "match": "(?<=^|\\s)true(?=\\s|$)"
+        },
+        {
+          "name": "constant.language.boolean.false.ison",
+          "match": "(?<=^|\\s)false(?=\\s|$)"
+        },
+        {
+          "name": "constant.numeric.float.ison",
+          "match": "(?<=^|\\s)-?\\d+\\.\\d+(?=\\s|$)"
+        },
+        {
+          "name": "constant.numeric.integer.ison",
+          "match": "(?<=^|\\s)-?\\d+(?=\\s|$)"
+        },
+        {
+          "name": "meta.reference.ison",
+          "match": "(:)([A-Z_]+)?(:)?(\\w+)",
+          "captures": {
+            "1": { "name": "punctuation.definition.reference.ison" },
+            "2": { "name": "entity.name.tag.relationship.ison" },
+            "3": { "name": "punctuation.separator.namespace.ison" },
+            "4": { "name": "variable.other.reference.ison" }
+          }
+        },
+        {
+          "name": "variable.other.reference.simple.ison",
+          "match": "(?<=^|\\s):(\\w+)(?=\\s|$)",
+          "captures": {
+            "1": { "name": "variable.other.reference.id.ison" }
+          }
+        }
+      ]
+    }
+  }
+}

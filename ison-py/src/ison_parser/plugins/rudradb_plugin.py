@@ -185,7 +185,7 @@ class RudraDBToISON:
         Returns:
             ISON formatted string
         """
-        from ..serializer import Serializer
+        from .. import Serializer
 
         self._ensure_connected()
         doc = Document()
@@ -208,7 +208,7 @@ class RudraDBToISON:
                 if rel_block and rel_block.rows:
                     doc.blocks.append(rel_block)
 
-        return Serializer().serialize(doc)
+        return Serializer().dumps(doc)
 
     def export_collections(
         self,
@@ -225,7 +225,7 @@ class RudraDBToISON:
         Returns:
             ISON formatted string
         """
-        from ..serializer import Serializer
+        from .. import Serializer
 
         self._ensure_connected()
         doc = Document()
@@ -235,7 +235,7 @@ class RudraDBToISON:
             if block and block.rows:
                 doc.blocks.append(block)
 
-        return Serializer().serialize(doc)
+        return Serializer().dumps(doc)
 
     def export_collection(
         self,
@@ -256,7 +256,7 @@ class RudraDBToISON:
         Returns:
             ISON formatted string
         """
-        from ..serializer import Serializer
+        from .. import Serializer
 
         block = self._export_collection_to_block(
             collection_name,
@@ -270,7 +270,7 @@ class RudraDBToISON:
 
         doc = Document()
         doc.blocks.append(block)
-        return Serializer().serialize(doc)
+        return Serializer().dumps(doc)
 
     def export_query(
         self,
@@ -287,7 +287,7 @@ class RudraDBToISON:
         Returns:
             ISON formatted string
         """
-        from ..serializer import Serializer
+        from .. import Serializer
 
         block = self._query_result_to_block(query_result, name)
 
@@ -296,7 +296,7 @@ class RudraDBToISON:
 
         doc = Document()
         doc.blocks.append(block)
-        return Serializer().serialize(doc)
+        return Serializer().dumps(doc)
 
     def export_with_relationships(
         self,
@@ -315,7 +315,7 @@ class RudraDBToISON:
         Returns:
             ISON formatted string with related data
         """
-        from ..serializer import Serializer
+        from .. import Serializer
 
         self._ensure_connected()
         doc = Document()
@@ -339,7 +339,7 @@ class RudraDBToISON:
             if block and block.rows:
                 doc.blocks.append(block)
 
-        return Serializer().serialize(doc)
+        return Serializer().dumps(doc)
 
     def stream_collection(
         self,
@@ -422,7 +422,7 @@ class RudraDBToISON:
         Returns:
             ISON formatted context for LLM
         """
-        from ..serializer import Serializer
+        from .. import Serializer
 
         self._ensure_connected()
 
@@ -440,12 +440,9 @@ class RudraDBToISON:
         if not results:
             return ""
 
-        # Create RAG-optimized block
-        block = Block("table", "context")
-
-        # Add rank and score fields for RAG
-        block.fields = ["rank", "score"]
-        block.field_info = [
+        # Build fields list first
+        fields = ["rank", "score"]
+        field_info = [
             FieldInfo("rank", "int"),
             FieldInfo("score", "float"),
         ]
@@ -454,10 +451,11 @@ class RudraDBToISON:
         content_fields = self._get_content_fields(results[0] if results else {})
         for field in content_fields:
             if include_metadata or field in ['content', 'text', 'document', 'body']:
-                block.fields.append(field)
-                block.field_info.append(FieldInfo(field))
+                fields.append(field)
+                field_info.append(FieldInfo(field))
 
-        # Add rows with rank
+        # Build rows with rank
+        rows = []
         for i, result in enumerate(results):
             row = {
                 "rank": i + 1,
@@ -472,11 +470,20 @@ class RudraDBToISON:
                     else:
                         row[field] = value
 
-            block.rows.append(row)
+            rows.append(row)
+
+        # Create RAG-optimized block
+        block = Block(
+            kind="table",
+            name="context",
+            fields=fields,
+            rows=rows,
+            field_info=field_info
+        )
 
         doc = Document()
         doc.blocks.append(block)
-        return Serializer().serialize(doc)
+        return Serializer().dumps(doc)
 
     # =========================================================================
     # Internal Methods
@@ -620,18 +627,23 @@ class RudraDBToISON:
             fields.remove('_id')
             fields = ['_id'] + fields
 
-        # Create block
-        block = Block("table", collection_name)
-        block.fields = fields
-        block.field_info = [self._infer_field_info(f, records) for f in fields]
-
-        # Add rows
+        # Build rows first
+        rows = []
         for record in records:
             row = {}
             for field in fields:
                 value = record.get(field)
                 row[field] = self._convert_value(value, collection_name, field)
-            block.rows.append(row)
+            rows.append(row)
+
+        # Create block with all required parameters
+        block = Block(
+            kind="table",
+            name=collection_name,
+            fields=fields,
+            rows=rows,
+            field_info=[self._infer_field_info(f, records) for f in fields]
+        )
 
         return block
 
@@ -641,15 +653,15 @@ class RudraDBToISON:
         name: str
     ) -> Optional[Block]:
         """Convert query result to an ISON Block."""
-        # Handle different result types
+        # Handle different result types (order matters: dict before __iter__)
         if isinstance(query_result, list):
             records = query_result
-        elif hasattr(query_result, '__iter__'):
-            records = list(query_result)
-        elif hasattr(query_result, 'to_dict'):
-            records = [query_result.to_dict()]
         elif isinstance(query_result, dict):
             records = [query_result]
+        elif hasattr(query_result, 'to_dict'):
+            records = [query_result.to_dict()]
+        elif hasattr(query_result, '__iter__'):
+            records = list(query_result)
         else:
             return None
 
@@ -667,16 +679,23 @@ class RudraDBToISON:
 
         fields = sorted(all_fields)
 
-        block = Block("table", name)
-        block.fields = fields
-        block.field_info = [FieldInfo(f) for f in fields]
-
+        # Build rows first
+        rows = []
         for record in records:
             if isinstance(record, dict):
                 row = {}
                 for field in fields:
                     row[field] = self._convert_value(record.get(field), name, field)
-                block.rows.append(row)
+                rows.append(row)
+
+        # Create block with all required parameters
+        block = Block(
+            kind="table",
+            name=name,
+            fields=fields,
+            rows=rows,
+            field_info=[FieldInfo(f) for f in fields]
+        )
 
         return block
 
@@ -688,15 +707,16 @@ class RudraDBToISON:
         if not relationships:
             return None
 
-        block = Block("table", "relationships")
-        block.fields = ["id", "type", "source", "target"]
-        block.field_info = [
+        fields = ["id", "type", "source", "target"]
+        field_info = [
             FieldInfo("id"),
             FieldInfo("type", "string"),
             FieldInfo("source", "ref"),
             FieldInfo("target", "ref"),
         ]
 
+        # Build rows first
+        rows = []
         for i, rel in enumerate(relationships):
             row = {
                 "id": rel.get("id", i + 1),
@@ -710,7 +730,16 @@ class RudraDBToISON:
                     rel.get("target_type", rel.get("to_type"))
                 ),
             }
-            block.rows.append(row)
+            rows.append(row)
+
+        # Create block with all required parameters
+        block = Block(
+            kind="table",
+            name="relationships",
+            fields=fields,
+            rows=rows,
+            field_info=field_info
+        )
 
         return block
 

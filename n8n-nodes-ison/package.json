@@ -1,0 +1,59 @@
+{
+  "name": "n8n-nodes-ison",
+  "version": "1.0.0",
+  "description": "n8n nodes for ISON (Interchange Simple Object Notation) - token-efficient data format for LLMs",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "ison",
+    "isonl",
+    "llm",
+    "token-efficient",
+    "data-format",
+    "json-alternative",
+    "ai",
+    "serialization"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.ison.dev",
+  "author": {
+    "name": "Mahesh Vaikri",
+    "url": "https://github.com/maheshvaikri-code"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maheshvaikri-code/ison.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes --write",
+    "lint": "eslint nodes --ext .ts --fix",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/nodes/Ison/Ison.node.js"
+    ],
+    "credentials": []
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "gulp": "^4.0.2",
+    "n8n-workflow": "^1.0.0",
+    "typescript": "^5.0.0",
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  },
+  "dependencies": {
+    "ison-parser": "^1.0.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

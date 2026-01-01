@@ -176,7 +176,8 @@ class TestRudraDBToISONBasic:
 
         lines = result.strip().split('\n')
         # Header line + fields line + 2 data rows = 4 lines
-        data_lines = [l for l in lines if l and not l.startswith('table.') and 'name' not in l.split()[0]]
+        # Filter out table header (table.X) and field definition line (contains :type)
+        data_lines = [l for l in lines if l and not l.startswith('table.') and ':' not in l.split()[0]]
         assert len(data_lines) <= 2
 
 

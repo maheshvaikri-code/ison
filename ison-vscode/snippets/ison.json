@@ -1,0 +1,106 @@
+{
+  "Table Block": {
+    "prefix": "table",
+    "body": [
+      "table.${1:name}",
+      "${2:id:int} ${3:name:string} ${4:field}",
+      "${5:1} ${6:value} ${7:data}",
+      "$0"
+    ],
+    "description": "Create a new ISON table block"
+  },
+  "Object Block": {
+    "prefix": "object",
+    "body": [
+      "object.${1:name}",
+      "${2:key} ${3:value}",
+      "${4:setting} ${5:data}",
+      "$0"
+    ],
+    "description": "Create a new ISON object block"
+  },
+  "Users Table": {
+    "prefix": "users",
+    "body": [
+      "table.users",
+      "id:int name:string email:string active:bool",
+      "1 ${1:Alice} ${2:alice@example.com} true",
+      "2 ${3:Bob} ${4:bob@example.com} true",
+      "$0"
+    ],
+    "description": "Create a users table template"
+  },
+  "Orders Table": {
+    "prefix": "orders",
+    "body": [
+      "table.orders",
+      "id:int user_id:ref product:string amount:float",
+      "1 :${1:1} ${2:Widget} ${3:29.99}",
+      "$0"
+    ],
+    "description": "Create an orders table with references"
+  },
+  "Config Object": {
+    "prefix": "config",
+    "body": [
+      "object.config",
+      "key value",
+      "${1:debug} ${2:true}",
+      "${3:version} ${4:1.0.0}",
+      "$0"
+    ],
+    "description": "Create a config object block"
+  },
+  "Reference": {
+    "prefix": "ref",
+    "body": ":${1:id}",
+    "description": "Simple reference (:id)"
+  },
+  "Namespaced Reference": {
+    "prefix": "refns",
+    "body": ":${1:namespace}:${2:id}",
+    "description": "Namespaced reference (:namespace:id)"
+  },
+  "Relationship Reference": {
+    "prefix": "refrel",
+    "body": ":${1:RELATIONSHIP}:${2:id}",
+    "description": "Relationship reference (:RELATIONSHIP:id)"
+  },
+  "Summary Separator": {
+    "prefix": "summary",
+    "body": [
+      "---",
+      "${1:count} ${2:100}",
+      "$0"
+    ],
+    "description": "Add summary separator with data"
+  },
+  "Field with Type": {
+    "prefix": "field",
+    "body": "${1:name}:${2|int,float,string,bool,ref,date,datetime|}",
+    "description": "Field with type annotation"
+  },
+  "RAG Context": {
+    "prefix": "rag",
+    "body": [
+      "table.context",
+      "rank:int score:float content:string source:string",
+      "1 ${1:0.95} \"${2:relevant content}\" ${3:doc1.pdf}",
+      "2 ${4:0.87} \"${5:more content}\" ${6:doc2.pdf}",
+      "$0"
+    ],
+    "description": "RAG context template for LLM"
+  },
+  "Chat Messages": {
+    "prefix": "chat",
+    "body": [
+      "table.messages",
+      "role:string content:string",
+      "system \"${1:You are a helpful assistant.}\"",
+      "user \"${2:Hello!}\"",
+      "assistant \"${3:Hi! How can I help?}\"",
+      "$0"
+    ],
+    "description": "Chat messages template"
+  }
+}

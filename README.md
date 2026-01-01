@@ -107,6 +107,12 @@ isonantic-rs = "1.0"       # Validation & schemas
 cp ison-cpp/include/ison_parser.hpp /your/project/
 ```
 
+**Go:**
+```bash
+go get github.com/maheshvaikri-code/ison/ison-go
+go get github.com/maheshvaikri-code/ison/isonantic-go
+```
+
 ### Usage Examples
 
 **JavaScript:**
@@ -179,6 +185,24 @@ for (const auto& row : doc["users"].rows) {
 }
 ```
 
+**Go:**
+```go
+import "github.com/maheshvaikri-code/ison/ison-go"
+
+doc, _ := ison.Parse(`
+table.users
+id:int name:string active:bool
+1 Alice true
+2 Bob false
+`)
+
+users, _ := doc.Get("users")
+for _, row := range users.Rows {
+    name, _ := row["name"].AsString()
+    fmt.Println(name)
+}
+```
+
 ---
 
 ## ISON Format
@@ -224,8 +248,9 @@ table.users|id name email|2 Bob bob@example.com
 | **PyPI** | [ison-py](https://pypi.org/project/ison-py) | [isonantic](https://pypi.org/project/isonantic) | 31 + 39 tests |
 | **Crates.io** | [ison-rs](https://crates.io/crates/ison-rs) | [isonantic-rs](https://crates.io/crates/isonantic-rs) | 9 + 1 tests |
 | **C++** | ison-cpp | isonantic-cpp | 30 tests |
+| **Go** | ison-go | isonantic-go | 28 + 55 tests |
 
-**Total: 9 packages across 4 ecosystems, 208+ tests passing**
+**Total: 11 packages across 5 ecosystems, 303+ tests passing**
 
 ---
 
@@ -298,6 +323,8 @@ ison/
 ├── isonantic-rust/        # Rust validation (Crates.io: isonantic-rs)
 ├── ison-cpp/              # C++ header-only parser
 ├── isonantic-cpp/         # C++ header-only validation
+├── ison-go/               # Go parser
+├── isonantic-go/          # Go validation
 ├── benchmark/             # Token efficiency benchmarks
 ├── images/                # Logo and assets
 ├── LICENSE                # MIT License
@@ -328,6 +355,10 @@ cd isonantic-rust && cargo test
 
 # C++
 cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
+
+# Go
+cd ison-go && go test -v ./...
+cd isonantic-go && go test -v ./...
 ```
 
 ---
@@ -335,7 +366,7 @@ cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
 ## Test Results
 
 <details>
-<summary><strong>Click to expand test results (208+ tests passing)</strong></summary>
+<summary><strong>Click to expand test results (303+ tests passing)</strong></summary>
 
 ### JavaScript (ison-parser) - 33 tests
 ```
@@ -423,6 +454,35 @@ cd ison-cpp && mkdir build && cd build && cmake .. && cmake --build . && ctest
 ✓ parse_isonl / serialize_isonl
 ✓ to_json
 ... and 15 more tests
+```
+
+### Go (ison-go) - 28 tests
+```
+✓ TestParseSimpleTable
+✓ TestParseTypedFields
+✓ TestParseQuotedStrings
+✓ TestParseNullValues
+✓ TestParseReferences
+✓ TestParseObjectBlock
+✓ TestParseMultipleBlocks
+✓ TestDumps / TestRoundtrip
+✓ TestDumpsISONL / TestParseISONL
+✓ TestToJSON / TestFromJSON
+... and 18 more tests
+```
+
+### Go Validation (isonantic-go) - 55 tests
+```
+✓ TestStringRequired / TestStringOptional
+✓ TestStringMinLength / TestStringMaxLength
+✓ TestStringEmail / TestStringURL
+✓ TestNumberMin / TestNumberPositive
+✓ TestIntSchema / TestBooleanRequired
+✓ TestRefRequired / TestRefNamespace
+✓ TestObjectFieldValidation
+✓ TestTableRowValidation
+✓ TestDocumentParse / TestDocumentSafeParse
+... and 46 more tests
 ```
 
 </details>

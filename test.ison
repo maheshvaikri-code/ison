@@ -1,0 +1,17 @@
+table.users
+id name email active
+1 Alice alice@example.com true
+2 Bob bob@example.com false
+3 Charlie charlie@test.com true
+
+object.config
+timeout 30
+debug true
+api_key "sk-xxx-secret"
+max_retries 3
+
+table.orders
+id user_id product total
+O1 :1 "Widget Pro" 99.99
+O2 :2 "Gadget Plus" 149.50
+O3 :1 "Super Tool" 299.00

@@ -79,3 +79,4 @@ Makefile
 
 # Jupyter
 .ipynb_checkpoints/
+PAPA.md

@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "publisher": "ison-dev",
   "author": {
-    "name": "Mahesh Vaikri"
+    "name": "Mahesh Vaikri",
+    "url": "https://github.com/maheshvaikri-code"
   },
   "license": "MIT",
   "repository": {

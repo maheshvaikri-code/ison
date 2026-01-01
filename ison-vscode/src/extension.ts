@@ -6,44 +6,158 @@ function countTokens(text: string): number {
     return Math.ceil(text.length / 4);
 }
 
-// ISON to JSON conversion
-function isonToJson(ison: string): string {
-    const result: Record<string, any[]> = {};
-    let currentBlock: { name: string; fields: string[]; rows: any[] } | null = null;
+// Tokenizer - handles quoted strings and escape sequences
+function tokenize(line: string): { tokens: string[], quoted: boolean[] } {
+    const tokens: string[] = [];
+    const quoted: boolean[] = [];
+    let pos = 0;
 
-    const lines = ison.split('\n');
-    for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed || trimmed.startsWith('#')) continue;
-        if (trimmed === '---') continue;
-
-        // Block header
-        const blockMatch = trimmed.match(/^(table|object|list)\.(\w+)$/);
-        if (blockMatch) {
-            if (currentBlock) {
-                result[currentBlock.name] = currentBlock.rows;
-            }
-            currentBlock = { name: blockMatch[2], fields: [], rows: [] };
-            continue;
+    const skipWhitespace = () => {
+        while (pos < line.length && (line[pos] === ' ' || line[pos] === '\t')) {
+            pos++;
         }
+    };
 
-        if (!currentBlock) continue;
+    const readQuotedString = (): string => {
+        pos++; // Skip opening quote
+        const result: string[] = [];
+        while (pos < line.length) {
+            const char = line[pos];
+            if (char === '"') {
+                pos++;
+                return result.join('');
+            }
+            if (char === '\\' && pos + 1 < line.length) {
+                pos++;
+                const escapeMap: Record<string, string> = { 'n': '\n', 't': '\t', 'r': '\r', '"': '"', '\\': '\\' };
+                result.push(escapeMap[line[pos]] || line[pos]);
+            } else {
+                result.push(char);
+            }
+            pos++;
+        }
+        return result.join('');
+    };
 
-        // Field definitions or data
-        if (currentBlock.fields.length === 0) {
-            currentBlock.fields = trimmed.split(/\s+/).map(f => f.split(':')[0]);
+    const readUnquotedToken = (): string => {
+        const start = pos;
+        while (pos < line.length && line[pos] !== ' ' && line[pos] !== '\t') {
+            pos++;
+        }
+        return line.slice(start, pos);
+    };
+
+    while (pos < line.length) {
+        skipWhitespace();
+        if (pos >= line.length) break;
+
+        if (line[pos] === '"') {
+            tokens.push(readQuotedString());
+            quoted.push(true);
         } else {
-            const values = parseValues(trimmed);
-            const row: Record<string, any> = {};
-            currentBlock.fields.forEach((field, i) => {
-                row[field] = values[i] ?? null;
-            });
-            currentBlock.rows.push(row);
+            tokens.push(readUnquotedToken());
+            quoted.push(false);
         }
     }
 
-    if (currentBlock) {
-        result[currentBlock.name] = currentBlock.rows;
+    return { tokens, quoted };
+}
+
+// Type inference for ISON values
+function inferType(token: string, wasQuoted: boolean): any {
+    if (wasQuoted) return token;
+    if (token === 'true') return true;
+    if (token === 'false') return false;
+    if (token === 'null') return null;
+    if (/^-?\d+$/.test(token)) return parseInt(token, 10);
+    if (/^-?\d+\.\d+$/.test(token)) return parseFloat(token);
+    if (token.startsWith(':')) return token; // Reference
+    return token;
+}
+
+// Check if line looks like a block header
+function isBlockHeader(line: string): boolean {
+    const match = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\.([a-zA-Z_][a-zA-Z0-9_]*)$/);
+    return match !== null;
+}
+
+// ISON to JSON conversion - robust parser
+function isonToJson(ison: string): string {
+    const result: Record<string, any> = {};
+    const lines = ison.split('\n');
+    let i = 0;
+
+    const skipEmptyAndComments = () => {
+        while (i < lines.length) {
+            const line = lines[i].trim();
+            if (line === '' || line.startsWith('#')) {
+                i++;
+            } else {
+                break;
+            }
+        }
+    };
+
+    while (i < lines.length) {
+        skipEmptyAndComments();
+        if (i >= lines.length) break;
+
+        const headerLine = lines[i].trim();
+
+        // Check for block header (supports any kind: table, object, list, nodes, edges, etc.)
+        const headerMatch = headerLine.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\.([a-zA-Z_][a-zA-Z0-9_\-]*)$/);
+        if (!headerMatch) {
+            i++;
+            continue;
+        }
+
+        const kind = headerMatch[1];
+        const name = headerMatch[2];
+        i++;
+
+        // Skip empty lines and comments before fields
+        skipEmptyAndComments();
+        if (i >= lines.length) break;
+
+        // Parse fields
+        const fieldsLine = lines[i];
+        const { tokens: rawFields } = tokenize(fieldsLine);
+        const fields = rawFields.map(f => f.split(':')[0]);
+        i++;
+
+        // Parse data rows
+        const rows: Record<string, any>[] = [];
+
+        while (i < lines.length) {
+            const line = lines[i];
+            const trimmed = line.trim();
+
+            // Stop at blank line or new block
+            if (trimmed === '') break;
+            if (trimmed.startsWith('#')) { i++; continue; }
+            if (trimmed === '---') { i++; continue; } // Skip summary separator
+            if (isBlockHeader(trimmed)) break;
+
+            // Parse data row
+            const { tokens, quoted } = tokenize(line);
+            const row: Record<string, any> = {};
+            fields.forEach((field, idx) => {
+                if (idx < tokens.length) {
+                    row[field] = inferType(tokens[idx], quoted[idx]);
+                } else {
+                    row[field] = null;
+                }
+            });
+            rows.push(row);
+            i++;
+        }
+
+        // Store result based on kind
+        if (kind === 'object' && rows.length === 1) {
+            result[name] = rows[0];
+        } else {
+            result[name] = rows;
+        }
     }
 
     return JSON.stringify(result, null, 2);
@@ -212,11 +326,23 @@ export function activate(context: vscode.ExtensionContext) {
             try {
                 const json = isonToJson(text);
                 const jsonTokens = countTokens(json);
-                const savings = Math.round((1 - isonTokens / jsonTokens) * 100);
 
-                vscode.window.showInformationMessage(
-                    `ISON: ~${isonTokens} tokens | JSON equivalent: ~${jsonTokens} tokens | Savings: ${savings}%`
-                );
+                // Only show savings if JSON is actually larger (valid conversion)
+                if (jsonTokens > isonTokens) {
+                    const savings = Math.round((1 - isonTokens / jsonTokens) * 100);
+                    vscode.window.showInformationMessage(
+                        `ISON: ~${isonTokens} tokens | JSON equivalent: ~${jsonTokens} tokens | Savings: ${savings}%`
+                    );
+                } else if (jsonTokens > 1) {
+                    // JSON is smaller or equal (unusual case)
+                    const overhead = Math.round((isonTokens / jsonTokens - 1) * 100);
+                    vscode.window.showInformationMessage(
+                        `ISON: ~${isonTokens} tokens | JSON equivalent: ~${jsonTokens} tokens | Overhead: ${overhead}%`
+                    );
+                } else {
+                    // Conversion failed - just show ISON tokens
+                    vscode.window.showInformationMessage(`ISON: ~${isonTokens} tokens`);
+                }
             } catch {
                 vscode.window.showInformationMessage(`ISON: ~${isonTokens} tokens`);
             }

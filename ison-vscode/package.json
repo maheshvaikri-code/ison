@@ -2,7 +2,7 @@
   "name": "ison-lang",
   "displayName": "ISON - Token Efficient Data Format for LLMs",
   "description": "Syntax highlighting and language support for ISON (Interchange Simple Object Notation) - a token-efficient data format for LLMs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "ison-dev",
   "author": {
     "name": "Mahesh Vaikri",
